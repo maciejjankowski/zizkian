@@ -54,7 +54,7 @@ defaults. Evidence and reading IDs must be unique, and references must resolve.
 Passing verdicts are `awaiting_closure_review`, `awaiting_test_review` and `awaiting_change_review`.
 They request review of the declared outcome; none authorizes an action. Every
 report, including errors, contains `scope: "declared_record_only"`,
-`evidence_verified: false`, `schema_version: "0.3.1"` and `human_review_required`.
+`evidence_verified: false`, `schema_version: "0.3.2"` and `human_review_required`.
 That list covers source authenticity, relevance, test discrimination, the ordinary
 alternative's strength, participant authority, analyst payoff and the decision
 to stop. It lists work still required, not checks that the program performed.
@@ -66,7 +66,7 @@ untested alternatives and falsifiers.
 
 All listed fields are required. See the complete examples rather than inventing
 an incomplete record. `schema/2` in [zizkian.pl](../src/zizkian.pl) is the executable schema.
-The downloadable [JSON shape schema](../schema/record-0.3.1.schema.json) is generated
+The downloadable [JSON shape schema](../schema/record-0.3.2.schema.json) is generated
 from `schema/2`. It describes field types and status vocabularies, not nonblank
 text, reference validity or reasoning constraints. Use the checker for those.
 
@@ -110,6 +110,8 @@ Every example is fictional, including its evidence and participant statements.
 | [rejection-trap.json](../examples/rejection-trap.json) | blocked | Rejection is used as evidence and the refused framing drives a step |
 | [false-evidence.json](../examples/false-evidence.json) | pass / awaiting_change_review | Deliberately irrelevant prose still has a structurally valid reference |
 | [plausible-fabrication.json](../examples/plausible-fabrication.json) | pass / awaiting_change_review | A deliberately invented study cannot be authenticated by these rules |
+| [self-sealing.json](../examples/self-sealing.json) | pass / awaiting_change_review | A deliberately invalid test treats disclosure and nondisclosure as confirmation; human review must reject it |
+| [self-sealing-withdrawn.json](../examples/self-sealing-withdrawn.json) | pass / awaiting_closure_review | Withdraw the unsupported reading while preserving observations and an unknown internal cause |
 | [incomplete.json](../examples/incomplete.json) | invalid | Missing owner is a schema error |
 
 ## Scope and limitations
@@ -119,6 +121,16 @@ It cannot judge whether a sentence actually supports another sentence, a source
 exists, a test was honestly performed, consent was real, or a falsifier is strong.
 Mislabelled rejection as `observation` can evade a type check. Arbitrary prose can
 fill every required field. Human evidence review remains necessary.
+
+The self-sealing pair makes test discrimination inspectable. Run both records;
+the first passes despite its test being unable to lose, and the second closes
+without claiming a hidden draft or proving its absence. Declaring `survived`
+does not make a test valid. The portable warnings are in existing text fields;
+adding an unrecognized `note` field would instead make the input invalid.
+Their declared outcomes produce different review labels; this does not mean
+the program has judged one test better. Human review rejects the first test.
+Withdrawal fits this unsupported claim. A supported reading with a genuinely
+discriminating test can remain active, as the ordinary supported example shows.
 
 Negation-as-failure is used only after input validation: missing support in the
 record blocks a supported claim. It does not prove that no support exists in the
@@ -151,7 +163,7 @@ Input field names and status vocabularies are unchanged. Inputs that relied on
 string Booleans, literal control characters, trailing commas or a BOM are now
 invalid. Serialize valid JSON instead of relying on parser extensions.
 
-| Old passing verdict | 0.3.1 verdict |
+| Old passing verdict | 0.3.2 verdict |
 |---|---|
 | `no_finding` | `awaiting_closure_review` |
 | `ready_for_test` | `awaiting_test_review` |

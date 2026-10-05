@@ -3,10 +3,13 @@
 ## Present status
 
 The editable browser lab makes a specific limitation reproducible. The
-irrelevant-evidence and plausible-fabrication fixtures pass; removing the owner
-fails the schema. These are diagnostic examples, not an outcome benchmark.
+irrelevant-evidence, plausible-fabrication and self-sealing fixtures pass;
+removing the owner fails the schema. The self-sealing test cannot lose: both
+answers confirm its claim. Human review must reject it even when the program
+passes. Its paired repair withdraws the claim and keeps the cause unknown.
+These are diagnostic examples, not an outcome benchmark.
 The worker and native CLI use the same Prolog module; parity tests compare their
-complete reports on all nine fixtures.
+complete reports on all eleven fixtures.
 
 The code and fictional fixtures are exercised. There is no client-validation
 study or controlled benchmark of decision quality. A finite refutability witness

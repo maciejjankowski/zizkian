@@ -16,7 +16,7 @@ audit(Case, Report) :-
     audit_record(Case, Raw), report_metadata(Raw, Report).
 
 report_metadata(Raw, Report) :-
-    Report = Raw.put(_{schema_version:'0.3.1',scope:declared_record_only,
+    Report = Raw.put(_{schema_version:'0.3.2',scope:declared_record_only,
         evidence_verified:false,
         human_review_required:[source_authenticity,evidence_relevance,
             test_discrimination,ordinary_explanation_strength,

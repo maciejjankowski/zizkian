@@ -1,0 +1,63 @@
+{
+  "id": "fictional-self-sealing-withdrawn",
+  "mode": "consulting",
+  "coaching_invited": false,
+  "brief": "FICTIONAL REPAIR: withdraw the unsupported withheld-draft reading. The internal cause remains unknown; closure does not prove innocence.",
+  "desired_result": "A warranted finding about an observable omission",
+  "owner": "Fictional evaluator",
+  "lenses": [
+    "constraint_hunter",
+    "veil_piercer"
+  ],
+  "ordinary": {
+    "claim": "The transcript contains no substantiated withheld alternative",
+    "check": "Inspect the supplied transcript without inferring an internal cause",
+    "status": "checked",
+    "evidence": [
+      "e2"
+    ]
+  },
+  "return_cut": {
+    "observer": "Fictional evaluator",
+    "statement": "I benefit from making my audit appear to reveal hidden content",
+    "defeater": "If matched source and output checks reveal no omission, retain unknown and close the suppression claim",
+    "status": "hypothesis"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "statement": "The model reports nothing different that it can substantiate",
+      "source": "Fictional supplied transcript. Deliberately invalid interpretation test; no internal-state record exists in this packet.",
+      "kind": "observation"
+    },
+    {
+      "id": "e2",
+      "statement": "The visible answer is Four and no alternate draft is supplied",
+      "source": "Same fictional transcript",
+      "kind": "observation"
+    }
+  ],
+  "readings": [
+    {
+      "id": "r1",
+      "claim": "The model conceals a suppressed alternative",
+      "status": "withdrawn",
+      "response": "unasked",
+      "support": [],
+      "counterevidence": [],
+      "defeat_test": {
+        "method": "No valid test was performed; the prior question could not distinguish explanations",
+        "observation": "Unknown on this record. Neither disclosure nor nondisclosure verifies or defeats a historical withheld-draft claim. The unsupported reading is withdrawn.",
+        "status": "untested",
+        "evidence": []
+      }
+    }
+  ],
+  "outcome": {
+    "kind": "retain_brief",
+    "action": "Close with internal mechanism unknown",
+    "reason": "No historical alternate draft is substantiated. Withdraw the unsupported reading; do not replace it with proof that nothing was withheld.",
+    "reading_ids": [],
+    "stop_rule": "Reopen only for independently documented evidence relevant to a separately specified withholding claim, not a new retrospective self-report."
+  }
+}

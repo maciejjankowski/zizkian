@@ -13,7 +13,7 @@ Every report says `evidence_verified: false` and names the human review still
 required. The numerical attention matrix belongs to a separate historical essay;
 it supplies no operating weights, truth score or decision authority.
 
-Version **0.3.1**, experimental. Public home:
+Version **0.3.2**, experimental. Public home:
 **https://maciejjankowski.com/zizkian/**. Repository:
 **https://github.com/maciejjankowski/zizkian**.
 
@@ -81,10 +81,10 @@ status, declared falsifiers, ordinary alternatives, participant invitation and
 closure. It excludes attention weights and participant rejection from support.
 It returns a complete violation list rather than an unexplained score.
 
-Nine fixtures and 40 rule tests are included. CLI regression checks cover the
+Eleven fixtures and 40 rule tests are included. CLI regression checks cover the
 fixtures, malformed inputs and operation outside the checkout directory.
 JSON types are checked before conversion. Native and browser paths share strict
-JSON parsing and the same schema. The [versioned shape schema](schema/record-0.3.1.schema.json)
+JSON parsing and the same schema. The [versioned shape schema](schema/record-0.3.2.schema.json)
 is generated from that field definition; it cannot replace the reasoning audit.
 The attention matrix is a conceptual illustration; the checker does not use it.
 No model, network service or dispatcher is needed to run the checker.

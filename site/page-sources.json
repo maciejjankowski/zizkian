@@ -18,11 +18,11 @@
     "site/assets/vendor/swipl-8.2.1/swipl-web.wasm": "c8831c0ac6a021b6bc67fa1b86e8826d1ea92a1a81b932cfb88fea235361c355"
   },
   "_renderer": {
-    "scripts/render_site.py": "f37b095011d59ef85c1417a53acb1ef2755138f9dec31cc59c4e033cf1ceebca",
+    "scripts/render_site.py": "6cbd99b61fd45f62673414d861f051d0cbab30f6c1f6c56a51acbb18678396fc",
     "site/.htaccess": "77dc2c63f065ef89bdbed2897eb37cd34d84447661fbc09cdef97bbeac9bdc19"
   },
   "checker.html": {
-    "docs/checker.md": "b9a7e81f62ca155d32d786cb82f43d3ed290bb386bf76df13d309951bc25f0d2"
+    "docs/checker.md": "888d46b2d119d6e1d60008c8092245c39744a43bc9d98d8756ddee1b71ca7381"
   },
   "coaching.html": {
     "prompts/coaching.md": "fc425797fa23a59cc0a27fd78af2ae21c2c5d48e98a55675986a5d70cdad41af"
@@ -34,19 +34,19 @@
     "docs/essay.md": "7abef2a3ce2cb9f5131904554c092bf097720c57578bdfe399fd94fdd0a50acb"
   },
   "evaluation.html": {
-    "docs/evaluation.md": "4aebc665b097ec002c38968b05741f7451e888d9b49a102990be2cd9529035f3"
+    "docs/evaluation.md": "d99d4ac31903a4da50f9505e4068e62e9ecf631f5f052fed1131815e7b2701f7"
   },
   "guide.html": {
-    "docs/guide.md": "1f165bad0d8d835cdc3c8fbb2214b6908ceed6e8e6c4bafafaa617bc499e63a5"
+    "docs/guide.md": "35cff900bb686278a2b6bcd18dfdd960050bc841e9b6a2899d4e9ef7b379b7d6"
   },
   "index.html": {
     "examples/defeated.json": "0e3d5e54f0b6380b70b15dba06bb22f46ec066899fc5e8d6cef57cc2c54b0876",
     "examples/supported.json": "268bb8367f2eed023ae72dd6a44d3873f43bfe0570a8ce734d318e7024c08de3",
     "examples/withdrawn.json": "23365ff433f14467aa580e1b143f0aa0a7246ace50a5db3cd5fe5526b4ba1754",
-    "scripts/render_site.py": "f37b095011d59ef85c1417a53acb1ef2755138f9dec31cc59c4e033cf1ceebca",
-    "site/index.template.html": "38a82d8ea6cb97014524c02faea738662daa7e8d6e432841d23002b020a02a94",
+    "scripts/render_site.py": "6cbd99b61fd45f62673414d861f051d0cbab30f6c1f6c56a51acbb18678396fc",
+    "site/index.template.html": "783f7e201c43cce1fe012e66795d67a3830f8a6c9535575a40e36fd738be5e2c",
     "src/check.pl": "ba2060f15367b3280ee0d1b7080566950861ef74a4c11fa649510a462f192527",
-    "src/zizkian.pl": "0de5388c317cc6dc490c11ae19574c3b27de9418cd608351f5398e00595c3322"
+    "src/zizkian.pl": "f67f12924bf62009e2cc78f1fd2e0bf61a529cb33bbf4c398e9f2bad2e3e7608"
   },
   "lab.html": {
     "examples/defeated.json": "0e3d5e54f0b6380b70b15dba06bb22f46ec066899fc5e8d6cef57cc2c54b0876",
@@ -55,11 +55,13 @@
     "examples/no-finding.json": "27ec1cc62fd00d5010829972f2904c6c2a27d0d9c4d366a03f567064d2a5da7b",
     "examples/plausible-fabrication.json": "bbbe24c70d0cf5cd232d817747f14310b00f73b9b3bb84a523a415b2c3e753cb",
     "examples/rejection-trap.json": "0ff6409db6dc8c295d39c66d9b5072f129cf1301799cbed8cdb7cf24b00070bf",
+    "examples/self-sealing-withdrawn.json": "68c8b7079e892d9b308071c80e4caa56ca9ecda9459c71e3a35b0ee7c27c87ea",
+    "examples/self-sealing.json": "302855245d3bcdebf4f8364499ae8c1ff0adf8270b992bbb844f26b251747eac",
     "examples/supported.json": "268bb8367f2eed023ae72dd6a44d3873f43bfe0570a8ce734d318e7024c08de3",
     "examples/withdrawn.json": "23365ff433f14467aa580e1b143f0aa0a7246ace50a5db3cd5fe5526b4ba1754",
-    "scripts/render_site.py": "f37b095011d59ef85c1417a53acb1ef2755138f9dec31cc59c4e033cf1ceebca",
-    "site/lab.template.html": "c542a90b54bb5e42156ff21d7c0c9776e83e31f7ddb0114181928fb96cdf19bf",
-    "src/zizkian.pl": "0de5388c317cc6dc490c11ae19574c3b27de9418cd608351f5398e00595c3322"
+    "scripts/render_site.py": "6cbd99b61fd45f62673414d861f051d0cbab30f6c1f6c56a51acbb18678396fc",
+    "site/lab.template.html": "0fe37bf9c9422ba610f09981eaffb85a0af8b9715c066f1f10c1fa69e8984bb9",
+    "src/zizkian.pl": "f67f12924bf62009e2cc78f1fd2e0bf61a529cb33bbf4c398e9f2bad2e3e7608"
   },
   "licensing-polemic.html": {
     "docs/licensing-polemic.md": "546f6b204d4067c60a4040ea904bd64c559f7dd6e99d7766294db032b7bb2d94"
@@ -74,7 +76,7 @@
     "docs/provenance.md": "478a905abc994939f25a41495895664cd6abdfe10059411842bba745696cf75f"
   },
   "publishing.html": {
-    "docs/publishing.md": "5512d032bc3bf6ad3d18dc1012ba15630ad7400044e96e78749a63bce5d33499"
+    "docs/publishing.md": "7f5e374c9ea840221d48a147b4c50b01c2d1281e1cdf94e598b6582d7212b614"
   },
   "wwzs.html": {
     "prompts/wwzs.md": "df334298a6e39ad8819edd9d3e83baa057690aa26d718c2fbc0fae03fc6651dd"

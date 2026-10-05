@@ -77,6 +77,20 @@ def main():
             if url.fragment:
                 ensure(target in pages and unquote(url.fragment) in pages[target].ids, f"Missing anchor in {path.name}: {link}")
             checked += 1
+    llms = (public / "llms.txt").read_text()
+    ensure(f"Version {VERSION}," in llms, "Stale llms.txt release version")
+    for link in re.findall(r"\]\(([^)]+)\)", llms):
+        url = urlsplit(link)
+        if url.scheme or url.netloc:
+            ensure(url.scheme in ("https", "http"), f"Unsupported llms.txt URL: {link}")
+            continue
+        target = (public / unquote(url.path)).resolve()
+        ensure(target.is_relative_to(public.resolve()), f"Link escapes llms.txt site: {link}")
+        ensure(target.is_file(), f"Missing llms.txt target: {link}")
+        if url.fragment:
+            ensure(target in pages and unquote(url.fragment) in pages[target].ids,
+                   f"Missing llms.txt anchor: {link}")
+        checked += 1
     data = json.loads(pages[public / "index.html"].proof)
     ensure(set(data) == {"supported", "defeated", "withdrawn"}, "Proof stages incomplete")
     for stage, recorded in data.items():

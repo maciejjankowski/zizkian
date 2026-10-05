@@ -1,6 +1,6 @@
 # The Zizkian
 
-A framework for readings that can lose. Version 0.3.1, experimental.
+A framework for readings that can lose. Version 0.3.2, experimental.
 Public home: https://maciejjankowski.com/zizkian/
 Author: Maciej Jankowski.
 
@@ -14,11 +14,11 @@ belongs only to an optional historical conceptual appendix.
 - [Method](method.html)
 - [Field guide and exercises](guide.html)
 - [Checker contract](checker.html)
-- [Shape schema only](schema/record-0.3.1.schema.json)
+- [Shape schema only](schema/record-0.3.2.schema.json)
 - [Evaluation and failure criteria](evaluation.html)
 - [License scope](licensing.html)
 - [License rationale and polemic](licensing-polemic.html)
-- [Source archive](downloads/zizkian-0.3.1.zip)
+- [Source archive](downloads/zizkian-0.3.2.zip)
 
 Code: PolyForm Noncommercial 1.0.0. Authored content: CC BY-NC-SA 4.0.
 No commercial license is offered by this public release. The standard terms

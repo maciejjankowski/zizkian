@@ -28,11 +28,11 @@ PAGES = {
 
 def header():
     return '''<a class="skip" href="#main">Skip to content</a>
-<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.3.1.zip">Source package</a></nav></div></header>'''
+<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.3.2.zip">Source package</a></nav></div></header>'''
 
 
 def footer():
-    return '''<footer><p>Maciej Jankowski · The Zizkian 0.3.1 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer>'''
+    return '''<footer><p>Maciej Jankowski · The Zizkian 0.3.2 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer>'''
 
 
 def version_assets(page):
@@ -99,7 +99,7 @@ def main():
         body = subprocess.check_output(command + [str(path)], cwd=args.bundle_dir or ROOT, text=True)
         title = next(line[2:].strip() for line in path.read_text().splitlines() if line.startswith("# "))
         body = transform(body)
-        intro = '<p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.3.1.zip">Download source</a></p>'
+        intro = '<p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.3.2.zip">Download source</a></p>'
         if slug == "guide":
             intro += '<p id="diagram-status" class="note" role="status">Diagrams render when the pinned Mermaid script is available. Editable sources remain below.</p>'
         output = shell(title, slug + ".html", '<main id="main" class="doc">' + intro + body + '</main>', slug == "guide")
@@ -121,7 +121,7 @@ def main():
     manifest["index.html"] = {source: hashlib.sha256((ROOT / source).read_bytes()).hexdigest() for source in inputs}
     def asset_url(source):
         return source + '?v=' + hashlib.sha256((SITE / source).read_bytes()).hexdigest()[:12]
-    names = ('supported', 'defeated', 'withdrawn', 'false-evidence', 'plausible-fabrication', 'incomplete', 'no-finding', 'rejection-trap')
+    names = ('supported', 'defeated', 'withdrawn', 'false-evidence', 'plausible-fabrication', 'incomplete', 'no-finding', 'rejection-trap', 'self-sealing', 'self-sealing-withdrawn')
     notes = {
         'supported': 'The fictional record declares that the reading survived its test. Run it, then edit a field.',
         'defeated': 'A declared defeating observation is present, but the active reading still claims support. Run to see the blocking rule.',
@@ -131,6 +131,8 @@ def main():
         'incomplete': 'Only the decision owner was removed from the supported example. Missing structure is something this checker can catch.',
         'no-finding': 'No deeper interpretation is warranted in this fictional control. Legitimate instruction remains a possible explanation.',
         'rejection-trap': 'Participant refusal cannot serve as evidence supporting an interpretation.',
+        'self-sealing': 'Deliberately invalid test: both disclosure and nondisclosure confirm the claim. The record can still pass structurally. Human review must reject this test; a pass cannot certify falsifiability.',
+        'self-sealing-withdrawn': 'The unsupported reading is withdrawn and closure leaves the internal cause unknown. The observations remain; no substitute test or proof of innocence is invented.',
     }
     config = {'worker': asset_url('assets/lab-worker.js'), 'engine': asset_url('assets/checker-engine.js'),
               'runtime': 'assets/vendor/swipl-8.2.1/',

@@ -111,19 +111,29 @@ class CliTests(unittest.TestCase):
                 self.assertEqual((code, report["status"]), (2, "invalid"))
                 self.assertIn("input_error", [v["rule"] for v in report["violations"]])
 
-    def test_nine_fixtures_outside_checkout(self):
+    def test_fixtures_outside_checkout(self):
         expected = {
             "supported": (0, "pass"), "defeated": (1, "blocked"),
             "withdrawn": (0, "pass"), "no-finding": (0, "pass"),
             "hypothesis": (0, "pass"), "rejection-trap": (1, "blocked"),
             "false-evidence": (0, "pass"), "plausible-fabrication": (0, "pass"),
             "incomplete": (2, "invalid"),
+            "self-sealing": (0, "pass"), "self-sealing-withdrawn": (0, "pass"),
         }
         with tempfile.TemporaryDirectory() as outside:
             for name, outcome in expected.items():
                 with self.subTest(fixture=name):
                     code, report = run_cli(ROOT / f"examples/{name}.json", cwd=outside)
                     self.assertEqual((code, report["status"]), outcome)
+
+    def test_invalid_falsifier_and_unknown_closure_remain_declarations(self):
+        for name, verdict in [("self-sealing", "awaiting_change_review"),
+                              ("self-sealing-withdrawn", "awaiting_closure_review")]:
+            with self.subTest(fixture=name):
+                code, report = run_cli(ROOT / f"examples/{name}.json")
+                self.assertEqual((code, report["status"], report["verdict"]), (0, "pass", verdict))
+                self.assertIs(report["evidence_verified"], False)
+                self.assertIn("test_discrimination", report["human_review_required"])
 
     def test_four_bad_documents(self):
         contents = ["", "{invalid", "{}", (ROOT / "examples/supported.json").read_text() + " {}"]

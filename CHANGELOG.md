@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.2 - 2026-10-06
+
+Add a runnable self-sealing counterexample and its withdrawn repair to the
+browser lab, CLI fixtures and native/WASM parity checks. The first record passes
+structurally despite an invalid falsifier; the second closes with an unknown
+internal cause. Portable warnings remain inside both records. Document that
+declaring a test survived cannot certify that it was meaningful. Reasoning
+rules, input fields and status vocabularies are unchanged.
+
 ## 0.3.1 - 2026-10-06
 
 Normalize valid JSON surrogate pairs before decoding so older SWI-Prolog JSON
