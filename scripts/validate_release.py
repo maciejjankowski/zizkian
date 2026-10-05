@@ -84,6 +84,8 @@ def main():
         result = subprocess.run(["swipl", "-q", "-s", str(ROOT / "src/check.pl"), "--", str(path)], capture_output=True, text=True)
         ensure(result.returncode == (1 if stage == "defeated" else 0), f"Unexpected proof exit: {stage}")
         ensure(recorded["report"] == json.loads(result.stdout), f"Stale report: {stage}")
+        ensure(recorded["report"]["schema_version"] == VERSION, f"Report version differs from release: {stage}")
+        ensure(recorded["report"]["evidence_verified"] is False, f"Report claims evidence verification: {stage}")
         ensure(recorded["case"] == json.loads(path.read_text()), f"Stale input: {stage}")
     guide = (ROOT / "docs/guide.md").read_text()
     diagrams = re.findall(r"```mermaid\n(.*?)```", guide, flags=re.S)

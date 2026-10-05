@@ -15,7 +15,7 @@ const proofData=document.getElementById('proof-data');
 if(proofData){
   const data=JSON.parse(proofData.textContent);
   const descriptions={
-    supported:['The reading is supported','Flow complexity prevents first-task completion. The fictional record includes an observation and a tested ordinary alternative.'],
+    supported:['The record declares support','Flow complexity prevents first-task completion. The fictional record includes an observation and a tested ordinary alternative.'],
     defeated:['Its declared defeater arrives','A later fictional comparison finds that instruction alone performs as well. The old reading still says supported. That declaration now blocks the record.'],
     withdrawn:['The reading is withdrawn','Keep both observations and the failed reading in the record. Withdraw it, retain the brief and close without a forced deeper explanation.']
   };
@@ -25,7 +25,7 @@ if(proofData){
     document.getElementById('stage-heading').textContent=descriptions[stage][0];
     document.getElementById('stage-description').textContent=descriptions[stage][1];
     const status=document.getElementById('proof-status');
-    status.textContent=selected.report.status==='blocked'?'Blocked: withdraw the reading':selected.report.verdict==='no_finding'?'Pass: no finding':'Pass: decision record eligible';
+    status.textContent=selected.report.status==='blocked'?'Blocked: withdraw the reading':selected.report.verdict==='awaiting_closure_review'?'Awaiting closure review; evidence unverified':'Awaiting change review; evidence unverified';
     status.className='status'+(selected.report.status==='blocked'?' blocked':'');
     document.getElementById('proof-report').textContent=JSON.stringify(selected.report,null,2);
     document.getElementById('proof-record').textContent=JSON.stringify(selected.case,null,2);

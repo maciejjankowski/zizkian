@@ -1,8 +1,8 @@
-flowchart LR
-    A[Real evidence and conversation] --> B[Human encoding of a record]
-    B --> C[Prolog structural checks]
-    C --> D[Human review of relevance and authority]
-    D --> E[Owned test or decision]
-    X[Fabricated evidence or weak falsifier] --> B
-    X --> Y[May remain structurally valid]
+flowchart TD
+    A["Real evidence<br/>and conversation"] --> B["Human encoding<br/>of a record"]
+    B --> C["Prolog checks<br/>declared structure"]
+    C --> D["Human review:<br/>relevance and authority"]
+    D --> E["Owned test<br/>or decision"]
+    X["False evidence<br/>or weak test"] --> B
+    X --> Y["May pass<br/>structural checks"]
     Y --> D

@@ -12,10 +12,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DIST = ROOT / "dist"
 VERSION = (ROOT / "VERSION").read_text().strip()
-STAMP = (2026, 10, 5, 0, 0, 0)
+STAMP = (2026, 10, 6, 0, 0, 0)
 EXCLUDED = {"dist", "work", ".git", "__pycache__", ".venv", ".DS_Store"}
 ROOT_FILES = {"README.md", "VERSION", "LICENSE", "LICENSE-CODE.md", "LICENSE-DOCS.md", "THIRD_PARTY_NOTICES.md", "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md", "CITATION.cff", ".gitignore", "test.sh"}
-SOURCE_DIRS = {"src", "proof", "tests", "scripts", "docs", "prompts", "examples", "charts", "site", ".github"}
+SOURCE_DIRS = {"src", "proof", "tests", "scripts", "schema", "docs", "prompts", "examples", "charts", "site", ".github"}
 
 
 def digest(path):
@@ -64,7 +64,7 @@ def main():
     if public.exists():
         shutil.rmtree(public)
     shutil.copytree(ROOT / "site", public, ignore=shutil.ignore_patterns("*.template.html", "page-sources.json"))
-    for folder in ("examples", "charts", "src", "proof"):
+    for folder in ("examples", "charts", "src", "proof", "schema"):
         shutil.copytree(ROOT / folder, public / folder)
     (public / "docs").mkdir()
     shutil.copy2(ROOT / "docs/attention-matrix.yaml", public / "docs/attention-matrix.yaml")

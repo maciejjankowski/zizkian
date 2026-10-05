@@ -1,12 +1,7 @@
-flowchart LR
-    A{Whose question?} -->|Business decision| B[Consulting: 1 to 3 lenses]
-    A -->|Invited personal reflection| C[Coaching: one lens]
-    B --> B1[Customer Advocate or Constraint Hunter]
-    B --> B2[Incentive Detective or Economic Examiner]
-    B --> B3[Cannibal or Operator]
-    C --> C1[Mirror or Pattern Archaeologist]
-    C --> C2[Identity Explorer or Agency Auditor]
-    C --> C3[Boundary Engineer or Choice Architect]
-    B --> V[Veil Piercer when the premise needs examination]
-    C --> V
-    V --> R[Critique the observer's framing too]
+flowchart TD
+    A{"Whose<br/>question?"} -->|Business| B["Consulting<br/>1 to 3 lenses"]
+    A -->|Invited| C["Coaching<br/>one lens"]
+    B --> D["Choose distinct<br/>useful questions"]
+    C --> D
+    D --> V["Examine a premise?<br/>Consider Veil Piercer"]
+    V --> R["Inspect your own<br/>framing and payoff"]

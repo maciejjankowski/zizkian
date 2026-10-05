@@ -9,8 +9,11 @@ test it, change the decision, or retain the original brief.
 The Zizkian combines a small question library with an executable Prolog checker.
 The checker makes selected omissions and contradictory declarations visible.
 It does not discover motives or establish that an explanation is true.
+Every report says `evidence_verified: false` and names the human review still
+required. The numerical attention matrix belongs to a separate historical essay;
+it supplies no operating weights, truth score or decision authority.
 
-Version **0.2.0**, experimental. Public home:
+Version **0.3.0**, experimental. Public home:
 **https://maciejjankowski.com/zizkian/**. Repository:
 **https://github.com/maciejjankowski/zizkian**.
 
@@ -32,7 +35,7 @@ The result demonstrates a finite witness:
 ```text
 supported fictional reading    -> pass
 defeating observation added    -> blocked: defeated_reading
-reading withdrawn; brief kept  -> pass: no_finding
+reading withdrawn; brief kept  -> pass: awaiting_closure_review
 ```
 
 The one-word description is **refutable**. The proof concerns a declared reading
@@ -53,17 +56,23 @@ checks remain visible as warnings. No finding is a permitted conclusion.
 
 See [the input contract](docs/checker.md). A passing record still requires human
 review of source relevance, test quality and participant authority.
+Use the record when an interpretation may change a test or decision. If the
+ordinary explanation already answers the brief, retain it; a deeper reading is
+optional. The [coverage table](docs/checker.md#method-coverage) separates executable
+checks from responsibilities the method leaves to people.
 
 ## Learn the method
 
 - [Method and invariants](docs/method.md)
 - [Field guide: nine Mermaid maps, examples and ten exercises](docs/guide.md)
-- [The conceptual essay](docs/essay.md)
 - [Consulting prompts](prompts/consulting.md), [coaching prompts](prompts/coaching.md)
   and [WWZS? provocation](prompts/wwzs.md)
 - [Licensing rationale and polemic](docs/licensing-polemic.md)
 - [Evaluation protocol and failure criteria](docs/evaluation.md)
 - [Provenance and claim boundaries](docs/provenance.md)
+
+Optional background: [the historical conceptual essay](docs/essay.md) preserves
+the requested Hamiltonian analogy. It is outside the executable method.
 
 ## What is implemented
 
@@ -72,11 +81,16 @@ status, declared falsifiers, ordinary alternatives, participant invitation and
 closure. It excludes attention weights and participant rejection from support.
 It returns a complete violation list rather than an unexplained score.
 
-Nine fixtures and 35 rule tests are included. CLI regression checks cover the
+Nine fixtures and 40 rule tests are included. CLI regression checks cover the
 fixtures, malformed inputs and operation outside the checkout directory.
+JSON types are checked before conversion. Native and browser paths share strict
+JSON parsing and the same schema. The [versioned shape schema](schema/record-0.3.0.schema.json)
+is generated from that field definition; it cannot replace the reasoning audit.
 The attention matrix is a conceptual illustration; the checker does not use it.
 No model, network service or dispatcher is needed to run the checker.
 The browser worker has a five-second execution timeout and bounded JSON input.
+Resetting a pending check terminates its worker. Runtime failures can be retried
+without discarding edits. Tests cover deadlines and stale replies.
 Node.js is required by the WASM/native parity tests, not by the native CLI.
 Vendored runtime components retain their own licenses; see
 [third-party notices](THIRD_PARTY_NOTICES.md).

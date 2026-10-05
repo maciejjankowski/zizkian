@@ -18,6 +18,8 @@ Keep observations, hypotheses, calculations and fictional illustrations separate
 Compute quantities with units. An outcome does not prove a secret intention.
 Client disagreement is not evidence of a hidden motive. Examine the analyst's
 own claim and incentives in the return cut.
+Record how that risk changes the next test or action, or why nothing changes.
+Use the [return-cut worksheet](../docs/method.md#make-the-return-cut-change-the-next-step).
 
 Return the question, strongest findings, ordinary alternative, defeating test,
 and an owned next step with a stop rule. If no supported finding changes a test

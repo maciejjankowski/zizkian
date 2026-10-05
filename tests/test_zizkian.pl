@@ -32,20 +32,31 @@ reading(R) :-
 has_rule(Report, Rule) :- member(V, Report.violations), V.rule == Rule.
 
 test(no_finding_closes) :-
-    base(C), audit(C, R), assertion(R.status == pass), assertion(R.verdict == no_finding).
+    base(C), audit(C, R), assertion(R.status == pass), assertion(R.verdict == awaiting_closure_review).
 
 test(hypothesis_allows_test_without_claiming_truth) :-
     base(C), reading(H),
     O = C.outcome.put(_{kind:test, action:'Run comparison', reading_ids:[r1]}),
     audit(C.put(_{readings:[H],outcome:O}), R),
-    assertion(R.status == pass), assertion(R.verdict == ready_for_test).
+    assertion(R.status == pass), assertion(R.verdict == awaiting_test_review).
 
 test(evidence_backed_change) :-
     base(C), reading(H), T = H.defeat_test.put(_{status:survived,evidence:[e1]}),
     S = H.put(_{status:supported,support:[e1],defeat_test:T}),
     O = C.outcome.put(_{kind:change,reading_ids:[r1]}),
     audit(C.put(_{readings:[S],outcome:O}), R),
-    assertion(R.status == pass), assertion(R.verdict == ready_for_decision).
+    assertion(R.status == pass), assertion(R.verdict == awaiting_change_review).
+
+test(pass_does_not_certify_evidence) :-
+    base(C), audit(C,R),
+    assertion(R.scope==declared_record_only), assertion(R.evidence_verified==false),
+    assertion(memberchk(source_authenticity,R.human_review_required)),
+    assertion(memberchk(test_discrimination,R.human_review_required)),
+    assertion(memberchk(participant_authority,R.human_review_required)).
+
+test(invalid_input_keeps_report_scope) :-
+    audit_json("{",R), assertion(R.status==invalid),
+    assertion(R.scope==declared_record_only), assertion(R.evidence_verified==false).
 
 test(unsupported_certainty_blocked) :-
     base(C), reading(H), audit(C.put(readings,[H.put(status,supported)]), R),
@@ -171,6 +182,21 @@ test(accepted_coaching_hypothesis_can_be_tested) :-
     O=C.outcome.put(_{kind:test,reading_ids:[r1]}),
     audit(C.put(_{mode:coaching,coaching_invited:true,lenses:[agency_auditor],
         readings:[A],outcome:O}),R), assertion(R.status==pass).
+
+test(unasked_coaching_hypothesis_cannot_drive_test) :-
+    base(C), reading(H), O=C.outcome.put(_{kind:test,reading_ids:[r1]}),
+    audit(C.put(_{mode:coaching,coaching_invited:true,lenses:[mirror],
+        readings:[H],outcome:O}),R),
+    assertion(R.status==blocked), assertion(R.verdict==revise),
+    assertion(has_rule(R,coaching_choice_unconfirmed)).
+
+test(zero_lenses_blocked) :-
+    base(C), audit(C.put(lenses,[]),R),
+    assertion(R.status==blocked), assertion(has_rule(R,lens_count)).
+
+test(four_consulting_lenses_blocked) :-
+    base(C), audit(C.put(lenses,[operator,customer_advocate,constraint_hunter,cannibal]),R),
+    assertion(R.status==blocked), assertion(has_rule(R,lens_count)).
 
 test(counterevidence_cannot_be_averaged_away) :-
     base(C), reading(H), S=H.put(_{status:supported,support:[e1],counterevidence:[e1]}),

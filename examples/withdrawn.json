@@ -19,8 +19,8 @@
   },
   "return_cut": {
     "observer": "Analyst",
-    "statement": "I benefit from selling a redesign",
-    "defeater": "Instruction alone achieves first-task completion",
+    "statement": "I may favor redesign because it gives my analysis a larger role",
+    "defeater": "When a product-lead-owned comparison finds instruction sufficient, I recommend keeping instruction and closing this analysis",
     "status": "hypothesis"
   },
   "evidence": [
@@ -60,8 +60,8 @@
   "outcome": {
     "kind": "retain_brief",
     "action": "Keep clear instruction",
-    "reason": "The proposed inversion was defeated",
+    "reason": "The declared defeating observation removes the redesign basis. The analyst will not use this reading to justify a larger role; the product lead keeps instruction.",
     "reading_ids": [],
-    "stop_rule": "Reconsider if instruction alone performs as well"
+    "stop_rule": "Reopen only if first-task failures recur despite clear instruction"
   }
 }

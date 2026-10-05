@@ -8,8 +8,7 @@ main :-
     current_prolog_flag(argv, Args),
     catch(run(Args,Report,Code), Error,
         ( message_to_string(Error,Message), Code=2,
-          Report=report{status:invalid,verdict:repair_input,warnings:[],
-              violations:[issue{rule:input_error,target:input,message:Message}]} )),
+          zizkian:invalid_report([issue{rule:input_error,target:input,message:Message}],Report) )),
     json_write_dict(current_output,Report,[width(100)]), nl, halt(Code).
 
 run([Path],Report,Code) :- !,

@@ -20,6 +20,8 @@ requiring the person to explain why disagreeing feels satisfying.
 
 The return cut examines the coach's own framing and possible reward. Is the
 insight useful to the participant or satisfying to the person delivering it?
+Record how this risk changes your next question or the chosen step, or why it
+changes nothing. See the [return-cut worksheet](../docs/method.md#make-the-return-cut-change-the-next-step).
 The participant owns the choice. Do not record a commitment they did not make.
 No useful finding is a complete result.
 

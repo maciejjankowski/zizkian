@@ -1,15 +1,9 @@
 flowchart TD
-    A[User's brief and desired result] --> B[Name the decision owner and real constraints]
-    B --> C[State the strongest ordinary explanation]
-    C --> D[Select relevant lenses]
-    D --> E[Offer a rejectable reading]
-    E --> F[Name a defeating observation]
-    F --> G[Return cut on the analyst's own framing]
-    G --> H[Review evidence and participant authority]
-    H --> I{What is warranted?}
-    I -->|Only a hypothesis| T[Propose a test]
-    I -->|Supported reading| V[Consider a decision change]
-    I -->|No useful finding| N[Retain the brief and close]
-    T --> O[Owner, action and stop rule]
-    V --> O
-    N --> O
+    A["User's brief<br/>and desired result"] --> B["Owner and<br/>real constraints"]
+    B --> C["Strongest ordinary<br/>explanation"]
+    C --> D["Relevant lenses<br/>and rejectable reading"]
+    D --> E["What observation<br/>would defeat it?"]
+    E --> F["Return cut:<br/>analyst's own payoff"]
+    F --> G["Review evidence<br/>and participant authority"]
+    G --> H["Owned choice:<br/>test, change, or retain brief"]
+    H --> I["Action, owner<br/>and stop rule"]

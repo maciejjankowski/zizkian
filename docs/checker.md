@@ -17,15 +17,27 @@ swipl -q -s proof/refutable.pl
 The checker reads JSON as data. It does not execute supplied Prolog, call models,
 fetch sources, change files or send messages. The native CLI uses the installed
 SWI-Prolog; the browser lab bundles a separately licensed WASM runtime.
-Its public predicates are `zizkian:audit/2` and `zizkian:audit_file/2`.
+Its public predicates are `zizkian:audit/2`, `zizkian:audit_json/2` and `zizkian:audit_file/2`.
 
 ```prolog
 ?- use_module('src/zizkian.pl').
 ?- audit_file('examples/defeated.json', Report).
 ```
 
-`audit/2` accepts a ground dict with atom values and grounded dict tags, as produced
-by `json_read_dict/3` with `value_string_as(atom), default_tag(data)`.
+`audit_json/2` accepts a JSON text atom or string. Native files must be valid UTF-8;
+byte validation rejects overlong encodings and invalid Unicode scalar values
+before a decoder can repair them. The shared JSON entry rejects syntax extensions,
+duplicate object keys, a leading BOM and isolated Unicode surrogate escapes.
+Valid surrogate pairs, ordinary Unicode and escaped control characters are
+accepted. JSON text fields must be strings, invitations must be actual Booleans,
+and status fields must contain one of the named strings. Parsing retains types
+until schema validation; the text `"false"` cannot become an invitation Boolean.
+Native files and the browser worker call this same predicate.
+
+`audit/2` is the direct Prolog API: it accepts a ground dict with atom text values
+and grounded dict tags. It has no knowledge of the original JSON encoding.
+Do not convert unvalidated JSON strings to atoms yourself: use `audit_json/2`
+or `audit_file/2` at a JSON boundary.
 Do not pass variables to mean unknown. Use `hypothesis`, `untested` and `unasked`.
 Missing, blank, mistyped and unrecognized fields are invalid; there are no silent
 defaults. Evidence and reading IDs must be unique, and references must resolve.
@@ -36,7 +48,13 @@ defaults. Evidence and reading IDs must be unique, and references must resolve.
 | 1 | `blocked` | Valid input violates one or more reasoning rules |
 | 2 | `invalid` | Repair input, schema, references or invocation |
 
-Passing verdicts are `no_finding`, `ready_for_test` and `ready_for_decision`.
+Passing verdicts are `awaiting_closure_review`, `awaiting_test_review` and `awaiting_change_review`.
+They request review of the declared outcome; none authorizes an action. Every
+report, including errors, contains `scope: "declared_record_only"`,
+`evidence_verified: false`, `schema_version: "0.3.0"` and `human_review_required`.
+That list covers source authenticity, relevance, test discrimination, the ordinary
+alternative's strength, participant authority, analyst payoff and the decision
+to stop. It lists work still required, not checks that the program performed.
 Every violation contains `rule`, `target` and `message`. All detected violations
 are returned, rather than stopping at the first one. Warnings preserve explicitly
 untested alternatives and falsifiers.
@@ -45,6 +63,9 @@ untested alternatives and falsifiers.
 
 All listed fields are required. See the complete examples rather than inventing
 an incomplete record. `schema/2` in [zizkian.pl](../src/zizkian.pl) is the executable schema.
+The downloadable [JSON shape schema](../schema/record-0.3.0.schema.json) is generated
+from `schema/2`. It describes field types and status vocabularies, not nonblank
+text, reference validity or reasoning constraints. Use the checker for those.
 
 | Object | Fields |
 |---|---|
@@ -78,14 +99,14 @@ Every example is fictional, including its evidence and participant statements.
 
 | Input | Expected status | Why |
 |---|---|---|
-| [hypothesis.json](../examples/hypothesis.json) | pass / ready_for_test, warnings | A test is proposed without claiming an observed result |
-| [supported.json](../examples/supported.json) | pass / ready_for_decision | Declared support, alternative check and test record are present |
+| [hypothesis.json](../examples/hypothesis.json) | pass / awaiting_test_review, warnings | A test is proposed without claiming an observed result |
+| [supported.json](../examples/supported.json) | pass / awaiting_change_review | Declared support, alternative check and test record are present |
 | [defeated.json](../examples/defeated.json) | blocked | Reading remains active after its defeating observation |
-| [withdrawn.json](../examples/withdrawn.json) | pass / no_finding | Withdrawal permits closure |
-| [no-finding.json](../examples/no-finding.json) | pass / no_finding | An ordinary answer needs no dramatic reading |
+| [withdrawn.json](../examples/withdrawn.json) | pass / awaiting_closure_review | Withdrawal permits closure |
+| [no-finding.json](../examples/no-finding.json) | pass / awaiting_closure_review | An ordinary answer needs no dramatic reading |
 | [rejection-trap.json](../examples/rejection-trap.json) | blocked | Rejection is used as evidence and the refused framing drives a step |
-| [false-evidence.json](../examples/false-evidence.json) | pass / ready_for_decision | Deliberately irrelevant prose still has a structurally valid reference |
-| [plausible-fabrication.json](../examples/plausible-fabrication.json) | pass / ready_for_decision | A deliberately invented study cannot be authenticated by these rules |
+| [false-evidence.json](../examples/false-evidence.json) | pass / awaiting_change_review | Deliberately irrelevant prose still has a structurally valid reference |
+| [plausible-fabrication.json](../examples/plausible-fabrication.json) | pass / awaiting_change_review | A deliberately invented study cannot be authenticated by these rules |
 | [incomplete.json](../examples/incomplete.json) | invalid | Missing owner is a schema error |
 
 ## Scope and limitations
@@ -103,6 +124,38 @@ Changing a lens cannot change the supplied evidence.
 
 The checker is available for manual use. It is not automatically connected to a dispatcher.
 See the [field guide](guide.md).
+
+## Method coverage
+
+| Method commitment | Encoded check | Human responsibility |
+|---|---|---|
+| Preserve the question and owner | Nonblank `brief`, `desired_result`, `owner` | Confirm this is the participant's strongest intended question |
+| Consider an ordinary explanation | Required alternative; `checked` needs an observation before change | Check that it is strong, relevant and fairly tested |
+| Select useful lenses | Permitted names, distinct names, mode and count | Decide relevance and whether questions actually differ |
+| Put a reading at risk | Required defeat method and observation; declared defeat blocks an active reading | Judge whether the test could discriminate or was honestly run |
+| Apply the return cut | Required observer, statement, defeater and status | Inspect payoff and record its consequence in `outcome.reason` and `action` |
+| Respect participant authority | Invitation Boolean; selected coaching framing must be accepted; rejection traps blocked | Establish real invitation, consent and authority to act |
+| Stop or change direction | Outcome basis and status relationships | Decide when another pass changes no useful test or decision |
+
+No encoded rule connects the return cut to the outcome or enforces a historical
+recursion limit. The checker audits one snapshot, not the conversation. The
+[method's return-cut worksheet](method.md#make-the-return-cut-change-the-next-step)
+is human work. Two different names in fields would not establish independence.
+
+## Migrating from 0.2.0
+
+Input field names and status vocabularies are unchanged. Inputs that relied on
+string Booleans, literal control characters, trailing commas or a BOM are now
+invalid. Serialize valid JSON instead of relying on parser extensions.
+
+| Old passing verdict | 0.3.0 verdict |
+|---|---|
+| `no_finding` | `awaiting_closure_review` |
+| `ready_for_test` | `awaiting_test_review` |
+| `ready_for_decision` | `awaiting_change_review` |
+
+Exit codes and `status` values are unchanged. Consumers must tolerate the report
+metadata and keep its scope visible when displaying or forwarding a result.
 
 The implementation uses SWI-Prolog's documented
 [JSON dict interface](https://www.swi-prolog.org/pldoc/man?section=json) and

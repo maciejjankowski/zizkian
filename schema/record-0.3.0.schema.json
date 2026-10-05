@@ -1,0 +1,106 @@
+{
+  "$comment":"Generated from schema/2. Shape only: run the Prolog checker for nonblank text, references and reasoning rules. Evidence remains unverified.",
+  "$id":"https://maciejjankowski.com/zizkian/schema/record-0.3.0.schema.json",
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties":false,
+  "properties": {
+    "brief": {"minLength":1,"type":"string"},
+    "coaching_invited": {"type":"boolean"},
+    "desired_result": {"minLength":1,"type":"string"},
+    "evidence": {
+      "items": {
+	"additionalProperties":false,
+	"properties": {
+	  "id": {"minLength":1,"type":"string"},
+	  "kind": {"enum": ["observation", "participant_rejection", "attention_weight" ],"type":"string"},
+	  "source": {"minLength":1,"type":"string"},
+	  "statement": {"minLength":1,"type":"string"}
+	},
+	"required": ["id", "statement", "source", "kind" ],
+	"type":"object"
+      },
+      "type":"array"
+    },
+    "id": {"minLength":1,"type":"string"},
+    "lenses": {"items": {"minLength":1,"type":"string"},"type":"array"},
+    "mode": {"enum": ["consulting", "coaching" ],"type":"string"},
+    "ordinary": {
+      "additionalProperties":false,
+      "properties": {
+	"check": {"minLength":1,"type":"string"},
+	"claim": {"minLength":1,"type":"string"},
+	"evidence": {"items": {"minLength":1,"type":"string"},"type":"array"},
+	"status": {"enum": ["untested", "checked" ],"type":"string"}
+      },
+      "required": ["claim", "check", "status", "evidence" ],
+      "type":"object"
+    },
+    "outcome": {
+      "additionalProperties":false,
+      "properties": {
+	"action": {"minLength":1,"type":"string"},
+	"kind": {"enum": ["retain_brief", "test", "change" ],"type":"string"},
+	"reading_ids": {"items": {"minLength":1,"type":"string"},"type":"array"},
+	"reason": {"minLength":1,"type":"string"},
+	"stop_rule": {"minLength":1,"type":"string"}
+      },
+      "required": ["kind", "action", "reason", "reading_ids", "stop_rule" ],
+      "type":"object"
+    },
+    "owner": {"minLength":1,"type":"string"},
+    "readings": {
+      "items": {
+	"additionalProperties":false,
+	"properties": {
+	  "claim": {"minLength":1,"type":"string"},
+	  "counterevidence": {"items": {"minLength":1,"type":"string"},"type":"array"},
+	  "defeat_test": {
+	    "additionalProperties":false,
+	    "properties": {
+	      "evidence": {"items": {"minLength":1,"type":"string"},"type":"array"},
+	      "method": {"minLength":1,"type":"string"},
+	      "observation": {"minLength":1,"type":"string"},
+	      "status": {"enum": ["untested", "survived", "defeated" ],"type":"string"}
+	    },
+	    "required": ["method", "observation", "status", "evidence" ],
+	    "type":"object"
+	  },
+	  "id": {"minLength":1,"type":"string"},
+	  "response": {"enum": ["unasked", "accepted", "rejected" ],"type":"string"},
+	  "status": {"enum": ["hypothesis", "supported", "withdrawn" ],"type":"string"},
+	  "support": {"items": {"minLength":1,"type":"string"},"type":"array"}
+	},
+	"required": ["id", "claim", "status", "response", "support", "counterevidence", "defeat_test" ],
+	"type":"object"
+      },
+      "type":"array"
+    },
+    "return_cut": {
+      "additionalProperties":false,
+      "properties": {
+	"defeater": {"minLength":1,"type":"string"},
+	"observer": {"minLength":1,"type":"string"},
+	"statement": {"minLength":1,"type":"string"},
+	"status": {"enum": ["hypothesis", "no_finding" ],"type":"string"}
+      },
+      "required": ["observer", "statement", "defeater", "status" ],
+      "type":"object"
+    }
+  },
+  "required": [
+    "id",
+    "mode",
+    "coaching_invited",
+    "brief",
+    "desired_result",
+    "owner",
+    "lenses",
+    "ordinary",
+    "return_cut",
+    "evidence",
+    "readings",
+    "outcome"
+  ],
+  "title":"The Zizkian record shape only",
+  "type":"object"
+}

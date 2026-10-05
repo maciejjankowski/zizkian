@@ -1,7 +1,7 @@
-flowchart LR
-    A[Supported fictional reading] --> B[pass: ready_for_decision]
-    B --> C[Instruction alone performs as well]
-    C --> D[Old reading remains supported]
-    D --> E[blocked: defeated_reading]
-    E --> F[Withdraw reading and retain brief]
-    F --> G[pass: no_finding]
+flowchart TD
+    A["Fictional reading<br/>declares support"] --> B["Fields pass:<br/>awaiting change review"]
+    B --> C["Instruction alone<br/>performs as well"]
+    C --> D["Old reading<br/>remains supported"]
+    D --> E["Blocked:<br/>defeated_reading"]
+    E --> F["Withdraw reading<br/>and retain brief"]
+    F --> G["Fields pass:<br/>awaiting closure review"]

@@ -2,6 +2,11 @@
 # The Zizkian
 ## An operator for the question behind the question
 
+**Historical conceptual appendix.** This essay preserves the requested matrix
+and Hamiltonian analogy. Its numerical profiles and formal notation have no
+operational role in the prompts or checker. Start with the [method](method.md)
+for use, and the [evaluation protocol](evaluation.md) for claims that could fail.
+
 **The Zizkian** names the framework. **WWZS?** (What would Žižek say?) names its provocation mode. “Žižekian” describes the inspiration. The falsification question, “What would prove that reading wrong?”, carries forward from an earlier conversation; it is not a newly invented safeguard.
 
 We began with a name in a prompt. We ended with a question about what a prompt permits us to see.

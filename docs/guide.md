@@ -13,20 +13,14 @@ The diagrams describe the intended workflow and the implemented checker where ex
 
 ```mermaid
 flowchart TD
-    A[User's brief and desired result] --> B[Name the decision owner and real constraints]
-    B --> C[State the strongest ordinary explanation]
-    C --> D[Select relevant lenses]
-    D --> E[Offer a rejectable reading]
-    E --> F[Name a defeating observation]
-    F --> G[Return cut on the analyst's own framing]
-    G --> H[Review evidence and participant authority]
-    H --> I{What is warranted?}
-    I -->|Only a hypothesis| T[Propose a test]
-    I -->|Supported reading| V[Consider a decision change]
-    I -->|No useful finding| N[Retain the brief and close]
-    T --> O[Owner, action and stop rule]
-    V --> O
-    N --> O
+    A["User's brief<br/>and desired result"] --> B["Owner and<br/>real constraints"]
+    B --> C["Strongest ordinary<br/>explanation"]
+    C --> D["Relevant lenses<br/>and rejectable reading"]
+    D --> E["What observation<br/>would defeat it?"]
+    E --> F["Return cut:<br/>analyst's own payoff"]
+    F --> G["Review evidence<br/>and participant authority"]
+    G --> H["Owned choice:<br/>test, change, or retain brief"]
+    H --> I["Action, owner<br/>and stop rule"]
 ```
 
 No finding is an ordinary destination. A quiet conclusion is not an invitation to invent another veil.
@@ -34,35 +28,30 @@ No finding is an ordinary destination. A quiet conclusion is not an invitation t
 ## 2. Selection: lenses earn their place
 
 ```mermaid
-flowchart LR
-    A{Whose question?} -->|Business decision| B[Consulting: 1 to 3 lenses]
-    A -->|Invited personal reflection| C[Coaching: one lens]
-    B --> B1[Customer Advocate or Constraint Hunter]
-    B --> B2[Incentive Detective or Economic Examiner]
-    B --> B3[Cannibal or Operator]
-    C --> C1[Mirror or Pattern Archaeologist]
-    C --> C2[Identity Explorer or Agency Auditor]
-    C --> C3[Boundary Engineer or Choice Architect]
-    B --> V[Veil Piercer when the premise needs examination]
-    C --> V
-    V --> R[Critique the observer's framing too]
+flowchart TD
+    A{"Whose<br/>question?"} -->|Business| B["Consulting<br/>1 to 3 lenses"]
+    A -->|Invited| C["Coaching<br/>one lens"]
+    B --> D["Choose distinct<br/>useful questions"]
+    C --> D
+    D --> V["Examine a premise?<br/>Consider Veil Piercer"]
+    V --> R["Inspect your own<br/>framing and payoff"]
 ```
 
-These branches are available choices, not a requirement to activate every box. One business lens may suffice. The numeric attention matrix remains conceptual and excluded from decision authority.
+The complete [consulting](../prompts/consulting.md) and [coaching](../prompts/coaching.md) libraries name the available lenses. These branches are choices, not a requirement to activate every lens. One business lens may suffice. The numeric attention matrix remains conceptual and excluded from decision authority.
 
 ## 3. Evidence: what can support what?
 
 ```mermaid
-flowchart LR
-    O[Sourced observation in the record] --> S[Declared support for a reading]
-    S --> E[Eligibility check]
-    A[Attention weight] --> X[Cannot support a reading]
-    R[Participant rejection] --> X
-    Q[Participant acceptance] --> P[Authority to explore a coaching step]
-    Q --> Y[Does not replace observation evidence]
-    C[Declared counterevidence] --> W[Withdraw or revise a supported reading]
-    F[Observed defeating test] --> W
-    E --> D[Possible basis for a decision]
+flowchart TD
+    E["Declared evidence item"] --> K{"Declared<br/>observation?"}
+    K -->|Yes| S["Possible<br/>support"]
+    K -->|No| X["Weight or refusal:<br/>no active support"]
+    S --> H["Human review:<br/>source and relevance"]
+    X --> H
+    H --> C["Supported plus counterevidence:<br/>withdraw or revise"]
+    C --> F["Test declared defeated:<br/>withdraw active reading"]
+    F --> A["Invited coaching:<br/>acceptance for next step,<br/>never observation evidence"]
+    A --> D["Possible basis<br/>for human choice"]
 ```
 
 The program checks IDs, declared kinds and relationships. It cannot establish that an observation is genuine or relevant. In particular, a sentence marked `observation` is not automatically evidence of a hidden motive.
@@ -71,17 +60,13 @@ The program checks IDs, declared kinds and relationships. It cannot establish th
 
 ```mermaid
 flowchart TD
-    J[One JSON case] --> S{Schema and references valid?}
-    S -->|No| I[invalid: repair input, exit 2]
-    S -->|Yes| R[Evaluate every reasoning rule]
-    R --> B{Any violations?}
-    B -->|Yes| X[blocked: named violations, exit 1]
-    B -->|No| P[pass: exit 0]
-    P --> K{Declared outcome}
-    K -->|retain_brief| N[no_finding]
-    K -->|test| T[ready_for_test]
-    K -->|change| D[ready_for_decision]
-    P --> W[Keep warnings for untested checks]
+    J["JSON case"] --> S{"Shape and<br/>references valid?"}
+    S -->|No| I["Repair input<br/>invalid, exit 2"]
+    S -->|Yes| R["Evaluate<br/>all reasoning rules"]
+    R --> B{"Any<br/>violations?"}
+    B -->|Yes| X["Revise record<br/>blocked, exit 1"]
+    B -->|No| P["Fields pass<br/>exit 0"]
+    P --> W["Awaiting human review:<br/>closure, test or change<br/>Keep untested warnings"]
 ```
 
 `pass` means the supplied record satisfies the encoded rules. It does not certify a recommendation, source, consent, causal explanation or model output.
@@ -150,13 +135,13 @@ There exists a declared case C and reading r such that:
 This is a finite witness of a property of our encoded method. It is not proof that the fictional diagnosis is true, that every prose interpretation is empirically falsifiable, or that the toolkit improves decisions.
 
 ```mermaid
-flowchart LR
-    A[Supported fictional reading] --> B[pass: ready_for_decision]
-    B --> C[Instruction alone performs as well]
-    C --> D[Old reading remains supported]
-    D --> E[blocked: defeated_reading]
-    E --> F[Withdraw reading and retain brief]
-    F --> G[pass: no_finding]
+flowchart TD
+    A["Fictional reading<br/>declares support"] --> B["Fields pass:<br/>awaiting change review"]
+    B --> C["Instruction alone<br/>performs as well"]
+    C --> D["Old reading<br/>remains supported"]
+    D --> E["Blocked:<br/>defeated_reading"]
+    E --> F["Withdraw reading<br/>and retain brief"]
+    F --> G["Fields pass:<br/>awaiting closure review"]
 ```
 
 The decisive Prolog rule is:
@@ -175,7 +160,7 @@ Run the witness from the repo root:
 swipl -q -s proof/refutable.pl
 ```
 
-It loads `supported.json`, `defeated.json` and `withdrawn.json`, checks the required outcomes and prints the three reports. The `defeated_reading` rule appears in the middle report; the last report returns `no_finding`.
+It loads `supported.json`, `defeated.json` and `withdrawn.json`, checks the required outcomes and prints the three reports. The `defeated_reading` rule appears in the middle report; the last report returns `awaiting_closure_review`.
 
 ## 9. Usage: begin with an honest unknown
 
@@ -185,9 +170,9 @@ A team asks for a longer onboarding tutorial. You suspect that flow complexity i
 swipl -q -s src/check.pl -- examples/hypothesis.json
 ```
 
-Expected: `pass`, `ready_for_test`, with warnings for the untested ordinary explanation and falsifier. This licenses no claim that the redesign is necessary. The next step is to obtain evidence.
+Expected: `pass`, `awaiting_test_review`, with warnings for the untested ordinary explanation and falsifier. This licenses no claim that the redesign is necessary. The next step is to obtain evidence.
 
-The fictional `supported.json` later supplies a declared observation and a check of ordinary instruction. It passes as `ready_for_decision`. Human review must still decide whether that observation supports the claimed mechanism and whether the proposed action is proportionate.
+The fictional `supported.json` later supplies a declared observation and a check of ordinary instruction. It passes as `awaiting_change_review`. Human review must still decide whether that observation supports the claimed mechanism and whether the proposed action is proportionate.
 
 ## 10. Usage: accept an ordinary answer
 
@@ -197,7 +182,7 @@ The instruction works; there is no supported reason to reframe the task. Use Ope
 swipl -q -s src/check.pl -- examples/no-finding.json
 ```
 
-Expected: `pass`, `no_finding`. No readings are required to fill a format.
+Expected: `pass`, `awaiting_closure_review`. No readings are required to fill a format.
 
 ## 11. Usage: refuse a coaching trap
 
@@ -229,8 +214,8 @@ Work on copies under `work/exercises/`; keep the supplied examples intact. You c
 | Exercise | Expected result or criterion |
 |---|---|
 | 1 | `blocked`; `defeated_reading` appears even if old support remains |
-| 2 | Mark `r1` withdrawn; use `retain_brief`; clear `outcome.reading_ids`; expected `pass / no_finding` |
-| 3 | `pass / ready_for_test`; warnings stay until observations are actually recorded |
+| 2 | Mark `r1` withdrawn; use `retain_brief`; clear `outcome.reading_ids`; expected `pass / awaiting_closure_review` |
+| 3 | `pass / awaiting_test_review`; warnings stay until observations are actually recorded |
 | 4 | `blocked`; `weight_as_evidence` and `unsupported_reading`; if used by a completed test or ordinary check, those also lack observation evidence |
 | 5 | At least `unsupported_reading`, `rejection_as_evidence`, `participant_rejected`, `coaching_choice_unconfirmed`; a withdrawn claim with no selected reading can close |
 | 6 | Named observer, specific possible payoff and a defeating observation; the quality of the prose needs human review |
@@ -244,13 +229,13 @@ An exercise succeeds when you can say what you know, what you are assuming, what
 ## 14. What the checker cannot protect you from
 
 ```mermaid
-flowchart LR
-    A[Real evidence and conversation] --> B[Human encoding of a record]
-    B --> C[Prolog structural checks]
-    C --> D[Human review of relevance and authority]
-    D --> E[Owned test or decision]
-    X[Fabricated evidence or weak falsifier] --> B
-    X --> Y[May remain structurally valid]
+flowchart TD
+    A["Real evidence<br/>and conversation"] --> B["Human encoding<br/>of a record"]
+    B --> C["Prolog checks<br/>declared structure"]
+    C --> D["Human review:<br/>relevance and authority"]
+    D --> E["Owned test<br/>or decision"]
+    X["False evidence<br/>or weak test"] --> B
+    X --> Y["May pass<br/>structural checks"]
     Y --> D
 ```
 

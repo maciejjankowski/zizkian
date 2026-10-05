@@ -1,11 +1,11 @@
 {
   "_assets": {
-    "site/assets/checker-engine.js": "d7b7ec0a04204f13efc9327f51808c261026d7e49c1e76de4dec7f0e5c85bfb7",
-    "site/assets/diagrams.js": "cf10443694c8607c0dce868aea1d4d7ad69fc5a6d7fc1161e031f6316af6a3a2",
+    "site/assets/checker-engine.js": "0b4c322ffb8351aeca7abbf3f0558501fe58cf04d8f0bf3197f53fb721398d1f",
+    "site/assets/diagrams.js": "41967f7a59a6ebd2a04ddcd94e05f5c74df955db3a5fde795bdf27dbcb623bb8",
     "site/assets/lab-worker.js": "47e5a354a4493d490c8c76f19dfbc75353753f3d2cd809b07805f19e89879dfd",
-    "site/assets/lab.js": "de6cb79d714a1b39e2e9d2e3b4aaecd6ab1d9c6db84b9a4571f7c01f6757aa05",
-    "site/assets/site.css": "7ef9b038e6fa8ccf477ea737fa0fbf8c16b633f62aea6cae242ba28543b1d3f9",
-    "site/assets/site.js": "91285f59182ba6bcba34d0d49b73eeec17891c2fa924f64fdd1437ade6730fad",
+    "site/assets/lab.js": "b794b0d485609c0dd8b59f4de982f44e5917076332bf310b1611f21f40cb6287",
+    "site/assets/site.css": "82009040954d2044bc4eaddac48f7217336238a0dd36bd251c3787edc4f28388",
+    "site/assets/site.js": "c9f2ca28fe616f48446c3fdeea949c47ffa18bc5395aa64d2a9b8ec8699ed4fa",
     "site/assets/vendor/swipl-8.2.1/EMSCRIPTEN-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
     "site/assets/vendor/swipl-8.2.1/LIBBF-NOTICE": "40a819e0f7075d68627602a320ae127780a8c4cb3199fc3544172ca85a25628e",
     "site/assets/vendor/swipl-8.2.1/LICENSE.txt": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a",
@@ -18,63 +18,63 @@
     "site/assets/vendor/swipl-8.2.1/swipl-web.wasm": "c8831c0ac6a021b6bc67fa1b86e8826d1ea92a1a81b932cfb88fea235361c355"
   },
   "_renderer": {
-    "scripts/render_site.py": "2fd0adb07531fdd30f012a90765e46435a3b1c981adcd62eb17f250d4098f926",
+    "scripts/render_site.py": "9d21a0fe01e71d46fe757ad5c09268f76016f705883b53951b0d40c6e071a3b0",
     "site/.htaccess": "77dc2c63f065ef89bdbed2897eb37cd34d84447661fbc09cdef97bbeac9bdc19"
   },
   "checker.html": {
-    "docs/checker.md": "2b96652da32ec08d7252aa3498b6978aeda833124c2484234f3f4bc21ca00e15"
+    "docs/checker.md": "763a37255ec3ed4131366c59fb2341917204bee9f91dce7545ffce55e881a228"
   },
   "coaching.html": {
-    "prompts/coaching.md": "8ac27731046ed419b9c658efec78e2897dab501857cfce43092b9ced3d4fecf5"
+    "prompts/coaching.md": "fc425797fa23a59cc0a27fd78af2ae21c2c5d48e98a55675986a5d70cdad41af"
   },
   "consulting.html": {
-    "prompts/consulting.md": "6e912aa575f835c285f7febc94b3edad1d2d6f3f9235995e2db900e6c15279aa"
+    "prompts/consulting.md": "dc3f0b966f7354b3ef34553a3c3dfe5528bd4b036cf6b4c93f7e4969424a5c70"
   },
   "essay.html": {
-    "docs/essay.md": "126f48cf98aa90cc7c56ca9c67b1138eaa6a16387e5b4b81bfff547b9e649980"
+    "docs/essay.md": "7abef2a3ce2cb9f5131904554c092bf097720c57578bdfe399fd94fdd0a50acb"
   },
   "evaluation.html": {
-    "docs/evaluation.md": "1a55c6e99abd077034fcf9225f4673d625b5ddc1b586d4ecfb1d1cd90a435202"
+    "docs/evaluation.md": "4aebc665b097ec002c38968b05741f7451e888d9b49a102990be2cd9529035f3"
   },
   "guide.html": {
-    "docs/guide.md": "31e6b5c4c95260bff5d0ad41b567ec15af901980b46557306d55230e297ec525"
+    "docs/guide.md": "1f165bad0d8d835cdc3c8fbb2214b6908ceed6e8e6c4bafafaa617bc499e63a5"
   },
   "index.html": {
-    "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
-    "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
-    "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
-    "scripts/render_site.py": "2fd0adb07531fdd30f012a90765e46435a3b1c981adcd62eb17f250d4098f926",
-    "site/index.template.html": "506949295fcd5bb0b83f4fc6629c500b9f27137d93ac9b0d619b8d945426ba2c",
-    "src/check.pl": "f45e96a97f9e972bc8d8c1b7ffcad7c4f807a53861bd7f944ad44cfa4522d5bb",
-    "src/zizkian.pl": "70339dde7354157d7c7f044c2ae347d017c4af76a5060d7daf9faa467302a173"
+    "examples/defeated.json": "0e3d5e54f0b6380b70b15dba06bb22f46ec066899fc5e8d6cef57cc2c54b0876",
+    "examples/supported.json": "268bb8367f2eed023ae72dd6a44d3873f43bfe0570a8ce734d318e7024c08de3",
+    "examples/withdrawn.json": "23365ff433f14467aa580e1b143f0aa0a7246ace50a5db3cd5fe5526b4ba1754",
+    "scripts/render_site.py": "9d21a0fe01e71d46fe757ad5c09268f76016f705883b53951b0d40c6e071a3b0",
+    "site/index.template.html": "e9bb8fd8d074e2c6de3617ddf349c7b6bd45000abed11be33ccac81458c12f3f",
+    "src/check.pl": "ba2060f15367b3280ee0d1b7080566950861ef74a4c11fa649510a462f192527",
+    "src/zizkian.pl": "c5613a775ba92e2b589d9d04d84694253b6b1d681bcdd485c4aec1cbd1b66ab4"
   },
   "lab.html": {
-    "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
-    "examples/false-evidence.json": "b3ca59c2fae38d5d4232ae9049181ec102ed4570c6692c1ee247f31f2441edbc",
-    "examples/incomplete.json": "92e1741c16640db3ecb014d98e22f0b7b5f8a08b49ec288681cae7d8b73808a3",
-    "examples/no-finding.json": "aa7a0df6b1ce7ec7b23302ad0bbd997d3392c517ed4013a2860d8e288cf7c195",
-    "examples/plausible-fabrication.json": "7917762c6771ff9a31aa38e5a826b86a3991265f0541ed254a7cc0b930017c99",
-    "examples/rejection-trap.json": "ece32668bdef702af2c2539e24de3916b04d5df72161d88cc323f9dcfd88e0f1",
-    "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
-    "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
-    "scripts/render_site.py": "2fd0adb07531fdd30f012a90765e46435a3b1c981adcd62eb17f250d4098f926",
-    "site/lab.template.html": "12472a1bb61ddd4087b1e107b4c1b6cd7e75e78e1cd8896b7f7f424a838b869d",
-    "src/zizkian.pl": "70339dde7354157d7c7f044c2ae347d017c4af76a5060d7daf9faa467302a173"
+    "examples/defeated.json": "0e3d5e54f0b6380b70b15dba06bb22f46ec066899fc5e8d6cef57cc2c54b0876",
+    "examples/false-evidence.json": "a195bd706e0f6e1013fdd9554c34946c9eb362af2abc6aef36d20c8b7576ae4a",
+    "examples/incomplete.json": "019bf4b8ccd25d2a435dab1c23dcec58a3939ee0c10ef81212e178c3c6368882",
+    "examples/no-finding.json": "27ec1cc62fd00d5010829972f2904c6c2a27d0d9c4d366a03f567064d2a5da7b",
+    "examples/plausible-fabrication.json": "bbbe24c70d0cf5cd232d817747f14310b00f73b9b3bb84a523a415b2c3e753cb",
+    "examples/rejection-trap.json": "0ff6409db6dc8c295d39c66d9b5072f129cf1301799cbed8cdb7cf24b00070bf",
+    "examples/supported.json": "268bb8367f2eed023ae72dd6a44d3873f43bfe0570a8ce734d318e7024c08de3",
+    "examples/withdrawn.json": "23365ff433f14467aa580e1b143f0aa0a7246ace50a5db3cd5fe5526b4ba1754",
+    "scripts/render_site.py": "9d21a0fe01e71d46fe757ad5c09268f76016f705883b53951b0d40c6e071a3b0",
+    "site/lab.template.html": "c542a90b54bb5e42156ff21d7c0c9776e83e31f7ddb0114181928fb96cdf19bf",
+    "src/zizkian.pl": "c5613a775ba92e2b589d9d04d84694253b6b1d681bcdd485c4aec1cbd1b66ab4"
   },
   "licensing-polemic.html": {
     "docs/licensing-polemic.md": "546f6b204d4067c60a4040ea904bd64c559f7dd6e99d7766294db032b7bb2d94"
   },
   "licensing.html": {
-    "docs/licensing.md": "1ba2548b8683efc607d9bd6d69d2f2b1ad35ecf7da7707bf49936d579942d7f9"
+    "docs/licensing.md": "0864b5906d8016f5542d37f175c55c069e78bec50b4fac0bb736f4e5039fda95"
   },
   "method.html": {
-    "docs/method.md": "6dc3dd90761f68d4972695cefb204443e07d47cc19650f956020d118808f587d"
+    "docs/method.md": "eed58623c605f65ec987b0bc6dffb86a388dce62edb97062da8154a3682dbb33"
   },
   "provenance.html": {
     "docs/provenance.md": "478a905abc994939f25a41495895664cd6abdfe10059411842bba745696cf75f"
   },
   "publishing.html": {
-    "docs/publishing.md": "7db5bfc37177b60e47570a88d7d7ace9be068de4f8ee094da259a3eac14232c1"
+    "docs/publishing.md": "9debcdf0eb3b8d31ef00f2bc0408687455f02dbf7cbff059509661008504d561"
   },
   "wwzs.html": {
     "prompts/wwzs.md": "df334298a6e39ad8819edd9d3e83baa057690aa26d718c2fbc0fae03fc6651dd"

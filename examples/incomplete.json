@@ -18,8 +18,8 @@
   },
   "return_cut": {
     "observer": "Analyst",
-    "statement": "I benefit from selling a redesign",
-    "defeater": "Instruction alone achieves first-task completion",
+    "statement": "I may favor redesign because it gives my analysis a larger role",
+    "defeater": "When a product-lead-owned comparison finds instruction sufficient, I recommend keeping instruction and closing this analysis",
     "status": "hypothesis"
   },
   "evidence": [
@@ -53,7 +53,7 @@
   "outcome": {
     "kind": "change",
     "action": "Trial a simpler flow",
-    "reason": "The declared record supports a flow problem",
+    "reason": "Declared failures after instruction warrant a reversible trial. To limit the analyst's redesign preference, the product lead reviews the comparison and can choose to retain instruction instead.",
     "reading_ids": [
       "r1"
     ],

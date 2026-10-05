@@ -13,7 +13,7 @@ refutability(Report) :-
     Before.status == pass,
     Defeated.status == blocked,
     member(Issue, Defeated.violations), Issue.rule == defeated_reading,
-    Withdrawn.status == pass, Withdrawn.verdict == no_finding,
+    Withdrawn.status == pass, Withdrawn.verdict == awaiting_closure_review,
     Report = proof{property:refutable,status:demonstrated,
         scope:'A fictional declared reading can lose eligibility and be withdrawn.',
         before:Before,after_defeater:Defeated,after_withdrawal:Withdrawn}.

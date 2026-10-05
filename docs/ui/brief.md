@@ -53,3 +53,23 @@ no horizontal page overflow. Mobile menu opened and closed. Desktop runtime
 loaded successfully, including Apache's application/wasm response.
 Native/WASM parity and input bounds are automated checks. Browser compatibility
 outside this local Brave review and empirical decision quality remain untested.
+
+## Release 0.3.0 review, 2026-10-06
+
+The local Brave lab ran the plausible-fabrication fixture through actual
+WebAssembly. Its report begins with pending human review and explicitly says
+evidence is unverified. The desktop document and viewport were both 1289px.
+Earlier checks exercised malformed typed input and manual withdrawal.
+
+At 390px, the guide document remained 390px wide with all nine diagrams
+rendered. Diagrams now retain readable natural dimensions inside a scrolling
+panel; the explicit fit control offers an overview rather than automatically
+shrinking labels. The refutability chain now runs vertically. The fit control
+reduced the checker diagram to 284px and restored its 541px natural width without
+page overflow. Temporary viewport overrides were removed after testing.
+
+The controller suite checks deadlines, reset cancellation, stale replies and
+runtime recovery. These implementation checks do not establish whether a new
+reader understands the result. The comprehension pilot remains unrun. Public
+browser review remains unavailable because browser permissions denied it;
+publication is checked separately through HTTP and deployed file hashes.

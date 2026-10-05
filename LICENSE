@@ -1,7 +1,7 @@
-The Zizkian 0.2.0
+The Zizkian 0.3.0
 Required Notice: Copyright 2026 Maciej Jankowski (https://maciejjankowski.com)
 
-Code in src/, proof/, tests/, scripts/, test.sh, .gitignore, .github/, and executable
+Code in src/, proof/, tests/, scripts/, schema/, test.sh, .gitignore, .github/, and executable
 JavaScript/CSS/HTML presentation code in site/ is offered under the unmodified
 PolyForm Noncommercial License 1.0.0. See LICENSE-CODE.md and:
 https://polyformproject.org/licenses/noncommercial/1.0.0

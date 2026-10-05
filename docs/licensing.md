@@ -5,7 +5,7 @@ incorporated by reference. [LICENSE](../LICENSE) identifies each scope.
 
 | Material | Terms |
 |---|---|
-| Prolog, Python, test runner, workflow and site presentation code | PolyForm Noncommercial 1.0.0 |
+| Prolog, Python, generated shape schema, test runner, workflow and site presentation code | PolyForm Noncommercial 1.0.0 |
 | Prose, prompts, diagrams and fictional example content | CC BY-NC-SA 4.0 |
 | Third-party dependencies and linked source material | Their own terms |
 

@@ -1,10 +1,10 @@
-flowchart LR
-    O[Sourced observation in the record] --> S[Declared support for a reading]
-    S --> E[Eligibility check]
-    A[Attention weight] --> X[Cannot support a reading]
-    R[Participant rejection] --> X
-    Q[Participant acceptance] --> P[Authority to explore a coaching step]
-    Q --> Y[Does not replace observation evidence]
-    C[Declared counterevidence] --> W[Withdraw or revise a supported reading]
-    F[Observed defeating test] --> W
-    E --> D[Possible basis for a decision]
+flowchart TD
+    E["Declared evidence item"] --> K{"Declared<br/>observation?"}
+    K -->|Yes| S["Possible<br/>support"]
+    K -->|No| X["Weight or refusal:<br/>no active support"]
+    S --> H["Human review:<br/>source and relevance"]
+    X --> H
+    H --> C["Supported plus counterevidence:<br/>withdraw or revise"]
+    C --> F["Test declared defeated:<br/>withdraw active reading"]
+    F --> A["Invited coaching:<br/>acceptance for next step,<br/>never observation evidence"]
+    A --> D["Possible basis<br/>for human choice"]

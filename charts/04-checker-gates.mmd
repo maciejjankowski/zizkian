@@ -1,12 +1,8 @@
 flowchart TD
-    J[One JSON case] --> S{Schema and references valid?}
-    S -->|No| I[invalid: repair input, exit 2]
-    S -->|Yes| R[Evaluate every reasoning rule]
-    R --> B{Any violations?}
-    B -->|Yes| X[blocked: named violations, exit 1]
-    B -->|No| P[pass: exit 0]
-    P --> K{Declared outcome}
-    K -->|retain_brief| N[no_finding]
-    K -->|test| T[ready_for_test]
-    K -->|change| D[ready_for_decision]
-    P --> W[Keep warnings for untested checks]
+    J["JSON case"] --> S{"Shape and<br/>references valid?"}
+    S -->|No| I["Repair input<br/>invalid, exit 2"]
+    S -->|Yes| R["Evaluate<br/>all reasoning rules"]
+    R --> B{"Any<br/>violations?"}
+    B -->|Yes| X["Revise record<br/>blocked, exit 1"]
+    B -->|No| P["Fields pass<br/>exit 0"]
+    P --> W["Awaiting human review:<br/>closure, test or change<br/>Keep untested warnings"]

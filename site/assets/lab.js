@@ -6,7 +6,8 @@
   const fixture = document.getElementById('fixture'), record = document.getElementById('record');
   const run = document.getElementById('run'), report = document.getElementById('report');
   const label = document.getElementById('result-label'), engine = document.getElementById('engine-status');
-  let worker, ready = false, busy = false, id = 0, timer, checkedText;
+  const retry = document.getElementById('retry-runtime');
+  let worker, ready = false, busy = false, id = 0, timer, boot, checkedText;
   function changed() {
     if (checkedText !== record.value) {
       label.textContent = 'Edited: run again to check this version';
@@ -14,6 +15,7 @@
     }
   }
   function load() {
+    if (busy) start();
     id++; busy = false; clearTimeout(timer); run.disabled = !ready;
     record.value = JSON.stringify(config.fixtures[fixture.value], null, 2);
     document.getElementById('fixture-note').textContent = config.notes[fixture.value];
@@ -24,19 +26,31 @@
     busy = false; clearTimeout(timer); run.disabled = !ready;
     label.textContent = 'Unable to check'; report.textContent = message;
   }
+  function stop(message) {
+    worker?.terminate(); worker = undefined;
+    clearTimeout(boot); ready = false; engine.textContent = 'Runtime unavailable';
+    retry.hidden = false; fail(message);
+  }
   function start() {
-    ready = false; run.disabled = true;
-    worker = new Worker(new URL(config.worker, document.baseURI));
-    const boot = setTimeout(() => {worker.terminate(); fail('Runtime download timed out. Reload or use the native CLI.'); engine.textContent = 'Runtime unavailable';}, 30000);
-    worker.onerror = () => {clearTimeout(boot); ready = false; engine.textContent = 'Runtime unavailable'; fail('Worker failed. Reload or use the native CLI.');};
+    worker?.terminate(); clearTimeout(timer); clearTimeout(boot);
+    ready = false; busy = false; run.disabled = true; retry.hidden = true;
+    engine.textContent = 'Loading the local Prolog runtime…';
+    const current = worker = new Worker(new URL(config.worker, document.baseURI));
+    boot = setTimeout(() => stop('Runtime download timed out. Retry or use the native CLI.'), 30000);
+    worker.onerror = () => {if (current === worker) stop('Worker failed. Retry or use the native CLI.');};
     worker.onmessage = ({data}) => {
+      if (current !== worker) return;
       if (data.kind === 'ready') {clearTimeout(boot); ready = true; engine.textContent = 'Prolog ready · checks run locally'; run.disabled = false; return;}
       if (data.id !== undefined && data.id !== id) return;
-      if (data.kind === 'error') {clearTimeout(boot); fail(data.message); return;}
+      if (data.kind === 'error') {
+        if (data.id === undefined) stop(data.message);
+        else fail(data.message);
+        return;
+      }
       if (data.kind === 'result') {
         busy = false; clearTimeout(timer); run.disabled = false;
         if (record.value !== checkedText) {changed(); return;}
-        label.textContent = `${data.report.status}: ${data.report.verdict.replaceAll('_', ' ')} · structural check`;
+        label.textContent = `${data.report.verdict.replaceAll('_', ' ')} · ${data.report.status} · evidence unverified`;
         report.textContent = JSON.stringify(data.report, null, 2);
       }
     };
@@ -46,11 +60,12 @@
     if (!ready || busy) return;
     busy = true; run.disabled = true; checkedText = record.value; id++;
     label.textContent = 'Checking this record…'; report.textContent = 'Running Prolog locally.';
-    timer = setTimeout(() => {worker.terminate(); ready = false; fail('Execution timed out. Reload or simplify the record.'); engine.textContent = 'Runtime stopped';}, 5000);
+    timer = setTimeout(() => stop('Execution timed out. Simplify the record and retry the runtime.'), 5000);
     worker.postMessage({kind: 'audit', id, text: checkedText});
   });
   fixture.addEventListener('change', load);
   document.getElementById('reset').addEventListener('click', load);
+  retry.addEventListener('click', start);
   record.addEventListener('input', changed);
   document.getElementById('download').addEventListener('click', () => {
     const url = URL.createObjectURL(new Blob([record.value], {type: 'application/json'}));

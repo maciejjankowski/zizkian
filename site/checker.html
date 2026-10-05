@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian logic checker | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/checker.html"><link rel="stylesheet" href="assets/site.css?v=7ef9b038e6fa"><script src="assets/site.js?v=91285f59182b" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
-<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.2.0.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.2.0.zip">Download source</a></p><h1 id="the-zizkian-logic-checker">The Zizkian logic checker</h1>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian logic checker | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/checker.html"><link rel="stylesheet" href="assets/site.css?v=82009040954d"><script src="assets/site.js?v=c9f2ca28fe61" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
+<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.3.0.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.3.0.zip">Download source</a></p><h1 id="the-zizkian-logic-checker">The Zizkian logic checker</h1>
 
 <p><a href="lab.html">Try the editable browser lab</a>. It runs this same module using
 SWI-Prolog WebAssembly in a worker. Records stay in the tab; the lab does not
@@ -18,14 +18,26 @@ swipl <span class="nt">-q</span> <span class="nt">-s</span> proof/refutable.pl
 <p>The checker reads JSON as data. It does not execute supplied Prolog, call models,
 fetch sources, change files or send messages. The native CLI uses the installed
 SWI-Prolog; the browser lab bundles a separately licensed WASM runtime.
-Its public predicates are <code>zizkian:audit/2</code> and <code>zizkian:audit_file/2</code>.</p>
+Its public predicates are <code>zizkian:audit/2</code>, <code>zizkian:audit_json/2</code> and <code>zizkian:audit_file/2</code>.</p>
 
 <div class="language-prolog highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">?-</span> <span class="ss">use_module</span><span class="p">(</span><span class="ss">'src/zizkian.pl'</span><span class="p">).</span>
 <span class="o">?-</span> <span class="ss">audit_file</span><span class="p">(</span><span class="ss">'examples/defeated.json'</span><span class="p">,</span> <span class="nv">Report</span><span class="p">).</span>
 </code></pre></div></div>
 
-<p><code>audit/2</code> accepts a ground dict with atom values and grounded dict tags, as produced
-by <code>json_read_dict/3</code> with <code>value_string_as(atom), default_tag(data)</code>.
+<p><code>audit_json/2</code> accepts a JSON text atom or string. Native files must be valid UTF-8;
+byte validation rejects overlong encodings and invalid Unicode scalar values
+before a decoder can repair them. The shared JSON entry rejects syntax extensions,
+duplicate object keys, a leading BOM and isolated Unicode surrogate escapes.
+Valid surrogate pairs, ordinary Unicode and escaped control characters are
+accepted. JSON text fields must be strings, invitations must be actual Booleans,
+and status fields must contain one of the named strings. Parsing retains types
+until schema validation; the text <code>"false"</code> cannot become an invitation Boolean.
+Native files and the browser worker call this same predicate.</p>
+
+<p><code>audit/2</code> is the direct Prolog API: it accepts a ground dict with atom text values
+and grounded dict tags. It has no knowledge of the original JSON encoding.
+Do not convert unvalidated JSON strings to atoms yourself: use <code>audit_json/2</code>
+or <code>audit_file/2</code> at a JSON boundary.
 Do not pass variables to mean unknown. Use <code>hypothesis</code>, <code>untested</code> and <code>unasked</code>.
 Missing, blank, mistyped and unrecognized fields are invalid; there are no silent
 defaults. Evidence and reading IDs must be unique, and references must resolve.</p>
@@ -57,7 +69,13 @@ defaults. Evidence and reading IDs must be unique, and references must resolve.<
   </tbody>
 </table></div>
 
-<p>Passing verdicts are <code>no_finding</code>, <code>ready_for_test</code> and <code>ready_for_decision</code>.
+<p>Passing verdicts are <code>awaiting_closure_review</code>, <code>awaiting_test_review</code> and <code>awaiting_change_review</code>.
+They request review of the declared outcome; none authorizes an action. Every
+report, including errors, contains <code>scope: "declared_record_only"</code>,
+<code>evidence_verified: false</code>, <code>schema_version: "0.3.0"</code> and <code>human_review_required</code>.
+That list covers source authenticity, relevance, test discrimination, the ordinary
+alternative’s strength, participant authority, analyst payoff and the decision
+to stop. It lists work still required, not checks that the program performed.
 Every violation contains <code>rule</code>, <code>target</code> and <code>message</code>. All detected violations
 are returned, rather than stopping at the first one. Warnings preserve explicitly
 untested alternatives and falsifiers.</p>
@@ -65,7 +83,10 @@ untested alternatives and falsifiers.</p>
 <h2 id="record-contract">Record contract</h2>
 
 <p>All listed fields are required. See the complete examples rather than inventing
-an incomplete record. <code>schema/2</code> in <a href="src/zizkian.pl">zizkian.pl</a> is the executable schema.</p>
+an incomplete record. <code>schema/2</code> in <a href="src/zizkian.pl">zizkian.pl</a> is the executable schema.
+The downloadable <a href="schema/record-0.3.0.schema.json">JSON shape schema</a> is generated
+from <code>schema/2</code>. It describes field types and status vocabularies, not nonblank
+text, reference validity or reasoning constraints. Use the checker for those.</p>
 
 <div class="table-scroll"><table>
   <thead>
@@ -137,12 +158,12 @@ hypothesis. Closure uses no selected reading and permits withdrawal.</p>
   <tbody>
     <tr>
       <td data-label="Input"><a href="examples/hypothesis.json">hypothesis.json</a></td>
-      <td data-label="Expected status">pass / ready_for_test, warnings</td>
+      <td data-label="Expected status">pass / awaiting_test_review, warnings</td>
       <td data-label="Why">A test is proposed without claiming an observed result</td>
     </tr>
     <tr>
       <td data-label="Input"><a href="examples/supported.json">supported.json</a></td>
-      <td data-label="Expected status">pass / ready_for_decision</td>
+      <td data-label="Expected status">pass / awaiting_change_review</td>
       <td data-label="Why">Declared support, alternative check and test record are present</td>
     </tr>
     <tr>
@@ -152,12 +173,12 @@ hypothesis. Closure uses no selected reading and permits withdrawal.</p>
     </tr>
     <tr>
       <td data-label="Input"><a href="examples/withdrawn.json">withdrawn.json</a></td>
-      <td data-label="Expected status">pass / no_finding</td>
+      <td data-label="Expected status">pass / awaiting_closure_review</td>
       <td data-label="Why">Withdrawal permits closure</td>
     </tr>
     <tr>
       <td data-label="Input"><a href="examples/no-finding.json">no-finding.json</a></td>
-      <td data-label="Expected status">pass / no_finding</td>
+      <td data-label="Expected status">pass / awaiting_closure_review</td>
       <td data-label="Why">An ordinary answer needs no dramatic reading</td>
     </tr>
     <tr>
@@ -167,12 +188,12 @@ hypothesis. Closure uses no selected reading and permits withdrawal.</p>
     </tr>
     <tr>
       <td data-label="Input"><a href="examples/false-evidence.json">false-evidence.json</a></td>
-      <td data-label="Expected status">pass / ready_for_decision</td>
+      <td data-label="Expected status">pass / awaiting_change_review</td>
       <td data-label="Why">Deliberately irrelevant prose still has a structurally valid reference</td>
     </tr>
     <tr>
       <td data-label="Input"><a href="examples/plausible-fabrication.json">plausible-fabrication.json</a></td>
-      <td data-label="Expected status">pass / ready_for_decision</td>
+      <td data-label="Expected status">pass / awaiting_change_review</td>
       <td data-label="Why">A deliberately invented study cannot be authenticated by these rules</td>
     </tr>
     <tr>
@@ -199,6 +220,92 @@ Changing a lens cannot change the supplied evidence.</p>
 <p>The checker is available for manual use. It is not automatically connected to a dispatcher.
 See the <a href="guide.html">field guide</a>.</p>
 
+<h2 id="method-coverage">Method coverage</h2>
+
+<div class="table-scroll"><table>
+  <thead>
+    <tr>
+      <th>Method commitment</th>
+      <th>Encoded check</th>
+      <th>Human responsibility</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Method commitment">Preserve the question and owner</td>
+      <td data-label="Encoded check">Nonblank <code>brief</code>, <code>desired_result</code>, <code>owner</code></td>
+      <td data-label="Human responsibility">Confirm this is the participant’s strongest intended question</td>
+    </tr>
+    <tr>
+      <td data-label="Method commitment">Consider an ordinary explanation</td>
+      <td data-label="Encoded check">Required alternative; <code>checked</code> needs an observation before change</td>
+      <td data-label="Human responsibility">Check that it is strong, relevant and fairly tested</td>
+    </tr>
+    <tr>
+      <td data-label="Method commitment">Select useful lenses</td>
+      <td data-label="Encoded check">Permitted names, distinct names, mode and count</td>
+      <td data-label="Human responsibility">Decide relevance and whether questions actually differ</td>
+    </tr>
+    <tr>
+      <td data-label="Method commitment">Put a reading at risk</td>
+      <td data-label="Encoded check">Required defeat method and observation; declared defeat blocks an active reading</td>
+      <td data-label="Human responsibility">Judge whether the test could discriminate or was honestly run</td>
+    </tr>
+    <tr>
+      <td data-label="Method commitment">Apply the return cut</td>
+      <td data-label="Encoded check">Required observer, statement, defeater and status</td>
+      <td data-label="Human responsibility">Inspect payoff and record its consequence in <code>outcome.reason</code> and <code>action</code></td>
+    </tr>
+    <tr>
+      <td data-label="Method commitment">Respect participant authority</td>
+      <td data-label="Encoded check">Invitation Boolean; selected coaching framing must be accepted; rejection traps blocked</td>
+      <td data-label="Human responsibility">Establish real invitation, consent and authority to act</td>
+    </tr>
+    <tr>
+      <td data-label="Method commitment">Stop or change direction</td>
+      <td data-label="Encoded check">Outcome basis and status relationships</td>
+      <td data-label="Human responsibility">Decide when another pass changes no useful test or decision</td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>No encoded rule connects the return cut to the outcome or enforces a historical
+recursion limit. The checker audits one snapshot, not the conversation. The
+<a href="method.html#make-the-return-cut-change-the-next-step">method’s return-cut worksheet</a>
+is human work. Two different names in fields would not establish independence.</p>
+
+<h2 id="migrating-from-020">Migrating from 0.2.0</h2>
+
+<p>Input field names and status vocabularies are unchanged. Inputs that relied on
+string Booleans, literal control characters, trailing commas or a BOM are now
+invalid. Serialize valid JSON instead of relying on parser extensions.</p>
+
+<div class="table-scroll"><table>
+  <thead>
+    <tr>
+      <th>Old passing verdict</th>
+      <th>0.3.0 verdict</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td data-label="Old passing verdict"><code>no_finding</code></td>
+      <td data-label="0.3.0 verdict"><code>awaiting_closure_review</code></td>
+    </tr>
+    <tr>
+      <td data-label="Old passing verdict"><code>ready_for_test</code></td>
+      <td data-label="0.3.0 verdict"><code>awaiting_test_review</code></td>
+    </tr>
+    <tr>
+      <td data-label="Old passing verdict"><code>ready_for_decision</code></td>
+      <td data-label="0.3.0 verdict"><code>awaiting_change_review</code></td>
+    </tr>
+  </tbody>
+</table></div>
+
+<p>Exit codes and <code>status</code> values are unchanged. Consumers must tolerate the report
+metadata and keep its scope visible when displaying or forwarding a result.</p>
+
 <p>The implementation uses SWI-Prolog’s documented
 <a href="https://www.swi-prolog.org/pldoc/man?section=json">JSON dict interface</a> and
 <a href="https://www.swi-prolog.org/pldoc/doc_for?object=section('packages/plunit.html')">PlUnit</a>.</p>
@@ -206,4 +313,4 @@ See the <a href="guide.html">field guide</a>.</p>
 <p>Treat structural passage as a review aid [1 SPECULATIVE | no outcome benchmark].
 If that use is wrong, the first signal is a misleading record passing despite a
 human reviewer finding unsupported conclusions or an unusable defeating test.</p>
-</main><footer><p>Maciej Jankowski · The Zizkian 0.2.0 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer></body></html>
+</main><footer><p>Maciej Jankowski · The Zizkian 0.3.0 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer></body></html>

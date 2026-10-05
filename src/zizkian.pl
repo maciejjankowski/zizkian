@@ -1,6 +1,6 @@
 % SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 % Required Notice: Copyright 2026 Maciej Jankowski (https://maciejjankowski.com)
-:- module(zizkian, [audit/2, audit_file/2]).
+:- module(zizkian, [audit/2, audit_json/2, audit_file/2]).
 % Native SWI calls this library http/json; its WASM distribution calls it json.
 :- if(exists_source(library(http/json))).
 :- use_module(library(http/json)).
@@ -13,6 +13,20 @@
 % Negation below means absent from this validated record, not false in the world.
 
 audit(Case, Report) :-
+    audit_record(Case, Raw), report_metadata(Raw, Report).
+
+report_metadata(Raw, Report) :-
+    Report = Raw.put(_{schema_version:'0.3.0',scope:declared_record_only,
+        evidence_verified:false,
+        human_review_required:[source_authenticity,evidence_relevance,
+            test_discrimination,ordinary_explanation_strength,
+            participant_authority,analyst_payoff,stopping_decision]}).
+
+invalid_report(Issues, Report) :-
+    report_metadata(report{status:invalid,verdict:repair_input,
+        violations:Issues,warnings:[]},Report).
+
+audit_record(Case, Report) :-
     ( ground(Case) ->
         findall(I, schema_issue(case, Case, case, I), ShapeIssues),
         ( ShapeIssues == [] ->
@@ -35,19 +49,98 @@ audit(Case, Report) :-
     ).
 
 audit_file(Path, Report) :-
-    setup_call_cleanup(open(Path, read, Stream, [encoding(utf8)]),
-        ( json_read_dict(Stream, Case, [value_string_as(atom),default_tag(data)]),
-          read_string(Stream, _, Rest), normalize_space(string(Tail), Rest),
-          ( Tail == "" -> true
-          ; throw(error(domain_error(single_json_document, Path), audit_file/2)) ) ),
+    setup_call_cleanup(open(Path, read, Stream, [type(binary)]),
+        read_string(Stream, _, Bytes),
         close(Stream)),
-    audit(Case, Report).
+    string_codes(Bytes,Octets),
+    ( phrase(utf8_text(Codes),Octets) -> string_codes(Text,Codes),audit_json(Text,Report)
+    ; invalid_report([issue{rule:input_error,target:input,
+        message:'The file must contain valid UTF-8 without overlong encodings or surrogate code points.'}],Report) ).
+
+% Decode bytes explicitly: permissive stream decoding can repair invalid UTF-8
+% before validation sees it. Accept only shortest encodings of Unicode scalars.
+utf8_text([C|Cs]) --> utf8_scalar(C), !, utf8_text(Cs).
+utf8_text([]) --> [].
+utf8_scalar(C) --> [C], {between(0,127,C)}, !.
+utf8_scalar(C) --> [A,B], {between(194,223,A),between(128,191,B),
+    C is (A-192)*64+B-128}, !.
+utf8_scalar(C) --> [A,B,D], {between(224,239,A),between(128,191,B),between(128,191,D),
+    (A=:=224 -> B>=160; A=:=237 -> B=<159; true),
+    C is (A-224)*4096+(B-128)*64+D-128}, !.
+utf8_scalar(C) --> [A,B,D,E], {between(240,244,A),between(128,191,B),
+    between(128,191,D),between(128,191,E),
+    (A=:=240 -> B>=144; A=:=244 -> B=<143; true),
+    C is (A-240)*262144+(B-128)*4096+(D-128)*64+E-128}.
+
+% Preserve JSON types until schema validation. Converting strings first loses
+% the distinction between the text "false" and the JSON Boolean false.
+audit_json(Text, Report) :-
+    catch(audit_json_checked(Text, Report), _,
+        invalid_report([issue{rule:input_error,target:input,
+            message:'Supply one strict JSON document with unique object keys and valid Unicode.'}],Report)).
+
+audit_json_checked(Text, Report) :-
+    ( (string(Text);atom(Text)), string_codes(Text,Codes), phrase(json_document,Codes) -> true
+    ; throw(error(syntax_error(strict_json),audit_json/2)) ),
+    atom_json_dict(Text, Typed, [value_string_as(string),default_tag(data)]),
+    findall(I,schema_issue(json,case,Typed,case,I),Issues),
+    ( Issues == [] -> canonical(Typed,Case), audit(Case,Report)
+    ; invalid_report(Issues,Report) ).
+
+canonical(V,C) :-
+    ( string(V) -> atom_string(C,V)
+    ; is_dict(V) -> dict_pairs(V,Tag,Pairs),maplist(canonical_pair,Pairs,Converted),dict_pairs(C,Tag,Converted)
+    ; is_list(V) -> maplist(canonical,V,C)
+    ; C=V ).
+canonical_pair(K-V,K-C) :- canonical(V,C).
+
+% Syntax-only preflight: SWI's JSON reader intentionally accepts some extensions.
+% The same grammar guards native and WASM input; the library still decodes data.
+json_document --> json_space, json_value, json_space.
+json_space --> [C], {memberchk(C,[9,10,13,32])}, !, json_space.
+json_space --> [].
+json_value --> [123], !, json_space, json_members, [125].
+json_value --> [91], !, json_space, json_elements, [93].
+json_value --> [34], !, json_string.
+json_value --> [116,114,117,101], !.
+json_value --> [102,97,108,115,101], !.
+json_value --> [110,117,108,108], !.
+json_value --> json_number.
+json_members --> json_member, !, json_more_members.
+json_members --> [].
+json_member --> [34], json_string, json_space, [58], json_space, json_value, json_space.
+json_more_members --> [44], !, json_space, json_member, json_more_members.
+json_more_members --> [].
+json_elements --> json_value, !, json_space, json_more_elements.
+json_elements --> [].
+json_more_elements --> [44], !, json_space, json_value, json_space, json_more_elements.
+json_more_elements --> [].
+json_string --> [34], !.
+json_string --> [92], !, json_escape, json_string.
+json_string --> [C], {C>=32,C=\=34,C=\=92,\+between(55296,57343,C)}, json_string.
+json_escape --> [C], {memberchk(C,[34,92,47,98,102,110,114,116])}, !.
+json_escape --> [117], json_hex, json_hex, json_hex, json_hex.
+json_hex --> [C], {between(48,57,C);between(65,70,C);between(97,102,C)}.
+json_number --> json_minus, json_integer, json_fraction, json_exponent.
+json_minus --> [45], !.
+json_minus --> [].
+json_integer --> [48], !.
+json_integer --> [C], {between(49,57,C)}, json_digits.
+json_digits --> [C], {between(48,57,C)}, !, json_digits.
+json_digits --> [].
+json_fraction --> [46], !, json_digit, json_digits.
+json_fraction --> [].
+json_exponent --> [C], {memberchk(C,[69,101])}, !, json_sign, json_digit, json_digits.
+json_exponent --> [].
+json_sign --> [C], {memberchk(C,[43,45])}, !.
+json_sign --> [].
+json_digit --> [C], {between(48,57,C)}.
 
 verdict(C, Verdict) :-
     Kind = C.outcome.kind,
-    ( Kind == retain_brief -> Verdict = no_finding
-    ; Kind == test -> Verdict = ready_for_test
-    ; Verdict = ready_for_decision ).
+    ( Kind == retain_brief -> Verdict = awaiting_closure_review
+    ; Kind == test -> Verdict = awaiting_test_review
+    ; Verdict = awaiting_change_review ).
 
 schema(case, [id-text,mode-enum([consulting,coaching]),coaching_invited-boolean,
     brief-text,desired_result-text,owner-text,lenses-list(text),ordinary-object(ordinary),
@@ -66,33 +159,38 @@ schema(test, [method-text,observation-text,status-enum([untested,survived,defeat
 schema(outcome, [kind-enum([retain_brief,test,change]),action-text,reason-text,
     reading_ids-list(text),stop_rule-text]).
 
-schema_issue(Type, Value, Path, Issue) :-
+schema_issue(Type, Value, Path, Issue) :- schema_issue(prolog,Type,Value,Path,Issue).
+schema_issue(Format, Type, Value, Path, Issue) :-
     ( is_dict(Value) ->
         schema(Type, Fields),
         ( member(Key-Spec, Fields), path(Path, Key, Child),
-          ( get_dict(Key, Value, V) -> value_issue(Spec, V, Child, Issue)
+          ( get_dict(Key, Value, V) -> value_issue(Format, Spec, V, Child, Issue)
           ; Issue = issue{rule:missing_field,target:Child,message:'Required field missing.'} )
         ; dict_pairs(Value, _, Pairs), member(Key-_, Pairs),
           \+ memberchk(Key-_, Fields), path(Path, Key, Child),
           Issue = issue{rule:unknown_field,target:Child,message:'Unrecognized field; check spelling.'} )
     ; Issue = issue{rule:invalid_type,target:Path,message:'Expected an object.'} ).
 
-value_issue(object(Type), V, Path, I) :- schema_issue(Type, V, Path, I).
-value_issue(list(Spec), V, Path, I) :-
-    ( is_list(V) -> nth1(Index,V,Item), path(Path,Index,Child), value_issue(Spec,Item,Child,I)
+value_issue(Format, object(Type), V, Path, I) :- schema_issue(Format, Type, V, Path, I).
+value_issue(Format, list(Spec), V, Path, I) :-
+    ( is_list(V) -> nth1(Index,V,Item), path(Path,Index,Child), value_issue(Format,Spec,Item,Child,I)
     ; I = issue{rule:invalid_type,target:Path,message:'Expected an array.'} ).
-value_issue(text, V, Path, I) :-
-    \+ nonblank_atom(V),
+value_issue(Format, text, V, Path, I) :-
+    \+ nonblank_text(Format,V),
     I = issue{rule:invalid_text,target:Path,message:'Expected nonblank text.'}.
-value_issue(boolean, V, Path, I) :-
+value_issue(_, boolean, V, Path, I) :-
     \+ memberchk(V,[true,false]),
     I = issue{rule:invalid_boolean,target:Path,message:'Expected true or false.'}.
-value_issue(enum(Allowed), V, Path, I) :-
-    \+ memberchk(V,Allowed),
+value_issue(Format, enum(Allowed), V, Path, I) :-
+    \+ enum_value(Format,V,Allowed),
     format(atom(Message),'Expected one of ~w.',[Allowed]),
     I = issue{rule:invalid_status,target:Path,message:Message}.
 
 nonblank_atom(V) :- atom(V), normalize_space(atom(Text),V), Text \== ''.
+nonblank_text(prolog,V) :- nonblank_atom(V).
+nonblank_text(json,V) :- string(V),normalize_space(string(Text),V),Text \== "".
+enum_value(prolog,V,Allowed) :- memberchk(V,Allowed).
+enum_value(json,V,Allowed) :- string(V),atom_string(A,V),memberchk(A,Allowed).
 path(Parent, Key, Path) :- format(atom(Path),'~w.~w',[Parent,Key]).
 
 reference_issue(C, issue{rule:duplicate_id,target:Target,message:'IDs must be unique.'}) :-

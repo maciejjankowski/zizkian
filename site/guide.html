@@ -1,6 +1,6 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian: a field guide | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/guide.html"><link rel="stylesheet" href="assets/site.css?v=7ef9b038e6fa"><script src="assets/site.js?v=91285f59182b" defer></script><script src="https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.min.js" defer></script><script src="assets/diagrams.js?v=cf10443694c8" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
-<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.2.0.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.2.0.zip">Download source</a></p><p id="diagram-status" class="note" role="status">Diagrams render when the pinned Mermaid script is available. Editable sources remain below.</p>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian: a field guide | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/guide.html"><link rel="stylesheet" href="assets/site.css?v=82009040954d"><script src="assets/site.js?v=c9f2ca28fe61" defer></script><script src="https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.min.js" defer></script><script src="assets/diagrams.js?v=41967f7a59a6" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
+<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.3.0.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.3.0.zip">Download source</a></p><p id="diagram-status" class="note" role="status">Diagrams render when the pinned Mermaid script is available. Editable sources remain below.</p>
 <h1 id="the-zizkian-a-field-guide">The Zizkian: a field guide</h1>
 
 <p><strong>One word: refutable.</strong> A reading must be able to lose its place in the decision.</p>
@@ -13,129 +13,99 @@
 
 <h2 id="1-the-map-question-to-choice">1. The map: question to choice</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart TD
-    A[User's brief and desired result] --&gt; B[Name the decision owner and real constraints]
-    B --&gt; C[State the strongest ordinary explanation]
-    C --&gt; D[Select relevant lenses]
-    D --&gt; E[Offer a rejectable reading]
-    E --&gt; F[Name a defeating observation]
-    F --&gt; G[Return cut on the analyst's own framing]
-    G --&gt; H[Review evidence and participant authority]
-    H --&gt; I{What is warranted?}
-    I --&gt;|Only a hypothesis| T[Propose a test]
-    I --&gt;|Supported reading| V[Consider a decision change]
-    I --&gt;|No useful finding| N[Retain the brief and close]
-    T --&gt; O[Owner, action and stop rule]
-    V --&gt; O
-    N --&gt; O
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
+    A["User's brief&lt;br/&gt;and desired result"] --&gt; B["Owner and&lt;br/&gt;real constraints"]
+    B --&gt; C["Strongest ordinary&lt;br/&gt;explanation"]
+    C --&gt; D["Relevant lenses&lt;br/&gt;and rejectable reading"]
+    D --&gt; E["What observation&lt;br/&gt;would defeat it?"]
+    E --&gt; F["Return cut:&lt;br/&gt;analyst's own payoff"]
+    F --&gt; G["Review evidence&lt;br/&gt;and participant authority"]
+    G --&gt; H["Owned choice:&lt;br/&gt;test, change, or retain brief"]
+    H --&gt; I["Action, owner&lt;br/&gt;and stop rule"]
 </pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart TD
-    A[User's brief and desired result] --&gt; B[Name the decision owner and real constraints]
-    B --&gt; C[State the strongest ordinary explanation]
-    C --&gt; D[Select relevant lenses]
-    D --&gt; E[Offer a rejectable reading]
-    E --&gt; F[Name a defeating observation]
-    F --&gt; G[Return cut on the analyst's own framing]
-    G --&gt; H[Review evidence and participant authority]
-    H --&gt; I{What is warranted?}
-    I --&gt;|Only a hypothesis| T[Propose a test]
-    I --&gt;|Supported reading| V[Consider a decision change]
-    I --&gt;|No useful finding| N[Retain the brief and close]
-    T --&gt; O[Owner, action and stop rule]
-    V --&gt; O
-    N --&gt; O
+    A["User's brief&lt;br/&gt;and desired result"] --&gt; B["Owner and&lt;br/&gt;real constraints"]
+    B --&gt; C["Strongest ordinary&lt;br/&gt;explanation"]
+    C --&gt; D["Relevant lenses&lt;br/&gt;and rejectable reading"]
+    D --&gt; E["What observation&lt;br/&gt;would defeat it?"]
+    E --&gt; F["Return cut:&lt;br/&gt;analyst's own payoff"]
+    F --&gt; G["Review evidence&lt;br/&gt;and participant authority"]
+    G --&gt; H["Owned choice:&lt;br/&gt;test, change, or retain brief"]
+    H --&gt; I["Action, owner&lt;br/&gt;and stop rule"]
 </code></pre></details></figure>
 
 <p>No finding is an ordinary destination. A quiet conclusion is not an invitation to invent another veil.</p>
 
 <h2 id="2-selection-lenses-earn-their-place">2. Selection: lenses earn their place</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
-    A{Whose question?} --&gt;|Business decision| B[Consulting: 1 to 3 lenses]
-    A --&gt;|Invited personal reflection| C[Coaching: one lens]
-    B --&gt; B1[Customer Advocate or Constraint Hunter]
-    B --&gt; B2[Incentive Detective or Economic Examiner]
-    B --&gt; B3[Cannibal or Operator]
-    C --&gt; C1[Mirror or Pattern Archaeologist]
-    C --&gt; C2[Identity Explorer or Agency Auditor]
-    C --&gt; C3[Boundary Engineer or Choice Architect]
-    B --&gt; V[Veil Piercer when the premise needs examination]
-    C --&gt; V
-    V --&gt; R[Critique the observer's framing too]
-</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart LR
-    A{Whose question?} --&gt;|Business decision| B[Consulting: 1 to 3 lenses]
-    A --&gt;|Invited personal reflection| C[Coaching: one lens]
-    B --&gt; B1[Customer Advocate or Constraint Hunter]
-    B --&gt; B2[Incentive Detective or Economic Examiner]
-    B --&gt; B3[Cannibal or Operator]
-    C --&gt; C1[Mirror or Pattern Archaeologist]
-    C --&gt; C2[Identity Explorer or Agency Auditor]
-    C --&gt; C3[Boundary Engineer or Choice Architect]
-    B --&gt; V[Veil Piercer when the premise needs examination]
-    C --&gt; V
-    V --&gt; R[Critique the observer's framing too]
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
+    A{"Whose&lt;br/&gt;question?"} --&gt;|Business| B["Consulting&lt;br/&gt;1 to 3 lenses"]
+    A --&gt;|Invited| C["Coaching&lt;br/&gt;one lens"]
+    B --&gt; D["Choose distinct&lt;br/&gt;useful questions"]
+    C --&gt; D
+    D --&gt; V["Examine a premise?&lt;br/&gt;Consider Veil Piercer"]
+    V --&gt; R["Inspect your own&lt;br/&gt;framing and payoff"]
+</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart TD
+    A{"Whose&lt;br/&gt;question?"} --&gt;|Business| B["Consulting&lt;br/&gt;1 to 3 lenses"]
+    A --&gt;|Invited| C["Coaching&lt;br/&gt;one lens"]
+    B --&gt; D["Choose distinct&lt;br/&gt;useful questions"]
+    C --&gt; D
+    D --&gt; V["Examine a premise?&lt;br/&gt;Consider Veil Piercer"]
+    V --&gt; R["Inspect your own&lt;br/&gt;framing and payoff"]
 </code></pre></details></figure>
 
-<p>These branches are available choices, not a requirement to activate every box. One business lens may suffice. The numeric attention matrix remains conceptual and excluded from decision authority.</p>
+<p>The complete <a href="consulting.html">consulting</a> and <a href="coaching.html">coaching</a> libraries name the available lenses. These branches are choices, not a requirement to activate every lens. One business lens may suffice. The numeric attention matrix remains conceptual and excluded from decision authority.</p>
 
 <h2 id="3-evidence-what-can-support-what">3. Evidence: what can support what?</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
-    O[Sourced observation in the record] --&gt; S[Declared support for a reading]
-    S --&gt; E[Eligibility check]
-    A[Attention weight] --&gt; X[Cannot support a reading]
-    R[Participant rejection] --&gt; X
-    Q[Participant acceptance] --&gt; P[Authority to explore a coaching step]
-    Q --&gt; Y[Does not replace observation evidence]
-    C[Declared counterevidence] --&gt; W[Withdraw or revise a supported reading]
-    F[Observed defeating test] --&gt; W
-    E --&gt; D[Possible basis for a decision]
-</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart LR
-    O[Sourced observation in the record] --&gt; S[Declared support for a reading]
-    S --&gt; E[Eligibility check]
-    A[Attention weight] --&gt; X[Cannot support a reading]
-    R[Participant rejection] --&gt; X
-    Q[Participant acceptance] --&gt; P[Authority to explore a coaching step]
-    Q --&gt; Y[Does not replace observation evidence]
-    C[Declared counterevidence] --&gt; W[Withdraw or revise a supported reading]
-    F[Observed defeating test] --&gt; W
-    E --&gt; D[Possible basis for a decision]
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
+    E["Declared evidence item"] --&gt; K{"Declared&lt;br/&gt;observation?"}
+    K --&gt;|Yes| S["Possible&lt;br/&gt;support"]
+    K --&gt;|No| X["Weight or refusal:&lt;br/&gt;no active support"]
+    S --&gt; H["Human review:&lt;br/&gt;source and relevance"]
+    X --&gt; H
+    H --&gt; C["Supported plus counterevidence:&lt;br/&gt;withdraw or revise"]
+    C --&gt; F["Test declared defeated:&lt;br/&gt;withdraw active reading"]
+    F --&gt; A["Invited coaching:&lt;br/&gt;acceptance for next step,&lt;br/&gt;never observation evidence"]
+    A --&gt; D["Possible basis&lt;br/&gt;for human choice"]
+</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart TD
+    E["Declared evidence item"] --&gt; K{"Declared&lt;br/&gt;observation?"}
+    K --&gt;|Yes| S["Possible&lt;br/&gt;support"]
+    K --&gt;|No| X["Weight or refusal:&lt;br/&gt;no active support"]
+    S --&gt; H["Human review:&lt;br/&gt;source and relevance"]
+    X --&gt; H
+    H --&gt; C["Supported plus counterevidence:&lt;br/&gt;withdraw or revise"]
+    C --&gt; F["Test declared defeated:&lt;br/&gt;withdraw active reading"]
+    F --&gt; A["Invited coaching:&lt;br/&gt;acceptance for next step,&lt;br/&gt;never observation evidence"]
+    A --&gt; D["Possible basis&lt;br/&gt;for human choice"]
 </code></pre></details></figure>
 
 <p>The program checks IDs, declared kinds and relationships. It cannot establish that an observation is genuine or relevant. In particular, a sentence marked <code>observation</code> is not automatically evidence of a hidden motive.</p>
 
 <h2 id="4-the-executable-gate">4. The executable gate</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart TD
-    J[One JSON case] --&gt; S{Schema and references valid?}
-    S --&gt;|No| I[invalid: repair input, exit 2]
-    S --&gt;|Yes| R[Evaluate every reasoning rule]
-    R --&gt; B{Any violations?}
-    B --&gt;|Yes| X[blocked: named violations, exit 1]
-    B --&gt;|No| P[pass: exit 0]
-    P --&gt; K{Declared outcome}
-    K --&gt;|retain_brief| N[no_finding]
-    K --&gt;|test| T[ready_for_test]
-    K --&gt;|change| D[ready_for_decision]
-    P --&gt; W[Keep warnings for untested checks]
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
+    J["JSON case"] --&gt; S{"Shape and&lt;br/&gt;references valid?"}
+    S --&gt;|No| I["Repair input&lt;br/&gt;invalid, exit 2"]
+    S --&gt;|Yes| R["Evaluate&lt;br/&gt;all reasoning rules"]
+    R --&gt; B{"Any&lt;br/&gt;violations?"}
+    B --&gt;|Yes| X["Revise record&lt;br/&gt;blocked, exit 1"]
+    B --&gt;|No| P["Fields pass&lt;br/&gt;exit 0"]
+    P --&gt; W["Awaiting human review:&lt;br/&gt;closure, test or change&lt;br/&gt;Keep untested warnings"]
 </pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart TD
-    J[One JSON case] --&gt; S{Schema and references valid?}
-    S --&gt;|No| I[invalid: repair input, exit 2]
-    S --&gt;|Yes| R[Evaluate every reasoning rule]
-    R --&gt; B{Any violations?}
-    B --&gt;|Yes| X[blocked: named violations, exit 1]
-    B --&gt;|No| P[pass: exit 0]
-    P --&gt; K{Declared outcome}
-    K --&gt;|retain_brief| N[no_finding]
-    K --&gt;|test| T[ready_for_test]
-    K --&gt;|change| D[ready_for_decision]
-    P --&gt; W[Keep warnings for untested checks]
+    J["JSON case"] --&gt; S{"Shape and&lt;br/&gt;references valid?"}
+    S --&gt;|No| I["Repair input&lt;br/&gt;invalid, exit 2"]
+    S --&gt;|Yes| R["Evaluate&lt;br/&gt;all reasoning rules"]
+    R --&gt; B{"Any&lt;br/&gt;violations?"}
+    B --&gt;|Yes| X["Revise record&lt;br/&gt;blocked, exit 1"]
+    B --&gt;|No| P["Fields pass&lt;br/&gt;exit 0"]
+    P --&gt; W["Awaiting human review:&lt;br/&gt;closure, test or change&lt;br/&gt;Keep untested warnings"]
 </code></pre></details></figure>
 
 <p><code>pass</code> means the supplied record satisfies the encoded rules. It does not certify a recommendation, source, consent, causal explanation or model output.</p>
 
 <h2 id="5-a-reading-can-change-state">5. A reading can change state</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">stateDiagram-v2
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">stateDiagram-v2
     [*] --&gt; Hypothesis
     Hypothesis --&gt; Supported: declared observation support
     Hypothesis --&gt; Withdrawn: defeating result or abandoned reading
@@ -155,7 +125,7 @@
 
 <h2 id="6-wwzs-without-an-interpretation-trap">6. WWZS? without an interpretation trap</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">sequenceDiagram
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">sequenceDiagram
     participant U as User
     participant A as Analyst
     participant C as Checker
@@ -187,7 +157,7 @@
 
 <h2 id="7-the-return-cut-has-an-exit">7. The return cut has an exit</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart TD
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
     A[My interpretation] --&gt; B[What do I gain from this reading?]
     B --&gt; C[Hypothesis about my framing, or no finding]
     C --&gt; D[What would defeat that self-reading?]
@@ -221,20 +191,20 @@
 
 <p>This is a finite witness of a property of our encoded method. It is not proof that the fictional diagnosis is true, that every prose interpretation is empirically falsifiable, or that the toolkit improves decisions.</p>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
-    A[Supported fictional reading] --&gt; B[pass: ready_for_decision]
-    B --&gt; C[Instruction alone performs as well]
-    C --&gt; D[Old reading remains supported]
-    D --&gt; E[blocked: defeated_reading]
-    E --&gt; F[Withdraw reading and retain brief]
-    F --&gt; G[pass: no_finding]
-</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart LR
-    A[Supported fictional reading] --&gt; B[pass: ready_for_decision]
-    B --&gt; C[Instruction alone performs as well]
-    C --&gt; D[Old reading remains supported]
-    D --&gt; E[blocked: defeated_reading]
-    E --&gt; F[Withdraw reading and retain brief]
-    F --&gt; G[pass: no_finding]
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
+    A["Fictional reading&lt;br/&gt;declares support"] --&gt; B["Fields pass:&lt;br/&gt;awaiting change review"]
+    B --&gt; C["Instruction alone&lt;br/&gt;performs as well"]
+    C --&gt; D["Old reading&lt;br/&gt;remains supported"]
+    D --&gt; E["Blocked:&lt;br/&gt;defeated_reading"]
+    E --&gt; F["Withdraw reading&lt;br/&gt;and retain brief"]
+    F --&gt; G["Fields pass:&lt;br/&gt;awaiting closure review"]
+</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart TD
+    A["Fictional reading&lt;br/&gt;declares support"] --&gt; B["Fields pass:&lt;br/&gt;awaiting change review"]
+    B --&gt; C["Instruction alone&lt;br/&gt;performs as well"]
+    C --&gt; D["Old reading&lt;br/&gt;remains supported"]
+    D --&gt; E["Blocked:&lt;br/&gt;defeated_reading"]
+    E --&gt; F["Withdraw reading&lt;br/&gt;and retain brief"]
+    F --&gt; G["Fields pass:&lt;br/&gt;awaiting closure review"]
 </code></pre></details></figure>
 
 <p>The decisive Prolog rule is:</p>
@@ -251,7 +221,7 @@
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swipl <span class="nt">-q</span> <span class="nt">-s</span> proof/refutable.pl
 </code></pre></div></div>
 
-<p>It loads <code>supported.json</code>, <code>defeated.json</code> and <code>withdrawn.json</code>, checks the required outcomes and prints the three reports. The <code>defeated_reading</code> rule appears in the middle report; the last report returns <code>no_finding</code>.</p>
+<p>It loads <code>supported.json</code>, <code>defeated.json</code> and <code>withdrawn.json</code>, checks the required outcomes and prints the three reports. The <code>defeated_reading</code> rule appears in the middle report; the last report returns <code>awaiting_closure_review</code>.</p>
 
 <h2 id="9-usage-begin-with-an-honest-unknown">9. Usage: begin with an honest unknown</h2>
 
@@ -260,9 +230,9 @@
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swipl <span class="nt">-q</span> <span class="nt">-s</span> src/check.pl <span class="nt">--</span> examples/hypothesis.json
 </code></pre></div></div>
 
-<p>Expected: <code>pass</code>, <code>ready_for_test</code>, with warnings for the untested ordinary explanation and falsifier. This licenses no claim that the redesign is necessary. The next step is to obtain evidence.</p>
+<p>Expected: <code>pass</code>, <code>awaiting_test_review</code>, with warnings for the untested ordinary explanation and falsifier. This licenses no claim that the redesign is necessary. The next step is to obtain evidence.</p>
 
-<p>The fictional <code>supported.json</code> later supplies a declared observation and a check of ordinary instruction. It passes as <code>ready_for_decision</code>. Human review must still decide whether that observation supports the claimed mechanism and whether the proposed action is proportionate.</p>
+<p>The fictional <code>supported.json</code> later supplies a declared observation and a check of ordinary instruction. It passes as <code>awaiting_change_review</code>. Human review must still decide whether that observation supports the claimed mechanism and whether the proposed action is proportionate.</p>
 
 <h2 id="10-usage-accept-an-ordinary-answer">10. Usage: accept an ordinary answer</h2>
 
@@ -271,7 +241,7 @@
 <div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>swipl <span class="nt">-q</span> <span class="nt">-s</span> src/check.pl <span class="nt">--</span> examples/no-finding.json
 </code></pre></div></div>
 
-<p>Expected: <code>pass</code>, <code>no_finding</code>. No readings are required to fill a format.</p>
+<p>Expected: <code>pass</code>, <code>awaiting_closure_review</code>. No readings are required to fill a format.</p>
 
 <h2 id="11-usage-refuse-a-coaching-trap">11. Usage: refuse a coaching trap</h2>
 
@@ -315,11 +285,11 @@
     </tr>
     <tr>
       <td data-label="Exercise">2</td>
-      <td data-label="Expected result or criterion">Mark <code>r1</code> withdrawn; use <code>retain_brief</code>; clear <code>outcome.reading_ids</code>; expected <code>pass / no_finding</code></td>
+      <td data-label="Expected result or criterion">Mark <code>r1</code> withdrawn; use <code>retain_brief</code>; clear <code>outcome.reading_ids</code>; expected <code>pass / awaiting_closure_review</code></td>
     </tr>
     <tr>
       <td data-label="Exercise">3</td>
-      <td data-label="Expected result or criterion"><code>pass / ready_for_test</code>; warnings stay until observations are actually recorded</td>
+      <td data-label="Expected result or criterion"><code>pass / awaiting_test_review</code>; warnings stay until observations are actually recorded</td>
     </tr>
     <tr>
       <td data-label="Exercise">4</td>
@@ -356,21 +326,21 @@
 
 <h2 id="14-what-the-checker-cannot-protect-you-from">14. What the checker cannot protect you from</h2>
 
-<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
-    A[Real evidence and conversation] --&gt; B[Human encoding of a record]
-    B --&gt; C[Prolog structural checks]
-    C --&gt; D[Human review of relevance and authority]
-    D --&gt; E[Owned test or decision]
-    X[Fabricated evidence or weak falsifier] --&gt; B
-    X --&gt; Y[May remain structurally valid]
+<figure><figcaption>Readable labels. Swipe a wide chart inside this panel, or fit the whole diagram as an overview.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Fit entire diagram</button><pre class="mermaid">flowchart TD
+    A["Real evidence&lt;br/&gt;and conversation"] --&gt; B["Human encoding&lt;br/&gt;of a record"]
+    B --&gt; C["Prolog checks&lt;br/&gt;declared structure"]
+    C --&gt; D["Human review:&lt;br/&gt;relevance and authority"]
+    D --&gt; E["Owned test&lt;br/&gt;or decision"]
+    X["False evidence&lt;br/&gt;or weak test"] --&gt; B
+    X --&gt; Y["May pass&lt;br/&gt;structural checks"]
     Y --&gt; D
-</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart LR
-    A[Real evidence and conversation] --&gt; B[Human encoding of a record]
-    B --&gt; C[Prolog structural checks]
-    C --&gt; D[Human review of relevance and authority]
-    D --&gt; E[Owned test or decision]
-    X[Fabricated evidence or weak falsifier] --&gt; B
-    X --&gt; Y[May remain structurally valid]
+</pre><details><summary>Editable Mermaid source</summary><pre><code>flowchart TD
+    A["Real evidence&lt;br/&gt;and conversation"] --&gt; B["Human encoding&lt;br/&gt;of a record"]
+    B --&gt; C["Prolog checks&lt;br/&gt;declared structure"]
+    C --&gt; D["Human review:&lt;br/&gt;relevance and authority"]
+    D --&gt; E["Owned test&lt;br/&gt;or decision"]
+    X["False evidence&lt;br/&gt;or weak test"] --&gt; B
+    X --&gt; Y["May pass&lt;br/&gt;structural checks"]
     Y --&gt; D
 </code></pre></details></figure>
 
@@ -379,4 +349,4 @@
 <p>Use the guide as an inquiry and review aid [1 SPECULATIVE | design proposal]. If that use is wrong, the earliest signal is more time and more compelling explanations with no better evidence, no changed test and no participant-owned action. Keep the result that survives; retire the machinery that does not.</p>
 
 <p>Implementation: <a href="checker.html">checker contract</a>. The executable examples use SWI-Prolog’s <a href="https://www.swi-prolog.org/pldoc/man?section=json">JSON dict interface</a> and <a href="https://www.swi-prolog.org/pldoc/doc_for?object=section('packages/plunit.html')">PlUnit</a>.</p>
-</main><footer><p>Maciej Jankowski · The Zizkian 0.2.0 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer></body></html>
+</main><footer><p>Maciej Jankowski · The Zizkian 0.3.0 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer></body></html>
