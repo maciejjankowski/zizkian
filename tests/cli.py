@@ -61,6 +61,31 @@ class CliTests(unittest.TestCase):
                 code, report = self.check_document(json.dumps(case, ensure_ascii=False))
                 self.assertEqual((code, report["status"]), (0, "pass"))
 
+    def test_json_surrogate_pairs_and_literal_backslashes(self):
+        case = json.loads((ROOT / "examples/supported.json").read_text())
+        for value in [chr(0x10000), chr(0x10ffff), "😀", r"\ud83d\ude00", r"\ud800", 'Quote " slash \\']:
+            with self.subTest(value=repr(value)):
+                case["owner"] = "Owner " + value
+                for escaped in [True, False]:
+                    code, report = self.check_document(json.dumps(case, ensure_ascii=escaped))
+                    self.assertEqual((code, report["status"]), (0, "pass"))
+        for escape in [r"\ud800", r"\udfff", r"\ud800\ud800", r"\udfff\ud800", r"\ud800x\udc00", r"\ud800\u0041"]:
+            with self.subTest(escape=escape):
+                code, report = self.check_document('{"owner":"' + escape + '"}')
+                self.assertEqual((code, report["status"]), (2, "invalid"))
+                self.assertIn("input_error", [v["rule"] for v in report["violations"]])
+
+    def test_unicode_normalizer_preserves_literal_text(self):
+        content = r'{"owner":"\ud83d\ude00 \\ud83d\\ude00 \u0041 \n \\\""}'
+        goal = ('string_codes(' + json.dumps(content) + ',Input),'
+                'phrase(zizkian:json_unicode(Output),Input),'
+                'string_codes(Text,Output),atom_json_dict(Text,Dict,[value_string_as(string)]),'
+                'atom_json_dict(Out,Dict,[]),writeln(Out)')
+        result = subprocess.run(["swipl", "-q", "-s", str(ROOT / "src/zizkian.pl"),
+                                 "-g", goal, "-t", "halt"], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertEqual(json.loads(result.stdout), json.loads(content))
+
     def test_strict_json_syntax(self):
         content = (ROOT / "examples/supported.json").read_text().strip()
         malformed = ["\ufeff" + content, content[:-1] + ",}",

@@ -33,6 +33,9 @@ accepted. JSON text fields must be strings, invitations must be actual Booleans,
 and status fields must contain one of the named strings. Parsing retains types
 until schema validation; the text `"false"` cannot become an invitation Boolean.
 Native files and the browser worker call this same predicate.
+Valid supplementary-character escapes are normalized before the library parses
+them, including on older SWI-Prolog libraries without surrogate-pair support.
+Literal backslashes remain literal, and malformed pairs remain invalid.
 
 `audit/2` is the direct Prolog API: it accepts a ground dict with atom text values
 and grounded dict tags. It has no knowledge of the original JSON encoding.
@@ -51,7 +54,7 @@ defaults. Evidence and reading IDs must be unique, and references must resolve.
 Passing verdicts are `awaiting_closure_review`, `awaiting_test_review` and `awaiting_change_review`.
 They request review of the declared outcome; none authorizes an action. Every
 report, including errors, contains `scope: "declared_record_only"`,
-`evidence_verified: false`, `schema_version: "0.3.0"` and `human_review_required`.
+`evidence_verified: false`, `schema_version: "0.3.1"` and `human_review_required`.
 That list covers source authenticity, relevance, test discrimination, the ordinary
 alternative's strength, participant authority, analyst payoff and the decision
 to stop. It lists work still required, not checks that the program performed.
@@ -63,7 +66,7 @@ untested alternatives and falsifiers.
 
 All listed fields are required. See the complete examples rather than inventing
 an incomplete record. `schema/2` in [zizkian.pl](../src/zizkian.pl) is the executable schema.
-The downloadable [JSON shape schema](../schema/record-0.3.0.schema.json) is generated
+The downloadable [JSON shape schema](../schema/record-0.3.1.schema.json) is generated
 from `schema/2`. It describes field types and status vocabularies, not nonblank
 text, reference validity or reasoning constraints. Use the checker for those.
 
@@ -148,7 +151,7 @@ Input field names and status vocabularies are unchanged. Inputs that relied on
 string Booleans, literal control characters, trailing commas or a BOM are now
 invalid. Serialize valid JSON instead of relying on parser extensions.
 
-| Old passing verdict | 0.3.0 verdict |
+| Old passing verdict | 0.3.1 verdict |
 |---|---|
 | `no_finding` | `awaiting_closure_review` |
 | `ready_for_test` | `awaiting_test_review` |

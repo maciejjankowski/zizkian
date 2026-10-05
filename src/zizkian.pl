@@ -16,7 +16,7 @@ audit(Case, Report) :-
     audit_record(Case, Raw), report_metadata(Raw, Report).
 
 report_metadata(Raw, Report) :-
-    Report = Raw.put(_{schema_version:'0.3.0',scope:declared_record_only,
+    Report = Raw.put(_{schema_version:'0.3.1',scope:declared_record_only,
         evidence_verified:false,
         human_review_required:[source_authenticity,evidence_relevance,
             test_discrimination,ordinary_explanation_strength,
@@ -82,7 +82,9 @@ audit_json(Text, Report) :-
 audit_json_checked(Text, Report) :-
     ( (string(Text);atom(Text)), string_codes(Text,Codes), phrase(json_document,Codes) -> true
     ; throw(error(syntax_error(strict_json),audit_json/2)) ),
-    atom_json_dict(Text, Typed, [value_string_as(string),default_tag(data)]),
+    ( phrase(json_unicode(Normalized),Codes) -> string_codes(Json,Normalized)
+    ; throw(error(syntax_error(unicode_scalar),audit_json/2)) ),
+    atom_json_dict(Json, Typed, [value_string_as(string),default_tag(data)]),
     findall(I,schema_issue(json,case,Typed,case,I),Issues),
     ( Issues == [] -> canonical(Typed,Case), audit(Case,Report)
     ; invalid_report(Issues,Report) ).
@@ -93,6 +95,25 @@ canonical(V,C) :-
     ; is_list(V) -> maplist(canonical,V,C)
     ; C=V ).
 canonical_pair(K-V,K-C) :- canonical(V,C).
+
+% Old SWI JSON libraries lack surrogate-pair decoding. Normalize genuine Unicode
+% escapes after syntax validation, preserving all other escapes as whole units.
+json_unicode(Codes) --> [92,117,A,B,C,D],
+    {hex_value(A,VA),hex_value(B,VB),hex_value(C,VC),hex_value(D,VD),
+     High is VA*4096+VB*256+VC*16+VD}, !,
+    ( {between(55296,56319,High)} ->
+        [92,117],json_hex_value(Low),{between(56320,57343,Low),
+        Scalar is 65536+(High-55296)*1024+Low-56320,
+        Codes=[Scalar|Rest]},json_unicode(Rest)
+    ; {between(56320,57343,High)} -> {fail}
+    ; {Codes=[92,117,A,B,C,D|Rest]},json_unicode(Rest) ).
+json_unicode([92,C|Cs]) --> [92,C], !, json_unicode(Cs).
+json_unicode([C|Cs]) --> [C], !, json_unicode(Cs).
+json_unicode([]) --> [].
+json_hex_value(Value) --> [A,B,C,D],
+    {hex_value(A,VA),hex_value(B,VB),hex_value(C,VC),hex_value(D,VD),
+     Value is VA*4096+VB*256+VC*16+VD}.
+hex_value(C,V) :- (between(48,57,C)->V is C-48;between(65,70,C)->V is C-55;between(97,102,C)->V is C-87).
 
 % Syntax-only preflight: SWI's JSON reader intentionally accepts some extensions.
 % The same grammar guards native and WASM input; the library still decodes data.

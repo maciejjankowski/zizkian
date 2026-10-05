@@ -18,11 +18,11 @@
     "site/assets/vendor/swipl-8.2.1/swipl-web.wasm": "c8831c0ac6a021b6bc67fa1b86e8826d1ea92a1a81b932cfb88fea235361c355"
   },
   "_renderer": {
-    "scripts/render_site.py": "9d21a0fe01e71d46fe757ad5c09268f76016f705883b53951b0d40c6e071a3b0",
+    "scripts/render_site.py": "f37b095011d59ef85c1417a53acb1ef2755138f9dec31cc59c4e033cf1ceebca",
     "site/.htaccess": "77dc2c63f065ef89bdbed2897eb37cd34d84447661fbc09cdef97bbeac9bdc19"
   },
   "checker.html": {
-    "docs/checker.md": "763a37255ec3ed4131366c59fb2341917204bee9f91dce7545ffce55e881a228"
+    "docs/checker.md": "b9a7e81f62ca155d32d786cb82f43d3ed290bb386bf76df13d309951bc25f0d2"
   },
   "coaching.html": {
     "prompts/coaching.md": "fc425797fa23a59cc0a27fd78af2ae21c2c5d48e98a55675986a5d70cdad41af"
@@ -43,10 +43,10 @@
     "examples/defeated.json": "0e3d5e54f0b6380b70b15dba06bb22f46ec066899fc5e8d6cef57cc2c54b0876",
     "examples/supported.json": "268bb8367f2eed023ae72dd6a44d3873f43bfe0570a8ce734d318e7024c08de3",
     "examples/withdrawn.json": "23365ff433f14467aa580e1b143f0aa0a7246ace50a5db3cd5fe5526b4ba1754",
-    "scripts/render_site.py": "9d21a0fe01e71d46fe757ad5c09268f76016f705883b53951b0d40c6e071a3b0",
-    "site/index.template.html": "e9bb8fd8d074e2c6de3617ddf349c7b6bd45000abed11be33ccac81458c12f3f",
+    "scripts/render_site.py": "f37b095011d59ef85c1417a53acb1ef2755138f9dec31cc59c4e033cf1ceebca",
+    "site/index.template.html": "38a82d8ea6cb97014524c02faea738662daa7e8d6e432841d23002b020a02a94",
     "src/check.pl": "ba2060f15367b3280ee0d1b7080566950861ef74a4c11fa649510a462f192527",
-    "src/zizkian.pl": "c5613a775ba92e2b589d9d04d84694253b6b1d681bcdd485c4aec1cbd1b66ab4"
+    "src/zizkian.pl": "0de5388c317cc6dc490c11ae19574c3b27de9418cd608351f5398e00595c3322"
   },
   "lab.html": {
     "examples/defeated.json": "0e3d5e54f0b6380b70b15dba06bb22f46ec066899fc5e8d6cef57cc2c54b0876",
@@ -57,9 +57,9 @@
     "examples/rejection-trap.json": "0ff6409db6dc8c295d39c66d9b5072f129cf1301799cbed8cdb7cf24b00070bf",
     "examples/supported.json": "268bb8367f2eed023ae72dd6a44d3873f43bfe0570a8ce734d318e7024c08de3",
     "examples/withdrawn.json": "23365ff433f14467aa580e1b143f0aa0a7246ace50a5db3cd5fe5526b4ba1754",
-    "scripts/render_site.py": "9d21a0fe01e71d46fe757ad5c09268f76016f705883b53951b0d40c6e071a3b0",
+    "scripts/render_site.py": "f37b095011d59ef85c1417a53acb1ef2755138f9dec31cc59c4e033cf1ceebca",
     "site/lab.template.html": "c542a90b54bb5e42156ff21d7c0c9776e83e31f7ddb0114181928fb96cdf19bf",
-    "src/zizkian.pl": "c5613a775ba92e2b589d9d04d84694253b6b1d681bcdd485c4aec1cbd1b66ab4"
+    "src/zizkian.pl": "0de5388c317cc6dc490c11ae19574c3b27de9418cd608351f5398e00595c3322"
   },
   "licensing-polemic.html": {
     "docs/licensing-polemic.md": "546f6b204d4067c60a4040ea904bd64c559f7dd6e99d7766294db032b7bb2d94"
@@ -74,7 +74,7 @@
     "docs/provenance.md": "478a905abc994939f25a41495895664cd6abdfe10059411842bba745696cf75f"
   },
   "publishing.html": {
-    "docs/publishing.md": "9debcdf0eb3b8d31ef00f2bc0408687455f02dbf7cbff059509661008504d561"
+    "docs/publishing.md": "5512d032bc3bf6ad3d18dc1012ba15630ad7400044e96e78749a63bce5d33499"
   },
   "wwzs.html": {
     "prompts/wwzs.md": "df334298a6e39ad8819edd9d3e83baa057690aa26d718c2fbc0fae03fc6651dd"

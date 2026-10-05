@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian logic checker | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/checker.html"><link rel="stylesheet" href="assets/site.css?v=82009040954d"><script src="assets/site.js?v=c9f2ca28fe61" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
-<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.3.0.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.3.0.zip">Download source</a></p><h1 id="the-zizkian-logic-checker">The Zizkian logic checker</h1>
+<header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="lab.html">Try the lab</a><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.3.1.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.3.1.zip">Download source</a></p><h1 id="the-zizkian-logic-checker">The Zizkian logic checker</h1>
 
 <p><a href="lab.html">Try the editable browser lab</a>. It runs this same module using
 SWI-Prolog WebAssembly in a worker. Records stay in the tab; the lab does not
@@ -32,7 +32,10 @@ Valid surrogate pairs, ordinary Unicode and escaped control characters are
 accepted. JSON text fields must be strings, invitations must be actual Booleans,
 and status fields must contain one of the named strings. Parsing retains types
 until schema validation; the text <code>"false"</code> cannot become an invitation Boolean.
-Native files and the browser worker call this same predicate.</p>
+Native files and the browser worker call this same predicate.
+Valid supplementary-character escapes are normalized before the library parses
+them, including on older SWI-Prolog libraries without surrogate-pair support.
+Literal backslashes remain literal, and malformed pairs remain invalid.</p>
 
 <p><code>audit/2</code> is the direct Prolog API: it accepts a ground dict with atom text values
 and grounded dict tags. It has no knowledge of the original JSON encoding.
@@ -72,7 +75,7 @@ defaults. Evidence and reading IDs must be unique, and references must resolve.<
 <p>Passing verdicts are <code>awaiting_closure_review</code>, <code>awaiting_test_review</code> and <code>awaiting_change_review</code>.
 They request review of the declared outcome; none authorizes an action. Every
 report, including errors, contains <code>scope: "declared_record_only"</code>,
-<code>evidence_verified: false</code>, <code>schema_version: "0.3.0"</code> and <code>human_review_required</code>.
+<code>evidence_verified: false</code>, <code>schema_version: "0.3.1"</code> and <code>human_review_required</code>.
 That list covers source authenticity, relevance, test discrimination, the ordinary
 alternative’s strength, participant authority, analyst payoff and the decision
 to stop. It lists work still required, not checks that the program performed.
@@ -84,7 +87,7 @@ untested alternatives and falsifiers.</p>
 
 <p>All listed fields are required. See the complete examples rather than inventing
 an incomplete record. <code>schema/2</code> in <a href="src/zizkian.pl">zizkian.pl</a> is the executable schema.
-The downloadable <a href="schema/record-0.3.0.schema.json">JSON shape schema</a> is generated
+The downloadable <a href="schema/record-0.3.1.schema.json">JSON shape schema</a> is generated
 from <code>schema/2</code>. It describes field types and status vocabularies, not nonblank
 text, reference validity or reasoning constraints. Use the checker for those.</p>
 
@@ -284,21 +287,21 @@ invalid. Serialize valid JSON instead of relying on parser extensions.</p>
   <thead>
     <tr>
       <th>Old passing verdict</th>
-      <th>0.3.0 verdict</th>
+      <th>0.3.1 verdict</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td data-label="Old passing verdict"><code>no_finding</code></td>
-      <td data-label="0.3.0 verdict"><code>awaiting_closure_review</code></td>
+      <td data-label="0.3.1 verdict"><code>awaiting_closure_review</code></td>
     </tr>
     <tr>
       <td data-label="Old passing verdict"><code>ready_for_test</code></td>
-      <td data-label="0.3.0 verdict"><code>awaiting_test_review</code></td>
+      <td data-label="0.3.1 verdict"><code>awaiting_test_review</code></td>
     </tr>
     <tr>
       <td data-label="Old passing verdict"><code>ready_for_decision</code></td>
-      <td data-label="0.3.0 verdict"><code>awaiting_change_review</code></td>
+      <td data-label="0.3.1 verdict"><code>awaiting_change_review</code></td>
     </tr>
   </tbody>
 </table></div>
@@ -313,4 +316,4 @@ metadata and keep its scope visible when displaying or forwarding a result.</p>
 <p>Treat structural passage as a review aid [1 SPECULATIVE | no outcome benchmark].
 If that use is wrong, the first signal is a misleading record passing despite a
 human reviewer finding unsupported conclusions or an unusable defeating test.</p>
-</main><footer><p>Maciej Jankowski · The Zizkian 0.3.0 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer></body></html>
+</main><footer><p>Maciej Jankowski · The Zizkian 0.3.1 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer></body></html>

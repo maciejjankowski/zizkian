@@ -14,8 +14,8 @@ python3 scripts/build_release.py
 python3 scripts/validate_release.py
 ```
 
-`dist/zizkian-0.3.0.zip` is a self-contained source archive.
-`dist/zizkian-site-0.3.0.zip` contains a `zizkian/` static publication subtree.
+`dist/zizkian-0.3.1.zip` is a self-contained source archive.
+`dist/zizkian-site-0.3.1.zip` contains a `zizkian/` static publication subtree.
 `dist/zizkian/` is that same subtree, including a source download and checksums.
 No server, model, credentials or database are required by the package.
 

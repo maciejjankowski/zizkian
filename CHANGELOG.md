@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 - 2026-10-06
+
+Normalize valid JSON surrogate pairs before decoding so older SWI-Prolog JSON
+libraries accept the same supplementary Unicode characters as newer releases
+and the browser runtime. Reject isolated or malformed pairs explicitly and
+preserve literal backslash text. Regression checks cover raw/escaped scalar
+boundaries and the normalizer's output values.
+
 ## 0.3.0 - 2026-10-06
 
 Validate JSON strings and Booleans before conversion through a shared strict
