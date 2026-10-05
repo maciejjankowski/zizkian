@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian: a field guide | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/guide.html"><link rel="stylesheet" href="assets/site.css?v=248bad48cf2f"><script src="assets/site.js?v=91285f59182b" defer></script><script src="https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.min.js" defer></script><script src="assets/diagrams.js?v=a99669dc03fe" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Zizkian: a field guide | The Zizkian</title><meta name="description" content="A framework for readings that can lose. Method, executable Prolog rules, examples and noncommercial licensing."><meta name="author" content="Maciej Jankowski"><link rel="canonical" href="https://maciejjankowski.com/zizkian/guide.html"><link rel="stylesheet" href="assets/site.css?v=ed98efec1ea4"><script src="assets/site.js?v=91285f59182b" defer></script><script src="https://cdn.jsdelivr.net/npm/mermaid@12.1.0/dist/mermaid.min.js" defer></script><script src="assets/diagrams.js?v=cf10443694c8" defer></script></head><body><a class="skip" href="#main">Skip to content</a>
 <header><div class="header-inner"><a class="brand" href="index.html" aria-label="The Zizkian home"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M3 4h26L8 28h21M3 28L29 4" fill="none" stroke="currentColor" stroke-width="3"/></svg>The Zizkian</a><button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menu</button><nav id="navigation" aria-label="Main"><a href="guide.html">Field guide</a><a href="checker.html">Checker</a><a href="licensing-polemic.html">Why noncommercial?</a><a href="downloads/zizkian-0.1.0.zip">Source package</a></nav></div></header><main id="main" class="doc"><p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.1.0.zip">Download source</a></p><p id="diagram-status" class="note" role="status">Diagrams render when the pinned Mermaid script is available. Editable sources remain below.</p>
 <h1 id="the-zizkian-a-field-guide">The Zizkian: a field guide</h1>
 
@@ -13,7 +13,7 @@
 
 <h2 id="1-the-map-question-to-choice">1. The map: question to choice</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart TD
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart TD
     A[User's brief and desired result] --&gt; B[Name the decision owner and real constraints]
     B --&gt; C[State the strongest ordinary explanation]
     C --&gt; D[Select relevant lenses]
@@ -49,7 +49,7 @@
 
 <h2 id="2-selection-lenses-earn-their-place">2. Selection: lenses earn their place</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart LR
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
     A{Whose question?} --&gt;|Business decision| B[Consulting: 1 to 3 lenses]
     A --&gt;|Invited personal reflection| C[Coaching: one lens]
     B --&gt; B1[Customer Advocate or Constraint Hunter]
@@ -79,7 +79,7 @@
 
 <h2 id="3-evidence-what-can-support-what">3. Evidence: what can support what?</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart LR
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
     O[Sourced observation in the record] --&gt; S[Declared support for a reading]
     S --&gt; E[Eligibility check]
     A[Attention weight] --&gt; X[Cannot support a reading]
@@ -105,7 +105,7 @@
 
 <h2 id="4-the-executable-gate">4. The executable gate</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart TD
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart TD
     J[One JSON case] --&gt; S{Schema and references valid?}
     S --&gt;|No| I[invalid: repair input, exit 2]
     S --&gt;|Yes| R[Evaluate every reasoning rule]
@@ -135,7 +135,7 @@
 
 <h2 id="5-a-reading-can-change-state">5. A reading can change state</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">stateDiagram-v2
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">stateDiagram-v2
     [*] --&gt; Hypothesis
     Hypothesis --&gt; Supported: declared observation support
     Hypothesis --&gt; Withdrawn: defeating result or abandoned reading
@@ -155,7 +155,7 @@
 
 <h2 id="6-wwzs-without-an-interpretation-trap">6. WWZS? without an interpretation trap</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">sequenceDiagram
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">sequenceDiagram
     participant U as User
     participant A as Analyst
     participant C as Checker
@@ -187,7 +187,7 @@
 
 <h2 id="7-the-return-cut-has-an-exit">7. The return cut has an exit</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart TD
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart TD
     A[My interpretation] --&gt; B[What do I gain from this reading?]
     B --&gt; C[Hypothesis about my framing, or no finding]
     C --&gt; D[What would defeat that self-reading?]
@@ -221,7 +221,7 @@
 
 <p>This is a finite witness of a property of our encoded method. It is not proof that the fictional diagnosis is true, that every prose interpretation is empirically falsifiable, or that the toolkit improves decisions.</p>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart LR
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
     A[Supported fictional reading] --&gt; B[pass: ready_for_decision]
     B --&gt; C[Instruction alone performs as well]
     C --&gt; D[Old reading remains supported]
@@ -356,7 +356,7 @@
 
 <h2 id="14-what-the-checker-cannot-protect-you-from">14. What the checker cannot protect you from</h2>
 
-<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">flowchart LR
+<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">flowchart LR
     A[Real evidence and conversation] --&gt; B[Human encoding of a record]
     B --&gt; C[Prolog structural checks]
     C --&gt; D[Human review of relevance and authority]

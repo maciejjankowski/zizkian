@@ -70,7 +70,7 @@ def transform(body):
     body = re.sub(r'href="([^"]+)"', rewrite_link, body)
     def diagram(match):
         source = match.group(1)
-        return '<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">' + source + '</pre><details><summary>Editable Mermaid source</summary><pre><code>' + source + '</code></pre></details></figure>'
+        return '<figure><figcaption>Fits the page width. Enlarge to inspect details.</figcaption><button class="diagram-size" type="button" aria-pressed="false" hidden>Enlarge diagram</button><pre class="mermaid">' + source + '</pre><details><summary>Editable Mermaid source</summary><pre><code>' + source + '</code></pre></details></figure>'
     body = re.sub(r'<pre><code class="language-mermaid">(.*?)</code></pre>', diagram, body, flags=re.S)
     def table(match):
         value = match.group(0)

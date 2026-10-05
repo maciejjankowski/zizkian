@@ -13,7 +13,7 @@ model router, ratings and commercial services.
 Reviewed viewports: default desktop browser (1288px wide); phone 390x844.
 Review on 2026-10-05 through the local HTTP QA server: proof transitions,
 phone menu closure and table labels, nine rendered diagrams with source panels,
-and horizontal chart scrolling without page overflow. Static assets have content
+and diagrams fitted to page width with optional enlargement for detail. Static assets have content
 hashes in their URLs so updated rendering reaches returning readers.
 Public-domain browser review was denied by browser permissions. This local
 review does not claim a full accessibility audit or cross-browser coverage.
