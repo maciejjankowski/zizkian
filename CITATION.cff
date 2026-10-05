@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "Cite the version and preserve its experimental status."
+type: software
+title: "The Zizkian: a framework for readings that can lose"
+version: 0.1.0
+date-released: 2026-10-05
+authors:
+  - family-names: Jankowski
+    given-names: Maciej
+url: "https://maciejjankowski.com/zizkian/"
+repository-code: "https://github.com/maciejjankowski/zizkian"
+license:
+  - PolyForm-Noncommercial-1.0.0
+  - CC-BY-NC-SA-4.0
+abstract: "An experimental reasoning-record method and Prolog checker with explicit alternatives, defeaters, observer critique, participant authority and no-finding closure. No comparative efficacy claim."

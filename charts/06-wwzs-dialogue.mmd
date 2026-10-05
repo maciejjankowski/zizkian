@@ -1,0 +1,13 @@
+sequenceDiagram
+    participant U as User
+    participant A as Analyst
+    participant C as Checker
+    U->>A: Here is the question and desired result
+    A->>U: Here is the ordinary explanation
+    A->>U: WWZS? Here is a tentative alternative reading
+    U->>A: I reject that interpretation
+    A->>A: Examine my claim and interests
+    A->>U: Drop it, test a different claim, or close?
+    A->>C: Submit the agreed record
+    C-->>A: Rule results and remaining unknowns
+    A-->>U: Short next step or no finding

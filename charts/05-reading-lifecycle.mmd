@@ -1,0 +1,7 @@
+stateDiagram-v2
+    [*] --> Hypothesis
+    Hypothesis --> Supported: declared observation support
+    Hypothesis --> Withdrawn: defeating result or abandoned reading
+    Supported --> Withdrawn: defeating result or unresolved counterevidence
+    Supported --> Supported: test survives, scope remains limited
+    Withdrawn --> [*]: retain brief or pursue a different reading

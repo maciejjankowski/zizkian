@@ -1,0 +1,37 @@
+name: The Zizkian
+version: 1
+status: proposed_attention_profiles_not_empirically_calibrated
+purpose: Make the consulting and coaching lenses' allocation of attention inspectable.
+implementation: Advisory representation of Markdown prompts; no automatic model routing or numeric diagnosis.
+professional_use: Excluded from client recommendations. Retained as a conceptual illustration at the author's request, not evidence or an operating model.
+scale:
+  0: background
+  1: secondary
+  2: primary
+dimensions: [premise, incentive, agency, identity, value, time, alternative, decision]
+profiles:
+  veil_piercer:       [2, 1, 1, 2, 1, 0, 2, 1]
+  customer_advocate:  [1, 1, 0, 0, 2, 1, 2, 2]
+  constraint_hunter:  [1, 1, 1, 0, 1, 2, 1, 2]
+  incentive_detective: [1, 2, 2, 1, 2, 1, 1, 1]
+  economic_examiner:  [1, 1, 0, 0, 2, 2, 2, 2]
+  cannibal:          [2, 1, 1, 0, 2, 2, 2, 1]
+  operator:          [0, 1, 2, 0, 1, 2, 1, 2]
+  mirror:            [2, 0, 1, 1, 1, 0, 1, 0]
+  pattern_archaeologist: [1, 1, 1, 1, 0, 2, 2, 0]
+  identity_explorer: [1, 1, 1, 2, 1, 1, 2, 0]
+  agency_auditor:    [1, 1, 2, 1, 1, 1, 2, 2]
+  boundary_engineer: [1, 1, 2, 1, 1, 1, 1, 2]
+  choice_architect:  [1, 1, 2, 1, 1, 2, 2, 2]
+invariants:
+  - Weights indicate question priority, not truth, probability, quality or model-training parameters.
+  - Background does not suppress relevant evidence or a real constraint.
+  - Evidence, strongest alternative and participant authority are not tradeable weights.
+  - Inquiry and return cut can produce no warranted finding; evidence gates inversion.
+  - If no supported reason to reframe is found, retain the original brief.
+  - Rejection cannot become evidence of hidden motives; no finding permits closure.
+  - The Veil Piercer requires a return cut including the critic's own interests.
+  - Personal motives remain rejectable hypotheses; no numeric personality diagnosis.
+  - Select a small relevant set; disagreement is preserved rather than averaged away.
+revision_rule: Change profiles only with a recorded rationale; challenge the chosen axes as well as the values.
+early_failure_signal: Attention scores are presented as evidence, or more elaborate analysis changes no test or decision.

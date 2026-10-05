@@ -1,0 +1,42 @@
+{
+  "id": "onboarding-no-finding",
+  "mode": "consulting",
+  "coaching_invited": false,
+  "brief": "Improve onboarding",
+  "desired_result": "New users complete the first task",
+  "owner": "Product lead",
+  "lenses": [
+    "constraint_hunter",
+    "veil_piercer"
+  ],
+  "ordinary": {
+    "claim": "Clear instruction may be sufficient",
+    "check": "Observe first-task completion after instruction",
+    "status": "checked",
+    "evidence": [
+      "e2"
+    ]
+  },
+  "return_cut": {
+    "observer": "Analyst",
+    "statement": "I benefit from selling a redesign",
+    "defeater": "Instruction alone achieves first-task completion",
+    "status": "hypothesis"
+  },
+  "evidence": [
+    {
+      "id": "e2",
+      "statement": "In a later fictional comparison, instruction alone performed as well",
+      "source": "Fictional comparison B; no real participants",
+      "kind": "observation"
+    }
+  ],
+  "readings": [],
+  "outcome": {
+    "kind": "retain_brief",
+    "action": "Keep clear instruction",
+    "reason": "The proposed inversion was defeated",
+    "reading_ids": [],
+    "stop_rule": "Reconsider if instruction alone performs as well"
+  }
+}

@@ -1,0 +1,8 @@
+flowchart LR
+    A[Real evidence and conversation] --> B[Human encoding of a record]
+    B --> C[Prolog structural checks]
+    C --> D[Human review of relevance and authority]
+    D --> E[Owned test or decision]
+    X[Fabricated evidence or weak falsifier] --> B
+    X --> Y[May remain structurally valid]
+    Y --> D

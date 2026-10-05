@@ -1,0 +1,12 @@
+flowchart TD
+    J[One JSON case] --> S{Schema and references valid?}
+    S -->|No| I[invalid: repair input, exit 2]
+    S -->|Yes| R[Evaluate every reasoning rule]
+    R --> B{Any violations?}
+    B -->|Yes| X[blocked: named violations, exit 1]
+    B -->|No| P[pass: exit 0]
+    P --> K{Declared outcome}
+    K -->|retain_brief| N[no_finding]
+    K -->|test| T[ready_for_test]
+    K -->|change| D[ready_for_decision]
+    P --> W[Keep warnings for untested checks]

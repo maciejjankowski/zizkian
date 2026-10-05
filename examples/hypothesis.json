@@ -1,0 +1,50 @@
+{
+  "id": "onboarding-hypothesis",
+  "mode": "consulting",
+  "coaching_invited": false,
+  "brief": "Improve onboarding",
+  "desired_result": "New users complete the first task",
+  "owner": "Product lead",
+  "lenses": [
+    "constraint_hunter",
+    "veil_piercer"
+  ],
+  "ordinary": {
+    "claim": "Clear instruction may be sufficient",
+    "check": "Observe first-task completion after instruction",
+    "status": "untested",
+    "evidence": []
+  },
+  "return_cut": {
+    "observer": "Analyst",
+    "statement": "I benefit from selling a redesign",
+    "defeater": "Instruction alone achieves first-task completion",
+    "status": "hypothesis"
+  },
+  "evidence": [],
+  "readings": [
+    {
+      "id": "r1",
+      "claim": "Flow complexity prevents first-task completion",
+      "status": "hypothesis",
+      "response": "unasked",
+      "support": [],
+      "counterevidence": [],
+      "defeat_test": {
+        "method": "Compare instruction with a simpler flow",
+        "observation": "Instruction alone performs as well as the simpler flow",
+        "status": "untested",
+        "evidence": []
+      }
+    }
+  ],
+  "outcome": {
+    "kind": "test",
+    "action": "Run the comparison",
+    "reason": "The reading is an untested hypothesis",
+    "reading_ids": [
+      "r1"
+    ],
+    "stop_rule": "Reconsider if instruction alone performs as well"
+  }
+}

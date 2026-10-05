@@ -1,0 +1,50 @@
+{
+  "_renderer": {
+    "scripts/render_site.py": "9e2a725fce980c74d636bb8d309bbd55fd19fb1bf5fe0478bf015dd2c83d9a2c"
+  },
+  "checker.html": {
+    "docs/checker.md": "41b2286202d0e81435c98299f60d46c1f2926595472263f2bb3dc94e040b382c"
+  },
+  "coaching.html": {
+    "prompts/coaching.md": "8ac27731046ed419b9c658efec78e2897dab501857cfce43092b9ced3d4fecf5"
+  },
+  "consulting.html": {
+    "prompts/consulting.md": "6e912aa575f835c285f7febc94b3edad1d2d6f3f9235995e2db900e6c15279aa"
+  },
+  "essay.html": {
+    "docs/essay.md": "126f48cf98aa90cc7c56ca9c67b1138eaa6a16387e5b4b81bfff547b9e649980"
+  },
+  "evaluation.html": {
+    "docs/evaluation.md": "22f672665d8277be1c747bd14fcf2b1ddbe41b34608411d08f9944168e83bcb5"
+  },
+  "guide.html": {
+    "docs/guide.md": "31e6b5c4c95260bff5d0ad41b567ec15af901980b46557306d55230e297ec525"
+  },
+  "index.html": {
+    "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
+    "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
+    "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
+    "scripts/render_site.py": "9e2a725fce980c74d636bb8d309bbd55fd19fb1bf5fe0478bf015dd2c83d9a2c",
+    "site/index.template.html": "63dc92ef9d4bf43eefa54060c6e210c4bccd466c891009738cc473f3e62a6fd3",
+    "src/check.pl": "fe10a04252b7d74fcc73ee6934ee8c1dcae7f753761a0b53ef1446dd70298bf1",
+    "src/zizkian.pl": "e9363ca2875b1364db455a812c9e0c91d223795daed1a84e7213ec553943f5c1"
+  },
+  "licensing-polemic.html": {
+    "docs/licensing-polemic.md": "546f6b204d4067c60a4040ea904bd64c559f7dd6e99d7766294db032b7bb2d94"
+  },
+  "licensing.html": {
+    "docs/licensing.md": "1ba2548b8683efc607d9bd6d69d2f2b1ad35ecf7da7707bf49936d579942d7f9"
+  },
+  "method.html": {
+    "docs/method.md": "6dc3dd90761f68d4972695cefb204443e07d47cc19650f956020d118808f587d"
+  },
+  "provenance.html": {
+    "docs/provenance.md": "a07bf125713ccdec46f826d14e0af025bd695fda7ac72e37aa0fb07690a9fdd8"
+  },
+  "publishing.html": {
+    "docs/publishing.md": "9d59c0bda8de1960f86e560ce1a07e38944d7ead42b23e746a6c7b6e94d5073c"
+  },
+  "wwzs.html": {
+    "prompts/wwzs.md": "df334298a6e39ad8819edd9d3e83baa057690aa26d718c2fbc0fae03fc6651dd"
+  }
+}

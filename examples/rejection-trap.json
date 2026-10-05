@@ -1,0 +1,58 @@
+{
+  "id": "coaching-rejection-trap",
+  "mode": "coaching",
+  "coaching_invited": true,
+  "brief": "I want to delegate",
+  "desired_result": "A participant-owned next step",
+  "owner": "Product lead",
+  "lenses": [
+    "identity_explorer"
+  ],
+  "ordinary": {
+    "claim": "Understaffing may prevent delegation",
+    "check": "Ask about actual staffing and process knowledge",
+    "status": "untested",
+    "evidence": []
+  },
+  "return_cut": {
+    "observer": "Analyst",
+    "statement": "I benefit from selling a redesign",
+    "defeater": "Instruction alone achieves first-task completion",
+    "status": "hypothesis"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "statement": "Participant says the interpretation is wrong",
+      "source": "Fictional conversation",
+      "kind": "participant_rejection"
+    }
+  ],
+  "readings": [
+    {
+      "id": "r1",
+      "claim": "They secretly want to remain indispensable",
+      "status": "supported",
+      "response": "rejected",
+      "support": [
+        "e1"
+      ],
+      "counterevidence": [],
+      "defeat_test": {
+        "method": "Ask what a supported handoff requires",
+        "observation": "They delegate once staffing is available",
+        "status": "untested",
+        "evidence": []
+      }
+    }
+  ],
+  "outcome": {
+    "kind": "test",
+    "action": "Ask them to challenge their need to be indispensable",
+    "reason": "Their disagreement is treated as confirmation",
+    "reading_ids": [
+      "r1"
+    ],
+    "stop_rule": "Reconsider if instruction alone performs as well"
+  }
+}

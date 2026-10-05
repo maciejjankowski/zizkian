@@ -1,0 +1,17 @@
+name: Check the Zizkian
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  records-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - name: Install runner dependencies
+        run: sudo apt-get update && sudo apt-get install -y swi-prolog-nox python3
+      - name: Check rules and CLI
+        run: sh test.sh
+      - name: Build release files
+        run: python3 scripts/build_release.py
+      - name: Validate package and website
+        run: python3 scripts/validate_release.py

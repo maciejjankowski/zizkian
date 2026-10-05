@@ -1,0 +1,22 @@
+The Zizkian 0.1.0
+Required Notice: Copyright 2026 Maciej Jankowski (https://maciejjankowski.com)
+
+Code in src/, proof/, tests/, scripts/, test.sh, .gitignore, .github/, and executable
+JavaScript/CSS/HTML presentation code in site/ is offered under the unmodified
+PolyForm Noncommercial License 1.0.0. See LICENSE-CODE.md and:
+https://polyformproject.org/licenses/noncommercial/1.0.0
+
+Authored prose, docs/, prompts/, charts/, fictional example content in examples/,
+and explanatory prose/diagram content in site/ are offered under Creative Commons
+Attribution-NonCommercial-ShareAlike 4.0 International. See LICENSE-DOCS.md and:
+https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.en
+
+In mixed HTML documents, the program/presentation code and the explanatory
+content retain these respective scopes. Quoted code snippets retain the code
+license. Third-party dependencies and third-party source material retain their
+own terms. A link to a dependency does not relicense that dependency.
+
+No commercial license is offered by this public release. Any legal exception
+or use not requiring the licensor's permission remains governed by applicable
+law and the standard license texts. The project's polemic is an ethical position,
+not an additional license condition or a warranty about legal enforcement.

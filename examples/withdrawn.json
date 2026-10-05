@@ -1,0 +1,67 @@
+{
+  "id": "onboarding-withdrawn",
+  "mode": "consulting",
+  "coaching_invited": false,
+  "brief": "Improve onboarding",
+  "desired_result": "New users complete the first task",
+  "owner": "Product lead",
+  "lenses": [
+    "constraint_hunter",
+    "veil_piercer"
+  ],
+  "ordinary": {
+    "claim": "Clear instruction may be sufficient",
+    "check": "Observe first-task completion after instruction",
+    "status": "checked",
+    "evidence": [
+      "e1"
+    ]
+  },
+  "return_cut": {
+    "observer": "Analyst",
+    "statement": "I benefit from selling a redesign",
+    "defeater": "Instruction alone achieves first-task completion",
+    "status": "hypothesis"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "statement": "In this fictional comparison, users still failed after clear instruction",
+      "source": "Fictional comparison A; no real participants",
+      "kind": "observation"
+    },
+    {
+      "id": "e2",
+      "statement": "In a later fictional comparison, instruction alone performed as well",
+      "source": "Fictional comparison B; no real participants",
+      "kind": "observation"
+    }
+  ],
+  "readings": [
+    {
+      "id": "r1",
+      "claim": "Flow complexity prevents first-task completion",
+      "status": "withdrawn",
+      "response": "unasked",
+      "support": [
+        "e1"
+      ],
+      "counterevidence": [],
+      "defeat_test": {
+        "method": "Compare instruction with a simpler flow",
+        "observation": "Instruction alone performs as well as the simpler flow",
+        "status": "defeated",
+        "evidence": [
+          "e2"
+        ]
+      }
+    }
+  ],
+  "outcome": {
+    "kind": "retain_brief",
+    "action": "Keep clear instruction",
+    "reason": "The proposed inversion was defeated",
+    "reading_ids": [],
+    "stop_rule": "Reconsider if instruction alone performs as well"
+  }
+}
