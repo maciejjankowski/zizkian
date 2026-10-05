@@ -1,7 +1,12 @@
 % SPDX-License-Identifier: PolyForm-Noncommercial-1.0.0
 % Required Notice: Copyright 2026 Maciej Jankowski (https://maciejjankowski.com)
 :- module(zizkian, [audit/2, audit_file/2]).
+% Native SWI calls this library http/json; its WASM distribution calls it json.
+:- if(exists_source(library(http/json))).
 :- use_module(library(http/json)).
+:- else.
+:- use_module(library(json)).
+:- endif.
 :- use_module(library(lists)).
 
 % The Zizkian: inspect a declared reasoning record, never infer hidden motives.

@@ -26,6 +26,8 @@ citations or client endorsements.
 Technical primary sources used:
 
 - [SWI-Prolog JSON interface](https://www.swi-prolog.org/pldoc/man?section=json)
+- [Official SWI-Prolog WASM package](https://github.com/SWI-Prolog/npm-swipl-wasm)
+- [Calling SWI-Prolog from JavaScript](https://www.swi-prolog.org/pldoc/man?section=wasm-calling)
 - [SWI-Prolog PlUnit](https://www.swi-prolog.org/pldoc/doc_for?object=section('packages/plunit.html'))
 - [Mermaid syntax](https://mermaid.js.org/intro/syntax-reference.html)
 - [MIT notes used for the architectural Hamiltonian analogy](https://ocw.mit.edu/courses/22-02-introduction-to-applied-nuclear-physics-spring-2012/b5106a499ae03e36b5a2e002355668f9_MIT22_02S12_lec_ch6.pdf)

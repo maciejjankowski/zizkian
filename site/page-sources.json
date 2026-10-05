@@ -1,14 +1,27 @@
 {
   "_assets": {
+    "site/assets/checker-engine.js": "d7b7ec0a04204f13efc9327f51808c261026d7e49c1e76de4dec7f0e5c85bfb7",
     "site/assets/diagrams.js": "cf10443694c8607c0dce868aea1d4d7ad69fc5a6d7fc1161e031f6316af6a3a2",
-    "site/assets/site.css": "ed98efec1ea4071fc2be34725d0251f9688b688dd8ceee072033051b62e2b7b7",
-    "site/assets/site.js": "91285f59182ba6bcba34d0d49b73eeec17891c2fa924f64fdd1437ade6730fad"
+    "site/assets/lab-worker.js": "47e5a354a4493d490c8c76f19dfbc75353753f3d2cd809b07805f19e89879dfd",
+    "site/assets/lab.js": "de6cb79d714a1b39e2e9d2e3b4aaecd6ab1d9c6db84b9a4571f7c01f6757aa05",
+    "site/assets/site.css": "7ef9b038e6fa8ccf477ea737fa0fbf8c16b633f62aea6cae242ba28543b1d3f9",
+    "site/assets/site.js": "91285f59182ba6bcba34d0d49b73eeec17891c2fa924f64fdd1437ade6730fad",
+    "site/assets/vendor/swipl-8.2.1/EMSCRIPTEN-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "site/assets/vendor/swipl-8.2.1/LIBBF-NOTICE": "40a819e0f7075d68627602a320ae127780a8c4cb3199fc3544172ca85a25628e",
+    "site/assets/vendor/swipl-8.2.1/LICENSE.txt": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a",
+    "site/assets/vendor/swipl-8.2.1/PCRE2-LICENCE.md": "197d8a73ffee0d6b09adba2f9c677b5f5aede24edf89258a68e48248d010d811",
+    "site/assets/vendor/swipl-8.2.1/SWI-LICENSE": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a",
+    "site/assets/vendor/swipl-8.2.1/ZLIB-README": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f",
+    "site/assets/vendor/swipl-8.2.1/manifest.json": "a50965c67c390dd3d0bec4a05018f0e072addbb08337bcdc48dcf0d1a88db2e5",
+    "site/assets/vendor/swipl-8.2.1/swipl-web.data": "91e9d9c1d184f1a291c870e96bf6a1bc502ce8787946c966526a663a725ba932",
+    "site/assets/vendor/swipl-8.2.1/swipl-web.js": "635da02ac0eb18e51303e4a0398b220d17cabfc0e4b7a2acbc7af9e949e4a9c7",
+    "site/assets/vendor/swipl-8.2.1/swipl-web.wasm": "c8831c0ac6a021b6bc67fa1b86e8826d1ea92a1a81b932cfb88fea235361c355"
   },
   "_renderer": {
-    "scripts/render_site.py": "3c4bcdca96990cf2bd90dbf9adf8d4c61a268dbaaa9f9cd9d0e70cd96cd1f5b3"
+    "scripts/render_site.py": "10fbc4c10a40912d60ed95169bc8596c32396bbcf17b96ef1216dfa1a1215b3b"
   },
   "checker.html": {
-    "docs/checker.md": "41b2286202d0e81435c98299f60d46c1f2926595472263f2bb3dc94e040b382c"
+    "docs/checker.md": "2b96652da32ec08d7252aa3498b6978aeda833124c2484234f3f4bc21ca00e15"
   },
   "coaching.html": {
     "prompts/coaching.md": "8ac27731046ed419b9c658efec78e2897dab501857cfce43092b9ced3d4fecf5"
@@ -20,7 +33,7 @@
     "docs/essay.md": "126f48cf98aa90cc7c56ca9c67b1138eaa6a16387e5b4b81bfff547b9e649980"
   },
   "evaluation.html": {
-    "docs/evaluation.md": "22f672665d8277be1c747bd14fcf2b1ddbe41b34608411d08f9944168e83bcb5"
+    "docs/evaluation.md": "1a55c6e99abd077034fcf9225f4673d625b5ddc1b586d4ecfb1d1cd90a435202"
   },
   "guide.html": {
     "docs/guide.md": "31e6b5c4c95260bff5d0ad41b567ec15af901980b46557306d55230e297ec525"
@@ -29,10 +42,23 @@
     "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
     "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
     "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
-    "scripts/render_site.py": "3c4bcdca96990cf2bd90dbf9adf8d4c61a268dbaaa9f9cd9d0e70cd96cd1f5b3",
-    "site/index.template.html": "63dc92ef9d4bf43eefa54060c6e210c4bccd466c891009738cc473f3e62a6fd3",
-    "src/check.pl": "fe10a04252b7d74fcc73ee6934ee8c1dcae7f753761a0b53ef1446dd70298bf1",
-    "src/zizkian.pl": "e9363ca2875b1364db455a812c9e0c91d223795daed1a84e7213ec553943f5c1"
+    "scripts/render_site.py": "10fbc4c10a40912d60ed95169bc8596c32396bbcf17b96ef1216dfa1a1215b3b",
+    "site/index.template.html": "506949295fcd5bb0b83f4fc6629c500b9f27137d93ac9b0d619b8d945426ba2c",
+    "src/check.pl": "f45e96a97f9e972bc8d8c1b7ffcad7c4f807a53861bd7f944ad44cfa4522d5bb",
+    "src/zizkian.pl": "70339dde7354157d7c7f044c2ae347d017c4af76a5060d7daf9faa467302a173"
+  },
+  "lab.html": {
+    "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
+    "examples/false-evidence.json": "b3ca59c2fae38d5d4232ae9049181ec102ed4570c6692c1ee247f31f2441edbc",
+    "examples/incomplete.json": "92e1741c16640db3ecb014d98e22f0b7b5f8a08b49ec288681cae7d8b73808a3",
+    "examples/no-finding.json": "aa7a0df6b1ce7ec7b23302ad0bbd997d3392c517ed4013a2860d8e288cf7c195",
+    "examples/plausible-fabrication.json": "7917762c6771ff9a31aa38e5a826b86a3991265f0541ed254a7cc0b930017c99",
+    "examples/rejection-trap.json": "ece32668bdef702af2c2539e24de3916b04d5df72161d88cc323f9dcfd88e0f1",
+    "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
+    "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
+    "scripts/render_site.py": "10fbc4c10a40912d60ed95169bc8596c32396bbcf17b96ef1216dfa1a1215b3b",
+    "site/lab.template.html": "12472a1bb61ddd4087b1e107b4c1b6cd7e75e78e1cd8896b7f7f424a838b869d",
+    "src/zizkian.pl": "70339dde7354157d7c7f044c2ae347d017c4af76a5060d7daf9faa467302a173"
   },
   "licensing-polemic.html": {
     "docs/licensing-polemic.md": "546f6b204d4067c60a4040ea904bd64c559f7dd6e99d7766294db032b7bb2d94"
@@ -44,10 +70,10 @@
     "docs/method.md": "6dc3dd90761f68d4972695cefb204443e07d47cc19650f956020d118808f587d"
   },
   "provenance.html": {
-    "docs/provenance.md": "a07bf125713ccdec46f826d14e0af025bd695fda7ac72e37aa0fb07690a9fdd8"
+    "docs/provenance.md": "478a905abc994939f25a41495895664cd6abdfe10059411842bba745696cf75f"
   },
   "publishing.html": {
-    "docs/publishing.md": "9d59c0bda8de1960f86e560ce1a07e38944d7ead42b23e746a6c7b6e94d5073c"
+    "docs/publishing.md": "7db5bfc37177b60e47570a88d7d7ace9be068de4f8ee094da259a3eac14232c1"
   },
   "wwzs.html": {
     "prompts/wwzs.md": "df334298a6e39ad8819edd9d3e83baa057690aa26d718c2fbc0fae03fc6651dd"

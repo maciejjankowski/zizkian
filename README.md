@@ -10,11 +10,16 @@ The Zizkian combines a small question library with an executable Prolog checker.
 The checker makes selected omissions and contradictory declarations visible.
 It does not discover motives or establish that an explanation is true.
 
-Version **0.1.0**, experimental. Public home:
+Version **0.2.0**, experimental. Public home:
 **https://maciejjankowski.com/zizkian/**. Repository:
 **https://github.com/maciejjankowski/zizkian**.
 
 ## Try the first proof
+
+[Edit a reading in the browser lab](https://maciejjankowski.com/zizkian/lab.html).
+Run the actual rules locally using SWI-Prolog WebAssembly. No account or model is
+required. Try the deliberately fabricated evidence records: they pass the
+structural checks and demonstrate why a pass cannot establish truth.
 
 With SWI-Prolog already installed, run from this repository:
 
@@ -67,10 +72,14 @@ status, declared falsifiers, ordinary alternatives, participant invitation and
 closure. It excludes attention weights and participant rejection from support.
 It returns a complete violation list rather than an unexplained score.
 
-Six fixtures and 35 rule tests are included. CLI regression checks cover the
+Nine fixtures and 35 rule tests are included. CLI regression checks cover the
 fixtures, malformed inputs and operation outside the checkout directory.
 The attention matrix is a conceptual illustration; the checker does not use it.
 No model, network service or dispatcher is needed to run the checker.
+The browser worker has a five-second execution timeout and bounded JSON input.
+Node.js is required by the WASM/native parity tests, not by the native CLI.
+Vendored runtime components retain their own licenses; see
+[third-party notices](THIRD_PARTY_NOTICES.md).
 
 ## Run the checks and build the package
 

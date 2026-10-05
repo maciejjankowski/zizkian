@@ -15,7 +15,7 @@ main :-
 run([Path],Report,Code) :- !,
     audit_file(Path,Report), exit_code(Report.status,Code).
 run(_,_,_) :- throw(error(domain_error(arguments,
-    'Usage: swipl -q -s tools/zizkian/check.pl -- case.json'),main/0)).
+    'Usage: swipl -q -s src/check.pl -- case.json'),main/0)).
 
 exit_code(pass,0).
 exit_code(blocked,1).

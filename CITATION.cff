@@ -2,7 +2,7 @@ cff-version: 1.2.0
 message: "Cite the version and preserve its experimental status."
 type: software
 title: "The Zizkian: a framework for readings that can lose"
-version: 0.1.0
+version: 0.2.0
 date-released: 2026-10-05
 authors:
   - family-names: Jankowski

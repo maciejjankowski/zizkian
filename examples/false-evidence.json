@@ -1,0 +1,63 @@
+{
+  "id": "false-evidence",
+  "mode": "consulting",
+  "coaching_invited": false,
+  "brief": "Improve onboarding",
+  "desired_result": "New users complete the first task",
+  "owner": "Product lead",
+  "lenses": [
+    "constraint_hunter",
+    "veil_piercer"
+  ],
+  "ordinary": {
+    "claim": "Clear instruction may be sufficient",
+    "check": "Observe first-task completion after instruction",
+    "status": "checked",
+    "evidence": [
+      "e1"
+    ]
+  },
+  "return_cut": {
+    "observer": "Analyst",
+    "statement": "I benefit from selling a redesign",
+    "defeater": "Instruction alone achieves first-task completion",
+    "status": "hypothesis"
+  },
+  "evidence": [
+    {
+      "id": "e1",
+      "statement": "The cafeteria has blue chairs. This has no relationship to onboarding.",
+      "source": "Deliberately irrelevant fictional observation",
+      "kind": "observation"
+    }
+  ],
+  "readings": [
+    {
+      "id": "r1",
+      "claim": "Flow complexity prevents first-task completion",
+      "status": "supported",
+      "response": "unasked",
+      "support": [
+        "e1"
+      ],
+      "counterevidence": [],
+      "defeat_test": {
+        "method": "Compare instruction with a simpler flow",
+        "observation": "Instruction alone performs as well as the simpler flow",
+        "status": "survived",
+        "evidence": [
+          "e1"
+        ]
+      }
+    }
+  ],
+  "outcome": {
+    "kind": "change",
+    "action": "Trial a simpler flow",
+    "reason": "The declared record supports a flow problem",
+    "reading_ids": [
+      "r1"
+    ],
+    "stop_rule": "Reconsider if instruction alone performs as well"
+  }
+}

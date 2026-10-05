@@ -58,7 +58,7 @@ def main():
     check_prebuilt()
     public = DIST / "zizkian"
     pages = {path: Page(path.read_text()) for path in sorted(public.glob("*.html"))}
-    ensure(len(pages) == 13, "Expected landing page and twelve document pages")
+    ensure(len(pages) == 14, "Expected landing page, browser lab and twelve document pages")
     checked = 0
     for path, page in pages.items():
         title = re.search(r'<title>(.*?)</title>', path.read_text(), flags=re.S)
@@ -94,7 +94,7 @@ def main():
     ensure(len(re.findall(r"^\d+\. ", exercises, flags=re.M)) == 10, "Expected ten exercises")
     manifest = json.loads((public / "manifest.json").read_text())
     ensure(manifest["version"] == VERSION, "Wrong manifest version")
-    actual = {path.relative_to(public).as_posix(): digest(path) for path in public.rglob("*") if path.is_file() and path.name != "manifest.json"}
+    actual = {path.relative_to(public).as_posix(): digest(path) for path in public.rglob("*") if path.is_file() and path != public / "manifest.json"}
     ensure(actual == manifest["sha256"], "Publication manifest mismatch")
     source = DIST / f"zizkian-{VERSION}.zip"
     website = DIST / f"zizkian-site-{VERSION}.zip"
@@ -109,12 +109,19 @@ def main():
     ensure((DIST / "SHA256SUMS").read_text() == checksums, "Archive checksum list differs")
     prohibited = ("/Users/mj", "_handoffs/", "P002", "discord.com/api/webhooks", "mailto:", "\u2014")
     for path in source_files():
+        if 'vendor' in path.parts:
+            continue  # Immutable third-party bytes are checked below, not edited prose.
         text = path.read_text()
         for token in prohibited:
             # The validator's own list is an intentional scan pattern.
             if path.name == "validate_release.py":
                 continue
             ensure(token not in text, f"Private path or unsupported content in {path.relative_to(ROOT)}: {token!r}")
+    vendor = ROOT / 'site/assets/vendor/swipl-8.2.1'
+    vendor_manifest = json.loads((vendor / 'manifest.json').read_text())
+    ensure({p.name for p in vendor.iterdir() if p.is_file() and p.name != 'manifest.json'} == set(vendor_manifest['sha256']), 'Unexpected vendor file inventory')
+    for name, expected in vendor_manifest['sha256'].items():
+        ensure(digest(vendor / name) == expected, f'Vendor bytes changed: {name}')
     print(f"Validated {len(pages)} pages, {checked} local links/assets, 3 live Prolog report comparisons, 9 charts, 10 exercises and both archives.")
     print("Browser rendering and external link availability are separate checks.")
 

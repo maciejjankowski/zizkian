@@ -17,11 +17,13 @@ def run_cli(*args, cwd=None):
 
 
 class CliTests(unittest.TestCase):
-    def test_six_fixtures_outside_checkout(self):
+    def test_nine_fixtures_outside_checkout(self):
         expected = {
             "supported": (0, "pass"), "defeated": (1, "blocked"),
             "withdrawn": (0, "pass"), "no-finding": (0, "pass"),
             "hypothesis": (0, "pass"), "rejection-trap": (1, "blocked"),
+            "false-evidence": (0, "pass"), "plausible-fabrication": (0, "pass"),
+            "incomplete": (2, "invalid"),
         }
         with tempfile.TemporaryDirectory() as outside:
             for name, outcome in expected.items():

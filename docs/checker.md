@@ -1,5 +1,11 @@
 # The Zizkian logic checker
 
+[Try the editable browser lab](../site/lab.html). It runs this same module using
+SWI-Prolog WebAssembly in a worker. Records stay in the tab; the lab does not
+call a model or submit records to a server. Browser input is bounded to 64 KiB,
+20 nested levels and 500 entries per array, with a five-second execution timeout.
+The native CLI does not impose these browser resource limits.
+
 Run from the repository root with SWI-Prolog installed:
 
 ```sh
@@ -9,7 +15,8 @@ swipl -q -s proof/refutable.pl
 ```
 
 The checker reads JSON as data. It does not execute supplied Prolog, call models,
-fetch sources, change files or send messages. No dependencies were installed.
+fetch sources, change files or send messages. The native CLI uses the installed
+SWI-Prolog; the browser lab bundles a separately licensed WASM runtime.
 Its public predicates are `zizkian:audit/2` and `zizkian:audit_file/2`.
 
 ```prolog
@@ -77,6 +84,9 @@ Every example is fictional, including its evidence and participant statements.
 | [withdrawn.json](../examples/withdrawn.json) | pass / no_finding | Withdrawal permits closure |
 | [no-finding.json](../examples/no-finding.json) | pass / no_finding | An ordinary answer needs no dramatic reading |
 | [rejection-trap.json](../examples/rejection-trap.json) | blocked | Rejection is used as evidence and the refused framing drives a step |
+| [false-evidence.json](../examples/false-evidence.json) | pass / ready_for_decision | Deliberately irrelevant prose still has a structurally valid reference |
+| [plausible-fabrication.json](../examples/plausible-fabrication.json) | pass / ready_for_decision | A deliberately invented study cannot be authenticated by these rules |
+| [incomplete.json](../examples/incomplete.json) | invalid | Missing owner is a schema error |
 
 ## Scope and limitations
 

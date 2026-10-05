@@ -14,7 +14,7 @@ DIST = ROOT / "dist"
 VERSION = (ROOT / "VERSION").read_text().strip()
 STAMP = (2026, 10, 5, 0, 0, 0)
 EXCLUDED = {"dist", "work", ".git", "__pycache__", ".venv", ".DS_Store"}
-ROOT_FILES = {"README.md", "VERSION", "LICENSE", "LICENSE-CODE.md", "LICENSE-DOCS.md", "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md", "CITATION.cff", ".gitignore", "test.sh"}
+ROOT_FILES = {"README.md", "VERSION", "LICENSE", "LICENSE-CODE.md", "LICENSE-DOCS.md", "THIRD_PARTY_NOTICES.md", "CHANGELOG.md", "CONTRIBUTING.md", "SECURITY.md", "CITATION.cff", ".gitignore", "test.sh"}
 SOURCE_DIRS = {"src", "proof", "tests", "scripts", "docs", "prompts", "examples", "charts", "site", ".github"}
 
 
@@ -68,7 +68,7 @@ def main():
         shutil.copytree(ROOT / folder, public / folder)
     (public / "docs").mkdir()
     shutil.copy2(ROOT / "docs/attention-matrix.yaml", public / "docs/attention-matrix.yaml")
-    for name in ("LICENSE", "LICENSE-CODE.md", "LICENSE-DOCS.md", "VERSION", "CITATION.cff"):
+    for name in ("LICENSE", "LICENSE-CODE.md", "LICENSE-DOCS.md", "THIRD_PARTY_NOTICES.md", "VERSION", "CITATION.cff"):
         shutil.copy2(ROOT / name, public / name)
     source = DIST / f"zizkian-{VERSION}.zip"
     archive(source, source_files(), ROOT)

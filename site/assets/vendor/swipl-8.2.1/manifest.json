@@ -1,0 +1,25 @@
+{
+  "package": "swipl-wasm",
+  "version": "8.2.1",
+  "upstream_tag_commit": "85167290994ede92eab1aa5e399007c031e6cb82",
+  "swi_version": "10.1.15",
+  "package_integrity": "sha512-zRdeD+3aFuXFwQqRkBWOENDP3fCSnwErqNDt8yD42OApkui2dRcomqRtxt0tZYfB+uH2Elc4K6cZrUBla6ljRQ==",
+  "notice_sources": {
+    "SWI-LICENSE": "https://raw.githubusercontent.com/SWI-Prolog/swipl-devel/5db27168f89b15186745ea401fbb99a017413788/LICENSE",
+    "PCRE2-LICENCE.md": "https://raw.githubusercontent.com/PCRE2Project/pcre2/6f9d7c1373262c541324a16a358785b33ef116cf/LICENCE.md",
+    "ZLIB-README": "https://raw.githubusercontent.com/madler/zlib/v1.3.2/README",
+    "EMSCRIPTEN-LICENSE": "https://raw.githubusercontent.com/emscripten-core/emscripten/main/LICENSE",
+    "LIBBF-NOTICE": "https://raw.githubusercontent.com/SWI-Prolog/swipl-devel/5db27168f89b15186745ea401fbb99a017413788/src/libbf/libbf.c"
+  },
+  "sha256": {
+    "EMSCRIPTEN-LICENSE": "620a78084fc7ca97c0b5dea9abf891f3ffcadfdbf305276f099c9c4e12fc1d86",
+    "LIBBF-NOTICE": "40a819e0f7075d68627602a320ae127780a8c4cb3199fc3544172ca85a25628e",
+    "LICENSE.txt": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a",
+    "PCRE2-LICENCE.md": "197d8a73ffee0d6b09adba2f9c677b5f5aede24edf89258a68e48248d010d811",
+    "SWI-LICENSE": "770594d0f4463b71f1485f00e4bc5cf4b6f667d62ef6bc9bde2fee236541992a",
+    "ZLIB-README": "4026d921213bb2e311d8d42b44ef53361c102d5d45ae32f93f8e52eaee8d068f",
+    "swipl-web.data": "91e9d9c1d184f1a291c870e96bf6a1bc502ce8787946c966526a663a725ba932",
+    "swipl-web.js": "635da02ac0eb18e51303e4a0398b220d17cabfc0e4b7a2acbc7af9e949e4a9c7",
+    "swipl-web.wasm": "c8831c0ac6a021b6bc67fa1b86e8826d1ea92a1a81b932cfb88fea235361c355"
+  }
+}

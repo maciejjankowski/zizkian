@@ -5,10 +5,12 @@ or a developer evaluating the checker. Laptop and phone; mouse, keyboard or touc
 Loop: understand the claim -> inspect a record -> add a defeater -> withdraw ->
 read the method or download the source.
 Frequency: one short exploration per visit; repeated proof transitions are easy.
-Consequence: no site control changes external state or executes a user record.
+Consequence: lab controls execute edited JSON locally in a WebAssembly worker;
+no control submits the record to a server or changes external state.
 Tier 1: question, proof stages, current report and explanation visible together.
 Tier 2: full JSON, diagrams, field guide, prompts, licensing polemic and downloads.
-Deferred: online Prolog service, arbitrary browser case checker, account system,
+Implemented: editable JSON browser lab using the existing Prolog module.
+Deferred: online Prolog service, account system,
 model router, ratings and commercial services.
 Reviewed viewports: default desktop browser (1288px wide); phone 390x844.
 Review on 2026-10-05 through the local HTTP QA server: proof transitions,
@@ -37,3 +39,17 @@ fixtures. The full-record disclosure shows the selected fixture. Mobile navigati
 uses a labelled toggle and closes when a destination is chosen. Every state has
 a textual verdict, not color alone. Keyboard focus remains visible.
 Document diagrams retain their Mermaid source when the renderer is unavailable.
+
+## Browser lab review, 2026-10-05
+
+Actual WebAssembly execution verified in the local HTTP QA browser: supported,
+defeated, withdrawn, irrelevant evidence, plausible fabrication, missing owner,
+no finding and rejection trap. An arbitrary edit removing the owner produced a
+schema error; malformed JSON produced an error, and reset restored the fixture.
+Editing cleared the previous report and marked the record unchecked.
+Downloaded JSON matched the selected plausible-fabrication fixture.
+At 390x844, document width was 390px and editor/report width was 342px, with
+no horizontal page overflow. Mobile menu opened and closed. Desktop runtime
+loaded successfully, including Apache's application/wasm response.
+Native/WASM parity and input bounds are automated checks. Browser compatibility
+outside this local Brave review and empirical decision quality remain untested.

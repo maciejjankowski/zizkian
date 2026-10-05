@@ -7,6 +7,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
       - name: Install runner dependencies
         run: sudo apt-get update && sudo apt-get install -y swi-prolog-nox python3
       - name: Check rules and CLI

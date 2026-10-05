@@ -6,7 +6,7 @@ is created or updated by the release builder.
 
 ## Check and build
 
-From an extracted source checkout, using installed SWI-Prolog and Python 3:
+From an extracted source checkout, using installed SWI-Prolog, Python 3 and Node.js:
 
 ```sh
 sh test.sh
@@ -14,8 +14,8 @@ python3 scripts/build_release.py
 python3 scripts/validate_release.py
 ```
 
-`dist/zizkian-0.1.0.zip` is a self-contained source archive.
-`dist/zizkian-site-0.1.0.zip` contains a `zizkian/` static publication subtree.
+`dist/zizkian-0.2.0.zip` is a self-contained source archive.
+`dist/zizkian-site-0.2.0.zip` contains a `zizkian/` static publication subtree.
 `dist/zizkian/` is that same subtree, including a source download and checksums.
 No server, model, credentials or database are required by the package.
 
@@ -63,7 +63,8 @@ to capture demonstration reports and records input hashes in
 
 ## Inspect the result
 
-Check the landing page, all three proof states, mobile navigation, mobile tables,
+Check the editable lab (including false-evidence, missing-owner and edited
+records), the landing page, all three proof states, mobile navigation, mobile tables,
 each of the nine diagrams and the diagram source fallback. Review the ten
 exercises, license scope, polemic and downloadable archive. Confirm the archives
 extract and run away from the authoring workspace.

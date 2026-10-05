@@ -2,6 +2,12 @@
 
 ## Present status
 
+The editable browser lab makes a specific limitation reproducible. The
+irrelevant-evidence and plausible-fabrication fixtures pass; removing the owner
+fails the schema. These are diagnostic examples, not an outcome benchmark.
+The worker and native CLI use the same Prolog module; parity tests compare their
+complete reports on all nine fixtures.
+
 The code and fictional fixtures are exercised. There is no client-validation
 study or controlled benchmark of decision quality. A finite refutability witness
 shows an encoded rule can remove a reading's eligibility; it does not demonstrate
