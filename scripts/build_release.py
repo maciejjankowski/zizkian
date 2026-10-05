@@ -27,7 +27,7 @@ def source_files():
         relative = path.relative_to(ROOT)
         if relative.parts[0] not in SOURCE_DIRS and relative.as_posix() not in ROOT_FILES:
             continue
-        if any(part.startswith(".") and part not in (".github", ".gitignore") for part in relative.parts):
+        if any(part.startswith(".") and part not in (".github", ".gitignore", ".htaccess") for part in relative.parts):
             continue
         if not path.is_file() or set(relative.parts) & EXCLUDED or path.suffix == ".pyc":
             continue

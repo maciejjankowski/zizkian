@@ -141,7 +141,8 @@ def main():
     (SITE / 'lab.html').write_text(version_assets(lab))
     lab_inputs = ['site/lab.template.html', 'scripts/render_site.py', 'src/zizkian.pl'] + ['examples/' + name + '.json' for name in names]
     manifest['lab.html'] = {source: hashlib.sha256((ROOT / source).read_bytes()).hexdigest() for source in lab_inputs}
-    manifest["_renderer"] = {"scripts/render_site.py": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    manifest["_renderer"] = {source: hashlib.sha256((ROOT / source).read_bytes()).hexdigest()
+                             for source in ('scripts/render_site.py', 'site/.htaccess')}
     manifest["_assets"] = {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
                            for path in sorted((SITE / "assets").rglob("*")) if path.is_file()}
     (SITE / "page-sources.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")

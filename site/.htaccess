@@ -1,0 +1,2 @@
+# SWI-Prolog WebAssembly supports streaming compilation with this MIME type.
+AddType application/wasm .wasm

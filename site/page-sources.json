@@ -18,7 +18,8 @@
     "site/assets/vendor/swipl-8.2.1/swipl-web.wasm": "c8831c0ac6a021b6bc67fa1b86e8826d1ea92a1a81b932cfb88fea235361c355"
   },
   "_renderer": {
-    "scripts/render_site.py": "10fbc4c10a40912d60ed95169bc8596c32396bbcf17b96ef1216dfa1a1215b3b"
+    "scripts/render_site.py": "2fd0adb07531fdd30f012a90765e46435a3b1c981adcd62eb17f250d4098f926",
+    "site/.htaccess": "77dc2c63f065ef89bdbed2897eb37cd34d84447661fbc09cdef97bbeac9bdc19"
   },
   "checker.html": {
     "docs/checker.md": "2b96652da32ec08d7252aa3498b6978aeda833124c2484234f3f4bc21ca00e15"
@@ -42,7 +43,7 @@
     "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
     "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
     "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
-    "scripts/render_site.py": "10fbc4c10a40912d60ed95169bc8596c32396bbcf17b96ef1216dfa1a1215b3b",
+    "scripts/render_site.py": "2fd0adb07531fdd30f012a90765e46435a3b1c981adcd62eb17f250d4098f926",
     "site/index.template.html": "506949295fcd5bb0b83f4fc6629c500b9f27137d93ac9b0d619b8d945426ba2c",
     "src/check.pl": "f45e96a97f9e972bc8d8c1b7ffcad7c4f807a53861bd7f944ad44cfa4522d5bb",
     "src/zizkian.pl": "70339dde7354157d7c7f044c2ae347d017c4af76a5060d7daf9faa467302a173"
@@ -56,7 +57,7 @@
     "examples/rejection-trap.json": "ece32668bdef702af2c2539e24de3916b04d5df72161d88cc323f9dcfd88e0f1",
     "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
     "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
-    "scripts/render_site.py": "10fbc4c10a40912d60ed95169bc8596c32396bbcf17b96ef1216dfa1a1215b3b",
+    "scripts/render_site.py": "2fd0adb07531fdd30f012a90765e46435a3b1c981adcd62eb17f250d4098f926",
     "site/lab.template.html": "12472a1bb61ddd4087b1e107b4c1b6cd7e75e78e1cd8896b7f7f424a838b869d",
     "src/zizkian.pl": "70339dde7354157d7c7f044c2ae347d017c4af76a5060d7daf9faa467302a173"
   },
