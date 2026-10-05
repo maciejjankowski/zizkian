@@ -9,6 +9,10 @@
   try{
     mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'neutral',layout:'dagre',flowchart:{htmlLabels:false,look:'classic'}});
     await mermaid.run({querySelector:'.mermaid'});
+    document.querySelectorAll('.mermaid svg').forEach(svg=>{
+      const width=Number((svg.getAttribute('viewBox')||'').split(/\s+/)[2]);
+      if(width>0){svg.style.width=Math.ceil(width)+'px';svg.style.maxWidth='none';}
+    });
     if(status)status.textContent=document.querySelectorAll('.mermaid svg').length+' diagrams rendered. Each chart retains its editable source.';
   }catch(error){if(status)status.textContent='Some charts could not render. Their Mermaid source remains available below each chart.';}
 })();

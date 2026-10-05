@@ -1,6 +1,11 @@
 {
+  "_assets": {
+    "site/assets/diagrams.js": "a99669dc03fef442b2e5eb10a85ffa6509c06c453edfa784e9c66d61fc8a19e7",
+    "site/assets/site.css": "248bad48cf2fa2574c8c433e3d9114684f046f5953ff9b83a6ea00cc3bb2775e",
+    "site/assets/site.js": "91285f59182ba6bcba34d0d49b73eeec17891c2fa924f64fdd1437ade6730fad"
+  },
   "_renderer": {
-    "scripts/render_site.py": "9e2a725fce980c74d636bb8d309bbd55fd19fb1bf5fe0478bf015dd2c83d9a2c"
+    "scripts/render_site.py": "f10a78c4d7db59a4975094d2ff35afffab8adcb7dc3c6cde7dc39ee3f2d06a3f"
   },
   "checker.html": {
     "docs/checker.md": "41b2286202d0e81435c98299f60d46c1f2926595472263f2bb3dc94e040b382c"
@@ -24,7 +29,7 @@
     "examples/defeated.json": "7926950c1771d36742d65a51ca18b9f309b37260d7978ada9a13299f3fdfa071",
     "examples/supported.json": "15dde30a185834cf7eb16a8697b2b0db25d37f4c99b13780456cefdd5eced092",
     "examples/withdrawn.json": "4963fa48518c3c30d9ffcc116fee594881204cfe71f6cdba00884f8dc706210c",
-    "scripts/render_site.py": "9e2a725fce980c74d636bb8d309bbd55fd19fb1bf5fe0478bf015dd2c83d9a2c",
+    "scripts/render_site.py": "f10a78c4d7db59a4975094d2ff35afffab8adcb7dc3c6cde7dc39ee3f2d06a3f",
     "site/index.template.html": "63dc92ef9d4bf43eefa54060c6e210c4bccd466c891009738cc473f3e62a6fd3",
     "src/check.pl": "fe10a04252b7d74fcc73ee6934ee8c1dcae7f753761a0b53ef1446dd70298bf1",
     "src/zizkian.pl": "e9363ca2875b1364db455a812c9e0c91d223795daed1a84e7213ec553943f5c1"

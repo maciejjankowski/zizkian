@@ -10,8 +10,8 @@ The Zizkian combines a small question library with an executable Prolog checker.
 The checker makes selected omissions and contradictory declarations visible.
 It does not discover motives or establish that an explanation is true.
 
-Version **0.1.0**, experimental. Prepared public home:
-**https://maciejjankowski.com/zizkian/**. Intended repository:
+Version **0.1.0**, experimental. Public home:
+**https://maciejjankowski.com/zizkian/**. Repository:
 **https://github.com/maciejjankowski/zizkian**.
 
 ## Try the first proof
@@ -109,6 +109,8 @@ method adds value over a plain decision checklist is an open question. The
 evaluation protocol defines how to test it and when to retire extra machinery.
 Claims of novelty or breakthrough performance require evidence beyond packaging.
 
-The included CI workflow has not run on GitHub. Browser layout and Mermaid
-rendering are unreviewed in this release; inspect them before public deployment.
+The CI workflow runs the rules and release checks on GitHub. Local HTTP browser
+review covered the desktop proof transitions, phone navigation and table labels,
+and all nine Mermaid diagrams at readable widths. This is a limited interface
+review, not a full accessibility audit or an outcome benchmark.
 The static validator checks local links and recorded outputs, not visual behavior.

@@ -61,6 +61,8 @@ def main():
     ensure(len(pages) == 13, "Expected landing page and twelve document pages")
     checked = 0
     for path, page in pages.items():
+        title = re.search(r'<title>(.*?)</title>', path.read_text(), flags=re.S)
+        ensure(title and not title.group(1).strip().startswith('|'), f"Missing page title: {path.name}")
         ensure(not page.duplicates, f"Duplicate anchors in {path.name}: {page.duplicates}")
         for link in page.links:
             url = urlsplit(link)

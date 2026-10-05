@@ -50,7 +50,7 @@ def archive(destination, files, base):
 def check_prebuilt():
     manifest = json.loads((ROOT / "site/page-sources.json").read_text())
     for page, inputs in manifest.items():
-        if page != "_renderer" and not (ROOT / "site" / page).is_file():
+        if page not in ("_renderer", "_assets") and not (ROOT / "site" / page).is_file():
             raise ValueError(f"Missing prebuilt page: {page}")
         for source, expected in inputs.items():
             if digest(ROOT / source) != expected:

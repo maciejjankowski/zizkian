@@ -10,10 +10,13 @@ Tier 1: question, proof stages, current report and explanation visible together.
 Tier 2: full JSON, diagrams, field guide, prompts, licensing polemic and downloads.
 Deferred: online Prolog service, arbitrary browser case checker, account system,
 model router, ratings and commercial services.
-Viewports: laptop 1440x900; phone 390x844; CSS supports narrower widths.
-Review: UNREVIEWED. Browser file access was blocked; no substitute browser route
-is used to evade that restriction. The package exposes source fallback and does
-not claim visual QA.
+Reviewed viewports: default desktop browser (1288px wide); phone 390x844.
+Review on 2026-10-05 through the local HTTP QA server: proof transitions,
+phone menu closure and table labels, nine rendered diagrams with source panels,
+and horizontal chart scrolling without page overflow. Static assets have content
+hashes in their URLs so updated rendering reaches returning readers.
+Public-domain browser review was denied by browser permissions. This local
+review does not claim a full accessibility audit or cross-browser coverage.
 
 ## Visual direction
 

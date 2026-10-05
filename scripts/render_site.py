@@ -35,6 +35,12 @@ def footer():
     return '''<footer><p>Maciej Jankowski · The Zizkian 0.1.0 · Experimental</p><p><a href="licensing.html">Noncommercial license scope</a> · <a href="provenance.html">Provenance</a> · <a href="evaluation.html">Evidence and failure criteria</a> · <a href="publishing.html">Build and publish</a></p></footer>'''
 
 
+def version_assets(page):
+    return re.sub(r'(?:assets/)(?:site\.css|site\.js|diagrams\.js)',
+                  lambda match: match.group(0) + '?v=' + hashlib.sha256(
+                      (SITE / match.group(0)).read_bytes()).hexdigest()[:12], page)
+
+
 def shell(title, slug, content, diagrams=False):
     scripts = '<script src="assets/site.js" defer></script>'
     if diagrams:
@@ -64,7 +70,7 @@ def transform(body):
     body = re.sub(r'href="([^"]+)"', rewrite_link, body)
     def diagram(match):
         source = match.group(1)
-        return '<figure><pre class="mermaid">' + source + '</pre><details><summary>Editable Mermaid source</summary><pre><code>' + source + '</code></pre></details></figure>'
+        return '<figure><figcaption>Scroll wide diagrams horizontally to keep the text readable.</figcaption><pre class="mermaid">' + source + '</pre><details><summary>Editable Mermaid source</summary><pre><code>' + source + '</code></pre></details></figure>'
     body = re.sub(r'<pre><code class="language-mermaid">(.*?)</code></pre>', diagram, body, flags=re.S)
     def table(match):
         value = match.group(0)
@@ -90,13 +96,13 @@ def main():
     for slug, source in PAGES.items():
         path = ROOT / source
         body = subprocess.check_output(command + [str(path)], cwd=args.bundle_dir or ROOT, text=True)
-        title = path.read_text().splitlines()[0].lstrip("# ")
+        title = next(line[2:].strip() for line in path.read_text().splitlines() if line.startswith("# "))
         body = transform(body)
         intro = '<p class="doc-nav"><a href="index.html">Home</a><a href="guide.html">Guide</a><a href="downloads/zizkian-0.1.0.zip">Download source</a></p>'
         if slug == "guide":
             intro += '<p id="diagram-status" class="note" role="status">Diagrams render when the pinned Mermaid script is available. Editable sources remain below.</p>'
         output = shell(title, slug + ".html", '<main id="main" class="doc">' + intro + body + '</main>', slug == "guide")
-        (SITE / (slug + ".html")).write_text(output)
+        (SITE / (slug + ".html")).write_text(version_assets(output))
         manifest[slug + ".html"] = {source: hashlib.sha256(path.read_bytes()).hexdigest()}
     data = {}
     for stage in ("supported", "defeated", "withdrawn"):
@@ -109,10 +115,12 @@ def main():
     template = template.replace("@@PROOF_DATA@@", json.dumps(data, ensure_ascii=False).replace("<", "\\u003c"))
     template = template.replace("@@INITIAL_REPORT@@", html.escape(json.dumps(data["supported"]["report"], indent=2)))
     template = template.replace("@@INITIAL_CASE@@", html.escape(json.dumps(data["supported"]["case"], indent=2)))
-    (SITE / "index.html").write_text(template)
+    (SITE / "index.html").write_text(version_assets(template))
     inputs = ["site/index.template.html", "scripts/render_site.py", "src/check.pl", "src/zizkian.pl"] + ["examples/" + stage + ".json" for stage in data]
     manifest["index.html"] = {source: hashlib.sha256((ROOT / source).read_bytes()).hexdigest() for source in inputs}
     manifest["_renderer"] = {"scripts/render_site.py": hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
+    manifest["_assets"] = {str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+                           for path in sorted((SITE / "assets").glob("*")) if path.is_file()}
     (SITE / "page-sources.json").write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
     urls = [HOME] + [HOME + slug + ".html" for slug in PAGES]
     sitemap = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + ''.join('<url><loc>' + url + '</loc></url>' for url in urls) + '</urlset>\n'
