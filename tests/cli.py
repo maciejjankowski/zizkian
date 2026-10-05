@@ -79,8 +79,8 @@ class CliTests(unittest.TestCase):
         content = r'{"owner":"\ud83d\ude00 \\ud83d\\ude00 \u0041 \n \\\""}'
         goal = ('string_codes(' + json.dumps(content) + ',Input),'
                 'phrase(zizkian:json_unicode(Output),Input),'
-                'string_codes(Text,Output),atom_json_dict(Text,Dict,[value_string_as(string)]),'
-                'atom_json_dict(Out,Dict,[]),writeln(Out)')
+                'string_codes(Text,Output),zizkian:atom_json_dict(Text,Dict,[value_string_as(string)]),'
+                'zizkian:atom_json_dict(Out,Dict,[]),writeln(Out)')
         result = subprocess.run(["swipl", "-q", "-s", str(ROOT / "src/zizkian.pl"),
                                  "-g", goal, "-t", "halt"], capture_output=True, text=True)
         self.assertEqual(result.returncode, 0, result.stderr)
